@@ -5,7 +5,7 @@ set t_Co=256
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'Shougo/neocomplcache.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'elzr/vim-json'
@@ -49,9 +49,16 @@ set si
 set wrap
 " For airline
 set laststatus=2
+let g:Powerline_symbols="fancy"
 let g:airline_theme='dark'
+let g:airline_powerline_fonts=1
+if !exists('g:airline_symbols')
+  let g:airline_symbols={}
+endif
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#whitespace#enabled=0
 let g:airline#extensions#whitespace#symbol='!'
 nnoremap <c-n> :bn<cr>
 nnoremap <c-p> :bp<cr>
+
+let g:neocomplcache_enable_at_startup=1
