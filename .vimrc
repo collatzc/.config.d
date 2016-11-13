@@ -9,6 +9,8 @@ Plugin 'Shougo/neocomplcache.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'elzr/vim-json'
+Plugin 'digitaltoad/vim-pug'
+Plugin 'pangloss/vim-javascript'
 call vundle#end()
 filetype plugin indent on
 
@@ -23,6 +25,8 @@ set ruler
 set hid
 set backspace=eol,start,indent
 set whichwrap=<,>,h,l
+set list
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 set ignorecase
 set smartcase
 set hlsearch
@@ -38,7 +42,6 @@ set ffs=unix,dos,mac
 set nobackup
 set nowb
 set noswapfile
-set expandtab
 set smarttab
 set shiftwidth=2
 set tabstop=2
