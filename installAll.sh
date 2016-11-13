@@ -15,7 +15,7 @@ function install() {
         1)
           echo
           echo 'Configging shell & vim...'
-          cp ./.config.d/.vimrc ~/.vimrc
+          cp .vimrc ~/.vimrc
           ./installVundle.sh
           vim +PluginInstall +qall
           yum install -y tmux
