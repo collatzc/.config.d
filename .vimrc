@@ -6,6 +6,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'Shougo/neocomplcache.vim'
+Plugin 'scrooloose/nerdtree'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'elzr/vim-json'
@@ -65,3 +66,5 @@ nnoremap <c-n> :bn<cr>
 nnoremap <c-p> :bp<cr>
 
 let g:neocomplcache_enable_at_startup=1
+" NerdTree
+map <C-d> :NERDTreeToggle<cr>
