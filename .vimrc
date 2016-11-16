@@ -27,7 +27,7 @@ set hid
 set backspace=eol,start,indent
 set whichwrap=<,>,h,l
 set list
-set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,nbsp:⎵
 set ignorecase
 set smartcase
 set hlsearch
