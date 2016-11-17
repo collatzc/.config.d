@@ -10,7 +10,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'elzr/vim-json'
-Plugin 'digitaltoad/vim-pug'
+Plugin 'collatzc/vim-pug'
 Plugin 'pangloss/vim-javascript'
 call vundle#end()
 filetype plugin indent on
