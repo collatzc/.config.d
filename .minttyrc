@@ -2,3 +2,6 @@ Transparency=high
 Font=DejaVu Sans Mono for Powerline
 Scrollbar=none
 CursorType=block
+OpaqueWhenFocused=no
+Columns=150
+Rows=40
