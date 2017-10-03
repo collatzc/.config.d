@@ -1,5 +1,7 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+"--- basic ---
+scriptencoding utf-8
+set encoding=utf-8
+
 " To fix airline-no-color problem
 set t_Co=256
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -13,11 +15,11 @@ Plugin 'elzr/vim-json'
 Plugin 'collatzc/vim-pug'
 Plugin 'pangloss/vim-javascript'
 call vundle#end()
-filetype plugin indent on
 
 set history=500
 filetype plugin on
 filetype indent on
+" auto load when a file is changed from the outside
 set autoread
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -25,9 +27,9 @@ set wildmenu
 set ruler
 set hid
 set backspace=eol,start,indent
-set whichwrap=<,>,h,l
+set whichwrap+=<,>,h,l
 set list
-set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,nbsp:⎵
+set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 set ignorecase
 set smartcase
 set hlsearch
@@ -36,7 +38,6 @@ set magic
 set showmatch
 set mat=2
 syntax enable
-set encoding=utf8
 set termencoding=utf8
 set number
 set ffs=unix,dos,mac
