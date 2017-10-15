@@ -9,7 +9,7 @@
 	setglobal fileencoding=utf-8
 	set fileencodings=utf-8,ucs-bom
 
-	" Better for Powerline
+	" Better for vim-airline 
 	set encoding=utf-8
 	set termencoding=utf-8
 
@@ -103,7 +103,7 @@ let g:neocomplcache_enable_at_startup=1
 
 " NerdTree {
 	if isdirectory(expand("~/.vim/bundle/nerdtree"))
-		map <leader>d :NERDTreeToggle<cr>
+		map <leader>t :NERDTreeToggle<cr>
 		
 	endif
 " }
@@ -112,9 +112,11 @@ let g:neocomplcache_enable_at_startup=1
 	" Fast save
 	nmap <leader>w :w!<CR>
 
-" Change between buffers
-	nnoremap <c-n> :bn<cr>
-	nnoremap <c-p> :bp<cr>
+	" Change between buffers
+	nnoremap <leader>n :bn<cr>
+	nnoremap <leader>p :bp<cr>
+	" Close buffer
+	nnoremap <leader>d :bd<CR>
 
 
 	" Lazy Moving
