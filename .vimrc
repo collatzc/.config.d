@@ -1,4 +1,4 @@
-﻿" .vimrc
+" .vimrc
 " vim: set foldmarker={,} foldlevel=0 foldmethod=marker
 
 " Basics {
@@ -86,7 +86,7 @@
 " }
 
 " vim-airline {
-	let g:Powerline_symbols="fancy"
+	let g:Powerline_symbols='fancy'
 	let g:airline_theme='dark'
 	let g:airline_powerline_fonts=1
 	if !exists('g:airline_symbols')
