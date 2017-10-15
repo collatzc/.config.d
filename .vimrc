@@ -56,10 +56,11 @@
 	set backspace=indent,eol,start
 	set whichwrap=b,s,h,l,<,>,[,]
 	" Highlight problematic white space
-	set showbreak=\u21aa
+	set showbreak=↳\ 
+	set listchars=tab:▸\ ,trail:·,extends:»,nbsp:·,eol:↲
 	set list
-	set listchars=tab:»·,trail:→,extends:»,nbsp:·,eol:¬
-	hi NonText ctermfg=7 guifg=gray
+	hi NonText ctermfg=8 guifg=gray
+	hi SpecialKey ctermfg=8 guifg=gray
 	set ignorecase
 	set smartcase
 	set hlsearch
