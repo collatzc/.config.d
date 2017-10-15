@@ -5,13 +5,11 @@
 " must be first line
 	set nocompatible
 
+	set encoding=utf-8
 	scriptencoding utf-8
+	set termencoding=utf-8
 	setglobal fileencoding=utf-8
 	set fileencodings=utf-8,ucs-bom
-
-	" Better for vim-airline 
-	set encoding=utf-8
-	set termencoding=utf-8
 
 " To fix airline-no-color problem
 	set t_Co=256
@@ -56,7 +54,7 @@
 	set backspace=indent,eol,start
 	set whichwrap=b,s,h,l,<,>,[,]
 	" Highlight problematic white space
-	set showbreak=↳\ 
+	set showbreak=↪\ 
 	set listchars=tab:▸\ ,trail:·,extends:»,nbsp:·,eol:↲
 	set list
 	hi NonText ctermfg=8 guifg=gray
