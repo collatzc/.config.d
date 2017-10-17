@@ -49,7 +49,7 @@
 	" set spell
 	set ruler
 	" auto enable mouse
-	set mouse=a
+	set mouse=r
 	set mousehide
 	set backspace=indent,eol,start
 	set whichwrap=b,s,h,l,<,>,[,]
