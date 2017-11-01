@@ -1,8 +1,7 @@
 " .vimrc
-" vim: set foldmarker={,} foldlevel=0 foldmethod=marker
+" vim: foldmethod=indent
 
 " Basics {
-" must be first line
 	set nocompatible
 
 	set encoding=utf-8
@@ -11,7 +10,7 @@
 	setglobal fileencoding=utf-8
 	set fileencodings=utf-8,ucs-bom
 
-" To fix airline-no-color problem
+	" To fix airline-no-color problem
 	set t_Co=256
 " }
 
