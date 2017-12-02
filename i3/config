@@ -4,9 +4,12 @@
 set $mod Mod4
 
 # AudioKey
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute
-bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- unmute
-bindsym XF86AudioMute exec amixer -q set Master mute
+#bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
+#bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- unmute
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
+#bindsym XF86AudioMute exec amixer -q set Master mute
+bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
 
 # Brightness
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10
@@ -20,6 +23,7 @@ default_orientation horizontal
 
 # Auto back and forth
 workspace_auto_back_and_forth yes
+bindsym Mod1+Tab workspace back_and_forth
 
 # no follow the focus
 focus_follows_mouse no
@@ -33,7 +37,8 @@ new_float none
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec xfce4-terminal
+# bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Return exec --no-startup-id terminator
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -89,6 +94,8 @@ bindsym $mod+minus scratchpad show
 # lock
 bindsym $mod+p exec i3lock -c 000000
 
+bindsym $mod+F2 exec --no-startup-id pavucontrol
+
 # switch to workspace
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
@@ -133,9 +140,13 @@ mode "  " {
 }
 bindsym $mod+r mode "  "
 
-exec_always fcitx &
+for_window [window_role="pop-up"] floating enable
+for_window [title="Telegram"] floating enable
+for_window [instance="pavucontrol"] floating enable
+
+exec_always --no-startup-id fcitx &
 exec_always --no-startup-id feh --bg-scale ~/Images/bg.jpeg
-exec --no-startup-id compton -b
+exec_always --no-startup-id nm-applet
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
