@@ -1,0 +1,8 @@
+#!/bin/sh
+CITY=${1:-Aachen}
+if [ ! -z $1 ]
+then
+	CITY=$1
+fi
+
+curl -4 http://wttr.in/${CITY}

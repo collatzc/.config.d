@@ -1,7 +1,8 @@
 " .vimrc
-" vim: foldmethod=indent
+" vim: set foldmarker={,} foldlevel=0 foldmethod=marker
 
 " Basics {
+" must be first line
 	set nocompatible
 
 	set encoding=utf-8
@@ -10,7 +11,7 @@
 	setglobal fileencoding=utf-8
 	set fileencodings=utf-8,ucs-bom
 
-	" To fix airline-no-color problem
+" To fix airline-no-color problem
 	set t_Co=256
 " }
 
@@ -66,6 +67,7 @@
 	set mat=2
 	set number
 	set ffs=unix,dos,mac
+	let mapleader=" "
 	set nobackup
 	set nowb
 	set noswapfile
@@ -108,7 +110,7 @@ let g:neocomplcache_enable_at_startup=1
 " Keys {
 	" Fast save
 	nmap <leader>w :w!<CR>
-
+	nmap <Leader>q :q!<CR>
 	" Change between buffers
 	nnoremap <leader>n :bn<cr>
 	nnoremap <leader>p :bp<cr>
