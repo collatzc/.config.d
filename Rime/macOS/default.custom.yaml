@@ -1,0 +1,21 @@
+# Rime default custom settings for macOS
+# ~/Library/Rime/default.custom.yaml
+# encoding: utf-8
+# 修改中西文切换按键
+# noop：不切換（Control鍵的默認行爲）
+# inline_ascii：當已輸入編碼時，不上屏、內聯式編輯西文，回車上屏後復位爲中文模式（左Shift默認行爲）
+# commit_text：當已輸入編碼時，文字上屏並切換到西文（右Shift默認行爲）
+# commit_code：當已輸入編碼時，編碼上屏並切換到西文
+
+patch:
+  schema_list:
+    - schema: luna_pinyin
+    - schema: double_pinyin_flypy
+  ascii_composer:
+    good_old_caps_lock: true
+    switch_key:
+      Caps_Lock: noop
+      Shift_L: commit_code
+      Shift_R: noop
+      Control_L: noop
+      Control_R: noop

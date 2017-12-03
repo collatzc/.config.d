@@ -1,0 +1,9 @@
+# Squirrel settings for macOS
+# encoding: utf-8
+
+patch:
+  us_keyboard_layout: true
+  show_notifications_via_notification_center: true
+
+  style:
+    color_scheme: clean_white
