@@ -1,6 +1,5 @@
 " .vimrc
-" vim: set foldmarker={,} foldlevel=0 foldmethod=marker
-
+" vim: set fdm=marker foldmarker={,}:
 " Basics {
 " must be first line
 	set nocompatible
@@ -30,6 +29,7 @@
 " }
 
 " Settings {
+	let mapleader=" "
 	" History (default 20)
 	set history=500
 	" Auto detect file types
@@ -67,7 +67,6 @@
 	set mat=2
 	set number
 	set ffs=unix,dos,mac
-	let mapleader=" "
 	set nobackup
 	set nowb
 	set noswapfile
@@ -79,6 +78,8 @@
 	set ai
 	set si
 	set wrap
+	set foldenable
+	set foldmethod=indent
 	set foldlevel=0
 	" For airline
 	set laststatus=2
@@ -102,20 +103,25 @@ let g:neocomplcache_enable_at_startup=1
 
 " NerdTree {
 	if isdirectory(expand("~/.vim/bundle/nerdtree"))
-		map <leader>t :NERDTreeToggle<cr>
+		map <leader>b :NERDTreeToggle<cr>
 		
 	endif
 " }
 
 " Keys {
 	" Fast save
-	nmap <leader>w :w!<CR>
-	nmap <Leader>q :q!<CR>
+	nmap <leader>w :w!<cr>
+	nmap <leader>s :wq<cr>
+	" Quit
+	nmap <leader>q :q<cr>
 	" Change between buffers
 	nnoremap <leader>n :bn<cr>
 	nnoremap <leader>p :bp<cr>
 	" Close buffer
-	nnoremap <leader>d :bd<CR>
+	nnoremap <leader>d :bd<cr>
+	" Tabs
+	nnoremap <leader>t :tabnew<cr>
+	nnoremap <leader>c :tabclose<cr>
 
 
 	" Lazy Moving
