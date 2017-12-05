@@ -19,3 +19,8 @@ patch:
       Shift_R: noop
       Control_L: noop
       Control_R: noop
+  switcher:
+    hotkeys:
+      - F4
+      - "Control+Shift+grave"
+

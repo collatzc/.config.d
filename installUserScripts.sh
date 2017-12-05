@@ -1,10 +1,16 @@
 #!/bin/bash
 
-# assume is unter linux
-USER=`whoami`
-BASE_PATH="/home/${USER}/.config.d/"
-# need to enter password
+BASE_PATH="${HOME}/.config.d"
+
 echo Installing...
-sudo ln -s "${BASE_PATH}wttr" /usr/local/bin/wttr
-sudo ln -s "${BASE_PATH}lognow" /usr/local/bin/lognow
+
+if [[ `uname` == 'Darwin' ]]; then
+	ln -s "${BASE_PATH}/wttr" /usr/local/bin/wttr
+	ln -s "${BASE_PATH}lognow" /usr/local/bin/lognow
+else
+# need to enter password
+	sudo ln -s "${BASE_PATH}/wttr" /usr/local/bin/wttr
+	sudo ln -s "${BASE_PATH}/lognow" /usr/local/bin/lognow
+fi
+
 echo Fin.
