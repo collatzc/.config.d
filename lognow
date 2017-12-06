@@ -7,7 +7,7 @@ startLog() {
 if [ -d ~/.Log.d ]; then
 	startLog
 else
-	git clone git@bitbucket.org:Ztalloc/.log.d.git ~/.Log.d
+	git clone https://bitbucket.org/Ztalloc/.log.d.git ~/.Log.d
 	startLog
 fi
 
