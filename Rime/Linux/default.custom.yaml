@@ -1,0 +1,8 @@
+patch:
+  schema_list:
+    - schema: luna_pinyin
+    - schema: luna_pinyin_simp
+    - schema: double_pinyin_flypy
+  ascii_composer/switch_key:
+    Shift_L: noop
+    Control_L: inline_ascii
