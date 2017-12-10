@@ -1,0 +1,11 @@
+
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+
+# locale
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US:zh_CN
+export LC_CTYPE=en_US.UTF-8
+
+exec i3
