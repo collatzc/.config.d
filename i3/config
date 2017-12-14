@@ -16,7 +16,7 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:System San Francisco 6
+font pango:System San Francisco 16
 
 # Split hori by default
 default_orientation horizontal
