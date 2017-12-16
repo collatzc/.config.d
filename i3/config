@@ -16,7 +16,7 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:System San Francisco 16
+font pango:Monospace 12
 
 # Split hori by default
 default_orientation horizontal
@@ -29,7 +29,7 @@ bindsym Mod1+Tab workspace back_and_forth
 focus_follows_mouse no
 
 # Hide edge and title bar
-hide_edge_borders both
+hide_edge_borders none
 new_window none
 new_float none
 
@@ -44,7 +44,7 @@ bindsym $mod+Return exec --no-startup-id terminator
 bindsym $mod+Shift+q kill
 
 # start rofi (a program launcher)
-bindsym $mod+d exec --no-startup-id rofi -show run -font "System San Francisco 12"
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -show run'
 bindsym $mod+Tab exec --no-startup-id rofi -show window
 
 # change focus
@@ -90,9 +90,6 @@ bindsym $mod+z focus child
 
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
-
-# lock
-bindsym $mod+p exec i3lock -c 000000
 
 bindsym $mod+F2 exec --no-startup-id pavucontrol
 
@@ -143,8 +140,23 @@ bindsym $mod+r mode "  "
 for_window [window_role="pop-up"] floating enable
 for_window [title="Telegram"] floating enable
 for_window [instance="pavucontrol"] floating enable
+for_window [class="Thunar"] floating enable
 
-exec_always --no-startup-id fcitx &
+set $mode_system : L | : S | : P | : R | : E
+
+mode "$mode_system" {
+	bindsym l exec --no-startup-id i3lock -c 000000, mode "default"
+	bindsym s exec --no-startup-id systemctl suspend, mode "default"
+	bindsym p exec --no-startup-id systemctl poweroff -i, mode "default"
+	bindsym r exec --no-startup-id systemctl reboot, mode "default"
+	bindsym e exec --no-startup-id i3-msg exit, mode "default"
+
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+bindsym $mod+x mode "$mode_system"
+### Autostart
+exec_always --no-startup-id fcitx
 exec_always --no-startup-id feh --bg-scale ~/Images/bg.jpeg
 exec_always --no-startup-id nm-applet
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -154,4 +166,24 @@ bar {
 	mode hide
 	hidden_state hide
 	modifier Mod4
+# Color panel
+	colors {
+		background #202020
+		statusline #D0E1D4
+		separator  #c1d0c1
+#   Indicadores panel
+#                       border      bg         text
+		focused_workspace  #21252e     #769070    #16100b
+		active_workspace   #21252e     #348899    #16100b
+		inactive_workspace #21252e     #4c5356    #16100b
+		urgent_workspace   #21252e     #ac4344    #16100b
+	}
 }
+
+# Class 
+client.focused          #171f27    #171f27   #ffffff #ffffff #171f27
+client.focused_inactive #1d2121    #1d2121   #a1a1a1 #484e50 #1d2121
+client.unfocused        #333333    #222222   #888888 #292d2e #222222
+client.urgent           #4a4b4c    #4a4b4c   #fdfdfd #fbfbfb #4a4c4b
+client.placeholder      #000000    #0c0c0c   #ffffff #000000 #0c0c0c
+client.background       #111111
