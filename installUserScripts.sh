@@ -20,5 +20,5 @@ else
 	sudo ln -s "${BASE_PATH}/wttr" /usr/local/bin/wttr
 	sudo ln -s "${BASE_PATH}/lognow" /usr/local/bin/lognow
 fi
-
+unset BASE_PATH
 echo Fin.

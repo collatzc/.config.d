@@ -1,4 +1,5 @@
 #! /bin/bash
+
 _VERSION='0.0.1'
 OPT_INSTALL=(1 1 1 1 1 1 1 1 1 1)
 
@@ -244,3 +245,7 @@ echo "v"$_VERSION
 echo
 list
 
+
+# clean up
+unset _VERSION
+unset OPT_INSTALL
