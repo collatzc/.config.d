@@ -1,36 +1,26 @@
-# i3 config file (v4)
+# i3 config file
+# vim:fdm=marker
 
-# General
+# General {{{
 set $mod Mod4
 
-# AudioKey
-#bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
-#bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- unmute
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
-#bindsym XF86AudioMute exec amixer -q set Master mute
-bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
-
-# Brightness
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:Monospace 12
+font xft:Monospace 12
 
 # Split hori by default
 default_orientation horizontal
+workspace_layout default
 
 # Auto back and forth
-workspace_auto_back_and_forth yes
+workspace_auto_back_and_forth no
 bindsym Mod1+Tab workspace back_and_forth
 
-# no follow the focus
-focus_follows_mouse no
+# follow the focus
+focus_follows_mouse yes
 
 # Hide edge and title bar
-hide_edge_borders none
-new_window none
+new_window pixel 1
 new_float none
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -67,6 +57,7 @@ bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+f fullscreen toggle global
 
 # stick mode for the focused container
 bindsym $mod+g sticky toggle
@@ -91,6 +82,7 @@ bindsym $mod+z focus child
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
+bindsym $mod+F1 exec --no-startup-id ~/.config.d/monitor.sh
 bindsym $mod+F2 exec --no-startup-id pavucontrol
 
 # switch to workspace
@@ -124,6 +116,10 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
+# }}}
+
+# Mode {{{
+
 # resize window (you can also use the mouse for that)
 mode "  " {
 	bindsym j resize shrink width 10 px or 10 ppt
@@ -140,9 +136,9 @@ bindsym $mod+r mode "  "
 for_window [window_role="pop-up"] floating enable
 for_window [title="Telegram"] floating enable
 for_window [instance="pavucontrol"] floating enable
-for_window [class="Thunar"] floating enable
+for_window [class="Thunar"] floating enable,resize set 880 640
 
-set $mode_system : L | : S | : P | : R | : E
+set $mode_system  L |  S |  P |  R |  E
 
 mode "$mode_system" {
 	bindsym l exec --no-startup-id i3lock -c 000000, mode "default"
@@ -155,12 +151,56 @@ mode "$mode_system" {
 	bindsym Escape mode "default"
 }
 bindsym $mod+x mode "$mode_system"
-### Autostart
+
+# }}}
+
+# Autostart {{{
+
 exec_always --no-startup-id fcitx
 exec_always --no-startup-id feh --bg-scale ~/Images/bg.jpeg
 exec_always --no-startup-id nm-applet
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+
+# }}}
+
+# Media Key {{{
+
+bindsym XF86AudioPlay exec audtool playback-playpause
+bindsym XF86AudioStop exec audtool playback-stop
+bindsym XF86AudioNext exec audtool playlist-advance
+bindsym XF86AudioPrev exec audtool playlist-reverse
+
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
+bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
+
+# Brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 1
+bindsym XF86MonBrightnessDown exec xbacklight -dec 1
+
+# }}}
+
+# Color {{{
+
+set $back				#1d1f21
+set $black			#282a2e
+set $grey				#373b41
+set $lightgrey	#707880
+set $white			#c5c8c6
+set $yellow			#f0c674
+set $red				#cc6666
+set $darkred		#a54242
+set $green			#b5bd56
+# Layout colors					board			bg				text				indicator
+client.focused					$green		$green		$black			$green
+client.focused_inactive	$grey			$grey			$lightgrey	$grey
+client.unfocused				$grey			$grey			$lightgrey	$grey
+client.urgent						$red			$red			$black			$red
+client.background				$back
+
+# }}}
+
+# Bar {{{
+
 bar {
 	status_command i3status -c ~/.config/i3/i3status.conf
 	mode hide
@@ -168,22 +208,16 @@ bar {
 	modifier Mod4
 # Color panel
 	colors {
-		background #202020
-		statusline #D0E1D4
-		separator  #c1d0c1
+		background	$black
+		statusline	$lightgrey
+		separator		$white
 #   Indicadores panel
-#                       border      bg         text
-		focused_workspace  #21252e     #769070    #16100b
-		active_workspace   #21252e     #348899    #16100b
-		inactive_workspace #21252e     #4c5356    #16100b
-		urgent_workspace   #21252e     #ac4344    #16100b
+#												border		bg					text
+		focused_workspace		$black		$green			$black
+		active_workspace		$black		$lightgrey	$black
+		inactive_workspace	$black		$grey				$green
+		urgent_workspace		$black		$darkred		$red
 	}
 }
 
-# Class 
-client.focused          #171f27    #171f27   #ffffff #ffffff #171f27
-client.focused_inactive #1d2121    #1d2121   #a1a1a1 #484e50 #1d2121
-client.unfocused        #333333    #222222   #888888 #292d2e #222222
-client.urgent           #4a4b4c    #4a4b4c   #fdfdfd #fbfbfb #4a4c4b
-client.placeholder      #000000    #0c0c0c   #ffffff #000000 #0c0c0c
-client.background       #111111
+# }}}
