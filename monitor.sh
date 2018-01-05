@@ -1,8 +1,7 @@
 #!/bin/bash
-MONMODE=${1:-S}
-if [ ! -z $1 ]; then
-	MONMODE=$1
-fi
+
+# Mode: S-ingle D-ual 1-st 2-nd AUTO-detect
+MONMODE=${1:-AUTO}
 
 MONITOR=(`xrandr | grep "\sconnected" | cut -d ' ' -f 1`)
 MONITORNO="${#MONITOR[@]}"

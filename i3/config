@@ -4,7 +4,6 @@
 # General {{{
 set $mod Mod4
 
-
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 font xft:Monospace 12
 
@@ -21,7 +20,7 @@ focus_follows_mouse yes
 
 # Hide edge and title bar
 new_window pixel 1
-new_float none
+new_float pixel 3
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -82,9 +81,6 @@ bindsym $mod+z focus child
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
-bindsym $mod+F1 exec --no-startup-id ~/.config.d/monitor.sh
-bindsym $mod+F2 exec --no-startup-id pavucontrol
-
 # switch to workspace
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
@@ -118,6 +114,17 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # }}}
 
+# Binding Keys {{{
+
+bindsym $mod+F1 exec --no-startup-id ~/.config.d/monitor.sh
+bindsym $mod+F2 exec --no-startup-id pavucontrol
+
+# Moving between monitors
+bindsym $mod+m move workspace to output right
+bindsym $mod+n move workspace to output left
+
+# }}}
+
 # Mode {{{
 
 # resize window (you can also use the mouse for that)
@@ -140,7 +147,7 @@ for_window [class="Thunar"] floating enable,resize set 880 640
 
 set $mode_system  L |  S |  P |  R |  E
 
-mode "$mode_system" {
+mode "   L |  S |  P |  R |  E " {
 	bindsym l exec --no-startup-id i3lock -c 000000, mode "default"
 	bindsym s exec --no-startup-id systemctl suspend, mode "default"
 	bindsym p exec --no-startup-id systemctl poweroff -i, mode "default"
@@ -150,7 +157,7 @@ mode "$mode_system" {
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
 }
-bindsym $mod+x mode "$mode_system"
+bindsym $mod+x mode "   L |  S |  P |  R |  E "
 
 # }}}
 
@@ -210,7 +217,7 @@ bar {
 	colors {
 		background	$black
 		statusline	$lightgrey
-		separator		$white
+		separator		$black
 #   Indicadores panel
 #												border		bg					text
 		focused_workspace		$black		$green			$black
