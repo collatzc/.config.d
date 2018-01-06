@@ -12,6 +12,7 @@
 
 " To fix airline-no-color problem
 	set t_Co=256
+	set nobomb
 " }
 
 " Vundle Plugin Manager {
@@ -29,7 +30,7 @@
 " }
 
 " Settings {
-	let mapleader=" "
+	let mapleader=","
 	" History (default 20)
 	set history=500
 	" Auto detect file types
@@ -40,6 +41,9 @@
 	" Unsaved file will hide; use :ls to show it
 	set hid
 	set lazyredraw
+	" 默認不使用輸入法
+	set iminsert=0
+	set imsearch=0
 " }
 
 " Edit {
