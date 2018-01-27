@@ -1,13 +1,10 @@
 #!/bin/bash
 
-###
 # lognow v0.0.1
-#
 # Everyday log widget
-#
 
 startLog() {
-	vim ~/.Log.d/Log.$(date +%Y-%m-%d).md
+	nvim ~/.Log.d/Log.$(date +%Y-%m-%d).md
 }
 
 if [ -d ~/.Log.d ]; then
