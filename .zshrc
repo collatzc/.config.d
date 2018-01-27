@@ -52,10 +52,20 @@ plugins=(git)
 
 # User configuration
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-export GOPATH=$HOME/go
-export ANDROID_HOME=~/Android/Sdk
-export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+#export PATH=$HOME/bin:/usr/local/bin:$PATH
+if [ -d "$HOME/go" ]; then
+	export GOPATH=$HOME/go
+fi
+if [ -d "~/Android/Sdk" ]; then
+	export ANDROID_HOME=~/Android/Sdk
+	export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+fi
+if [ -d ~/Library/Python/2.7/bin ]; then
+	export PATH=~/Library/Python/2.7/bin:$PATH
+fi
+if [ -d ~/.local/bin ]; then
+	export PATH=~/.local/bin:$PATH
+fi
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
