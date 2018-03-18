@@ -212,14 +212,16 @@ client.background				$back
 
 bar {
 	status_command i3status -c ~/.config/i3/i3status.conf
+	font xft:Monospace 20
 	mode hide
 	hidden_state hide
 	modifier Mod4
+	separator_symbol "//"
 # Color panel
 	colors {
 		background	$black
 		statusline	$lightgrey
-		separator		$black
+		separator		$lightgrey
 #   Indicadores panel
 #												border		bg					text
 		focused_workspace		$black		$green			$black
