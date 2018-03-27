@@ -216,7 +216,7 @@ bar {
 	mode hide
 	hidden_state hide
 	modifier Mod4
-	separator_symbol "//"
+	separator_symbol "/"
 # Color panel
 	colors {
 		background	$black
