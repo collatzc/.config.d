@@ -44,6 +44,8 @@
 	" 默認不使用輸入法
 	set iminsert=0
 	set imsearch=0
+	" Using OS clipboard
+	set clipboard^=unnamed
 " }
 
 " Edit {
@@ -63,6 +65,9 @@
 	set list
 	hi NonText ctermfg=8 guifg=gray
 	hi SpecialKey ctermfg=8 guifg=gray
+	"智能當前行高亮
+	autocmd InsertLeave,WinEnter * set cursorline
+	autocmd InsertEnter,WinLeave * set nocursorline
 	set ignorecase
 	set smartcase
 	set hlsearch
