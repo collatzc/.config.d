@@ -11,51 +11,54 @@ mouse_autohide = true
 scrollback_lines = 0
 scrollbar = off
 
-[colors]
-# Base16 Default Dark
-# Author: Chris Kempson (http://chriskempson.com)
 
-foreground      = #d8d8d8
-foreground_bold = #e8e8e8
-cursor          = #e8e8e8
-background      = #181818
+[colors]
+# Base16 Material Darker 
+# Author: Nate Peterson
+
+foreground          = #eeffff
+foreground_bold     = #eeffff
+cursor              = #eeffff
+cursor_foreground   = #212121
+background          = rgba(33, 33, 33, 1)
 
 # 16 color space
 
 # Black, Gray, Silver, White
-color0  = #181818
-color8  = #585858
-color7  = #d8d8d8
-color15 = #f8f8f8
+color0  = #212121
+color8  = #4a4a4a
+color7  = #eeffff
+color15 = #ffffff
 
 # Red
-color1  = #ab4642
-color9  = #ab4642
+color1  = #f07178
+color9  = #f07178
 
 # Green
-color2  = #a1b56c
-color10 = #a1b56c
+color2  = #c3e88d
+color10 = #c3e88d
 
 # Yellow
-color3  = #f7ca88
-color11 = #f7ca88
+color3  = #ffcb6b
+color11 = #ffcb6b
 
 # Blue
-color4  = #7cafc2
-color12 = #7cafc2
+color4  = #82aaff
+color12 = #82aaff
 
 # Purple
-color5  = #ba8baf
-color13 = #ba8baf
+color5  = #c792ea
+color13 = #c792ea
 
 # Teal
-color6  = #86c1b9
-color14 = #86c1b9
+color6  = #89ddff
+color14 = #89ddff
 
 # Extra colors
-color16 = #dc9656
-color17 = #a16946
-color18 = #282828
-color19 = #383838
-color20 = #b8b8b8
-color21 = #e8e8e8
+color16 = #f78c6c
+color17 = #ff5370
+color18 = #303030
+color19 = #353535
+color20 = #b2ccd6
+color21 = #eeffff
+
