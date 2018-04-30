@@ -35,6 +35,8 @@
 	" History (default 20)
 	set history=500
 	" Auto detect file types
+	filetype on
+	filetype plugin on
 	filetype plugin indent on
 	" Auto load when a file is changed from the outside
 	set autoread
@@ -47,6 +49,10 @@
 	set imsearch=0
 	" Using OS clipboard
 	set clipboard^=unnamed
+	" enable usage of .vimrc from working dir
+	set exrc
+	" .vimrc cannot exec shell
+	set secure
 " }
 
 " Edit {
@@ -67,7 +73,7 @@
 	hi NonText ctermfg=8 guifg=gray
 	hi SpecialKey ctermfg=8 guifg=gray
 	"智能當前行高亮
-	autocmd InsertLeave,WinEnter * set cursorline
+	autocmd VimEnter,InsertLeave,WinEnter * set cursorline
 	autocmd InsertEnter,WinLeave * set nocursorline
 	set ignorecase
 	set smartcase
@@ -90,7 +96,7 @@
 	set wrap
 	set foldenable
 	set foldmethod=indent
-	set foldlevel=0
+	set foldlevel=1
 	" For airline
 	set laststatus=2
 " }
