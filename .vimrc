@@ -144,6 +144,10 @@ let g:neocomplcache_enable_at_startup=1
 	nnoremap <leader>t :tabnew<cr>
 	nnoremap <leader>c :tabclose<cr>
 
+	autocmd FileType python call s:runPython()
+	function! s:runPython()
+		imap <f5> <esc>:w<cr>:!clear;python3 %<cr>
+	endfunction
 
 	" Lazy Moving
 	nnoremap <C-k> :m .-2<CR>==
