@@ -21,6 +21,7 @@
 	Plugin 'VundleVim/Vundle.vim'
 	Plugin 'Shougo/neocomplcache.vim'
 	Plugin 'scrooloose/nerdtree'
+	Plugin 'scrooloose/nerdcommenter'
 	Plugin 'vim-airline/vim-airline'
 	Plugin 'vim-airline/vim-airline-themes'
 	Plugin 'elzr/vim-json'
@@ -112,9 +113,20 @@ let g:neocomplcache_enable_at_startup=1
 
 " NerdTree {
 	if isdirectory(expand("~/.vim/bundle/nerdtree"))
-		map <leader>b :NERDTreeToggle<cr>
+		let NERDTreeIgnore=['\.pyc$', '\.pyo', '__pycache__$']
+		" Load only if vim is run without arguments
+		autocmd VimEnter * if !argc() | NERDTree | endif
+		nmap <leader>b :NERDTreeToggle<cr>
 		
 	endif
+" }
+
+" NERDCommenter {
+	let g:NERDSpaceDelims = 1
+	let g:NERDCompactSexyComs = 1
+	let g:NERDDefaultAlign = 'left'
+	let g:NERDCommentEmptyLines = 1
+	let g:NERDTrimTrailingWhitespace = 1
 " }
 
 " Keys {
