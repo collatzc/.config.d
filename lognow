@@ -1,15 +1,17 @@
 #!/bin/bash
 
-# lognow v0.0.1
-# Everyday log widget
+# lognow v0.0.2
+# Everyday/topic log widget
 
+TOPIC=${1:-}
 startLog() {
-	nvim ~/.Log.d/Log.$(date +%Y-%m-%d).md
+	if [ "$TOPIC" != "" ]; then
+		nvim ~/.Log.d/$TOPIC.md
+	else
+		nvim ~/.Log.d/Log.$(date +%Y-%m-%d).md
+	fi
 }
 
 if [ -d ~/.Log.d ]; then
-	startLog
-else
-	git clone https://bitbucket.org/Ztalloc/.log.d.git ~/.Log.d
 	startLog
 fi

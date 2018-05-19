@@ -63,6 +63,9 @@ fi
 if [ -d ~/Library/Python/2.7/bin ]; then
 	export PATH=~/Library/Python/2.7/bin:$PATH
 fi
+if [ -d /Users/cc/Library/Python/3.6/bin ]; then
+	export PATH=/Users/cc/Library/Python/3.6/bin:$PATH
+fi
 if [ -d ~/.local/bin ]; then
 	export PATH=~/.local/bin:$PATH
 fi
