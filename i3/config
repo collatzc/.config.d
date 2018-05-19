@@ -143,13 +143,14 @@ mode "  " {
 bindsym $mod+r mode "  "
 
 for_window [window_role="pop-up"] floating enable
+for_window [class="Matplotlib"] floating enable
 for_window [title="Telegram"] floating enable
 for_window [instance="pavucontrol"] floating enable
 for_window [class="Thunar"] floating enable,resize set 880 640
 
-set $mode_system  L |  S |  P |  R |  E
+set $mode_system "   L |  S |  P |  R |  E "
 
-mode "   L |  S |  P |  R |  E " {
+mode $mode_system {
 	bindsym l exec --no-startup-id i3lock -c 000000, mode "default"
 	bindsym s exec --no-startup-id systemctl suspend, mode "default"
 	bindsym p exec --no-startup-id systemctl poweroff -i, mode "default"
@@ -159,7 +160,7 @@ mode "   L |  S |  P |  R |  E " {
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
 }
-bindsym $mod+x mode "   L |  S |  P |  R |  E "
+bindsym $mod+x mode $mode_system
 
 # }}}
 
@@ -183,8 +184,8 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
 
 # Brightness
-bindsym XF86MonBrightnessUp exec xbacklight -inc 1
-bindsym XF86MonBrightnessDown exec xbacklight -dec 1
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5
 
 # }}}
 

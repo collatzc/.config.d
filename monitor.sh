@@ -24,7 +24,7 @@ case "$MONMODE" in
 		;;
 	"AUTO")
 		if [ "$MONITORNO" = "2" ]; then
-			xrandr --output "${MONITOR[1]}" --mode 1920x1080 --output "${MONITOR[0]}" --off
+			xrandr --output "${MONITOR[1]}" --mode 1920x1080 --output "${MONITOR[0]}" --auto --primary --right-of "${MONITOR[1]}"
 			feh --bg-scale ~/Images/bg.jpeg
 		else
 			xrandr --output "${MONITOR[1]}" --mode 1920x1080 --output "${MONITOR[2]}" --auto --primary --right-of "${MONITOR[1]}" --output "${MONITOR[0]}" --off
@@ -41,7 +41,5 @@ case "$MONMODE" in
 		;;
 esac
 
-unset MONMODE
-unset MONITOR
 
 echo "Fin"
