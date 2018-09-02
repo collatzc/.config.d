@@ -5,7 +5,7 @@
 set $mod Mod4
 
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font xft:Monospace 13
+font pango:Monospace 4
 
 # Split hori by default
 default_orientation horizontal
@@ -20,16 +20,16 @@ focus_follows_mouse no
 
 # Hide edge and title bar
 new_window pixel 1
-new_float pixel 3
+new_float pixel 1
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
 # bindsym $mod+Return exec xfce4-terminal
-# bindsym $mod+Return exec --no-startup-id terminator
+bindsym $mod+Return exec --no-startup-id terminator
 # bindsym $mod+Return exec --no-startup-id urxvt
-bindsym $mod+Return exec --no-startup-id termite
+# bindsym $mod+Return exec --no-startup-id termite
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -142,9 +142,10 @@ mode "  " {
 }
 bindsym $mod+r mode "  "
 
-for_window [window_role="pop-up"] floating enable
+for_window [class="[.]*"] floating enable
 for_window [class="Matplotlib"] floating enable
 for_window [title="Telegram"] floating enable
+for_window [class="VirtualBox"] floating enable, resize set 800 600
 for_window [instance="pavucontrol"] floating enable
 for_window [class="Thunar"] floating enable,resize set 880 640
 
@@ -213,7 +214,7 @@ client.background				$back
 
 bar {
 	status_command i3status -c ~/.config/i3/i3status.conf
-	font xft:Monospace 20
+	font xft:Monospace 8
 	mode hide
 	hidden_state hide
 	modifier Mod4
