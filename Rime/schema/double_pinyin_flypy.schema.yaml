@@ -3,11 +3,12 @@
 
 schema:
   schema_id: double_pinyin_flypy
-  name: 小鶴雙拼
+  name: 小鹤双拼
   version: "0.18"
   author:
     - double pinyin layout by 鶴
     - Rime schema by 佛振 <chen.sst@gmail.com>
+    - cc <cc@collatz.me>
   description: |
     朙月拼音＋小鶴雙拼方案。
   dependencies:
@@ -20,6 +21,7 @@ switches:
   - name: full_shape
     states: [ 半角, 全角 ]
   - name: simplification
+    reset: 1
     states: [ 漢字, 汉字 ]
   - name: ascii_punct
     states: [ 。，, ．， ]

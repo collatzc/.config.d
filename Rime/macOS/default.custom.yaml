@@ -9,7 +9,7 @@
 
 patch:
   schema_list:
-    - schema: luna_pinyin
+    - schema: luna_pinyin_simp
     - schema: double_pinyin_flypy
   ascii_composer:
     good_old_caps_lock: true
@@ -23,4 +23,7 @@ patch:
     hotkeys:
       - F4
       - "Control+Shift+grave"
+    save_options:
+      - simplification
+      - extended_charset
 
