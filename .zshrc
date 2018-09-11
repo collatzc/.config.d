@@ -60,12 +60,15 @@ if [ -d "~/Android/Sdk" ]; then
 	export ANDROID_HOME=~/Android/Sdk
 	export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 fi
-if [ -d ~/Library/Python/2.7/bin ]; then
-	export PATH=~/Library/Python/2.7/bin:$PATH
-fi
+# Python
 if [ -d /Users/cc/Library/Python/3.6/bin ]; then
 	export PATH=/Users/cc/Library/Python/3.6/bin:$PATH
+elif [ -d /Users/cc/Library/Python/2.7/bin ]; then
+	export PATH=/Users/cc/Library/Python/2.7/bin:$PATH
+elif [ -d ~/Library/Python/2.7/bin ]; then
+	export PATH=~/Library/Python/2.7/bin:$PATH
 fi
+
 if [ -d ~/.local/bin ]; then
 	export PATH=~/.local/bin:$PATH
 fi
@@ -94,6 +97,8 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# aliases
+alias rm='rm -i -v'
+alias cp='cp -i -v'
+alias mv='mv -i -v'
+alias zshconfig="nvim ~/.zshrc"
