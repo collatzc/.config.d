@@ -53,13 +53,18 @@ plugins=(git)
 # User configuration
 
 #export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# GOPATH
 if [ -d "$HOME/go" ]; then
 	export GOPATH=$HOME/go
 fi
+
+# Android Studio @linux
 if [ -d "~/Android/Sdk" ]; then
 	export ANDROID_HOME=~/Android/Sdk
 	export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 fi
+
 # Python
 if [ -d /Users/cc/Library/Python/3.6/bin ]; then
 	export PATH=/Users/cc/Library/Python/3.6/bin:$PATH
@@ -76,8 +81,7 @@ fi
 
 source $ZSH/oh-my-zsh.sh
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -101,4 +105,5 @@ source $ZSH/oh-my-zsh.sh
 alias rm='rm -i -v'
 alias cp='cp -i -v'
 alias mv='mv -i -v'
-alias zshconfig="nvim ~/.zshrc"
+# alias zshconfig="vim ~/.zshrc"
+# alias ohmyzsh="vim ~/.oh-my-zsh"
