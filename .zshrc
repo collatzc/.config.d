@@ -49,14 +49,15 @@ ZSH_THEME="avit"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
-
 # User configuration
+
 
 #export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # GOPATH
 if [ -d "$HOME/go" ]; then
 	export GOPATH=$HOME/go
+	export PATH=$GOPATH/bin:$PATH
 fi
 
 # Android Studio @linux
@@ -106,7 +107,6 @@ alias rm='rm -i -v'
 alias cp='cp -i -v'
 alias mv='mv -i -v'
 
-# @see https://stackoverflow.com/questions/592620/how-to-check-if-a-program-exists-from-a-bash-script
 if [ -x "$(command -v nvim)" ]; then
 	alias __=nvim
 else

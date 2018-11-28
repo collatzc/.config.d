@@ -1,0 +1,4 @@
+clear lock
+keycode 110 = Escape NoSymbol Escape
+keycode 66 = Escape NoSymbol Escape
+keycode 94 = grave asciitilde grave notsign bar bar grave asciitilde
