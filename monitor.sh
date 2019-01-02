@@ -14,9 +14,13 @@ if [ "$MONITORNO" = "1" ]; then
 fi
 
 case "$MONMODE" in
-	"D")
+	"DL")
 		xrandr --output "${MONITOR[1]}" --mode 1920x1080 --output "${MONITOR[2]}" --auto --primary --right-of "${MONITOR[1]}" --output "${MONITOR[0]}" --off
-		feh --bg-scale ~/Images/bg.jpeg --bg-scale ~/Images/bg.jpeg
+		feh --bg-scale ~/Images/bg.jpg --bg-scale ~/Images/bg.jpg
+		;;
+	"DR")
+		xrandr --output "${MONITOR[0]}" --mode 1920x1080 --output "${MONITOR[1]}" --auto --primary --right-of "${MONITOR[0]}"
+		feh --bg-scale ~/Images/bg.jpg --bg-scale ~/Images/bg.jpg
 		;;
 	"S")
 		xrandr --output "${MONITOR[1]}" --off --output "${MONITOR[2]}" --off --output "${MONITOR[0]}" --auto
