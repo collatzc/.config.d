@@ -15,11 +15,19 @@ fi
 
 case "$MONMODE" in
 	"DL")
-		xrandr --output "${MONITOR[1]}" --mode 1920x1080 --output "${MONITOR[2]}" --auto --primary --right-of "${MONITOR[1]}" --output "${MONITOR[0]}" --off
+		xrandr --output "${MONITOR[0]}" --mode 1920x1080 --primary --output "${MONITOR[1]}" --mode 1920x1080--left-of "${MONITOR[0]}"
 		feh --bg-scale ~/Images/bg.jpg --bg-scale ~/Images/bg.jpg
 		;;
 	"DR")
-		xrandr --output "${MONITOR[0]}" --mode 1920x1080 --output "${MONITOR[1]}" --auto --primary --right-of "${MONITOR[0]}"
+		xrandr --output "${MONITOR[0]}" --mode 1920x1080 --primary --output "${MONITOR[1]}" --mode 1920x1080 --right-of "${MONITOR[0]}"
+		feh --bg-scale ~/Images/bg.jpg --bg-scale ~/Images/bg.jpg
+		;;
+	"DT")
+		xrandr --output "${MONITOR[0]}" --mode 1920x1080 --primary --output "${MONITOR[1]}" --mode 1920x1080 --above "${MONITOR[0]}"
+		feh --bg-scale ~/Images/bg.jpg --bg-scale ~/Images/bg.jpg
+		;;
+	"DB")
+		xrandr --output "${MONITOR[0]}" --mode 1920x1080 --primary --output "${MONITOR[1]}" --mode 1920x1080 --below "${MONITOR[0]}"
 		feh --bg-scale ~/Images/bg.jpg --bg-scale ~/Images/bg.jpg
 		;;
 	"S")
