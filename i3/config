@@ -5,7 +5,7 @@
 set $mod Mod4
 
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:Monospace 4
+font pango:Monospace 8
 
 # Split hori by default
 default_orientation horizontal
@@ -13,30 +13,31 @@ workspace_layout default
 
 # Auto back and forth
 workspace_auto_back_and_forth no
-bindsym Mod1+Tab workspace back_and_forth
+bindsym $mod+Tab workspace back_and_forth
 
 # follow the focus
 focus_follows_mouse no
 
 # Hide edge and title bar
-new_window pixel 1
-new_float pixel 1
+new_window pixel 3
+new_float pixel 3
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
 # bindsym $mod+Return exec xfce4-terminal
-bindsym $mod+Return exec --no-startup-id terminator
-# bindsym $mod+Return exec --no-startup-id urxvt
+# bindsym $mod+Return exec --no-startup-id terminator
+bindsym $mod+Return exec --no-startup-id urxvt
 # bindsym $mod+Return exec --no-startup-id termite
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start rofi (a program launcher)
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -show run'
-bindsym $mod+Tab exec --no-startup-id rofi -show window
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -show run'
+bindsym $mod+d exec "rofi -show-icons -modi combi -show combi -combi-modi run,drun"
+bindsym $mod+Shift+p exec "rofi -show window"
 
 # change focus
 bindsym $mod+j focus left
@@ -130,7 +131,7 @@ bindsym $mod+n move workspace to output left
 # Mode {{{
 
 # resize window (you can also use the mouse for that)
-mode "  " {
+mode "" {
 	bindsym j resize shrink width 10 px or 10 ppt
 	bindsym k resize grow height 10 px or 10 ppt
 	bindsym l resize shrink height 10 px or 10 ppt
@@ -140,7 +141,7 @@ mode "  " {
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
 }
-bindsym $mod+r mode "  "
+bindsym $mod+r mode ""
 
 for_window [class="[.]*"] floating enable
 for_window [class="Matplotlib"] floating enable
@@ -149,7 +150,7 @@ for_window [class="VirtualBox"] floating enable, resize set 800 600
 for_window [instance="pavucontrol"] floating enable
 for_window [class="Thunar"] floating enable,resize set 880 640
 
-set $mode_system "   L |  S |  P |  R |  E "
+set $mode_system "L|S|P|R"
 
 mode $mode_system {
 	bindsym l exec --no-startup-id i3lock -c 000000, mode "default"
@@ -168,8 +169,9 @@ bindsym $mod+x mode $mode_system
 # Autostart {{{
 
 exec_always --no-startup-id fcitx
-exec_always --no-startup-id feh --bg-scale ~/Images/bg.jpeg
+exec_always --no-startup-id feh --bg-scale ~/Images/bg.jpg
 exec_always --no-startup-id nm-applet
+exec_always --no-startup-id blueman-applet
 
 # }}}
 
@@ -214,9 +216,9 @@ client.background				$back
 
 bar {
 	status_command i3status -c ~/.config/i3/i3status.conf
-	font xft:Monospace 8
-	mode hide
-	hidden_state hide
+	font pango:DejaVu Sans Mono, FontAwesome 10
+#	mode hide
+#	hidden_state hide
 	modifier Mod4
 	separator_symbol "/"
 # Color panel
