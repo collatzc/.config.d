@@ -19,8 +19,8 @@ bindsym $mod+Tab workspace back_and_forth
 focus_follows_mouse no
 
 # Hide edge and title bar
-new_window pixel 3
-new_float pixel 3
+new_window pixel 2
+new_float pixel 2
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -216,9 +216,10 @@ client.background				$back
 
 bar {
 	status_command i3status -c ~/.config/i3/i3status.conf
-	font pango:DejaVu Sans Mono, FontAwesome 10
-#	mode hide
-#	hidden_state hide
+	font pango:DejaVu Sans Mono, FontAwesome 8
+	position top
+	mode hide
+	hidden_state hide
 	modifier Mod4
 	separator_symbol "/"
 # Color panel
