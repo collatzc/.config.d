@@ -6,9 +6,9 @@
 TOPIC=${1:-}
 startLog() {
 	if [ "$TOPIC" != "" ]; then
-		nvim ~/.Log.d/$TOPIC.md
+		vim ~/.Log.d/$TOPIC.md
 	else
-		nvim ~/.Log.d/Log.$(date +%Y-%m-%d).md
+		vim ~/.Log.d/Log.$(date +%Y-%m-%d).md
 	fi
 }
 

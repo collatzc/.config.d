@@ -1,3 +1,34 @@
+URxvt*font:            xft:Hack:regular:pixelsize=14:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:regular:size=14:minspace=true,xft:Font Awesome 5 Free:regular:size=14
+URxvt*boldFont:        xft:Hack:bold:pixelsize=14:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:regular:size=14:minspace=true,xft:Font Awesome 5 Free:regular:size=14
+URxvt*scrollBar:       false
+URxvt*saveLines:       65535
+URxvt*perl-ext-common: default,tabbed,keyboard-select,url-select,clipboard
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keysym.M-s:      perl:keyboard-select:search
+URxvt.keysym.M-u:      perl:url-select:select_next
+URxvt.keysym.M-c:      perl:clipboard:copy
+URxvt.keysym.M-v:      perl:clipboard:paste
+URxvt.keysym.M-C-v:    perl:clipboard:paste_escaped
+Xft*dpi:       96
+Xft*antialias: True
+Xft*hinting:   Full
+URxvt.keysym.KP_Add:    +
+URxvt.keysym.KP_Subtract: -
+URxvt.keysym.KP_Multiply: *
+URxvt.keysym.KP_Divide  : /
+URxvt.keysym.KP_Decimal : .
+URxvt.keysym.KP_Separator : ,
+URxvt.keysym.KP_1:      1
+URxvt.keysym.KP_2:      2
+URxvt.keysym.KP_3:      3
+URxvt.keysym.KP_4:      4
+URxvt.keysym.KP_5:      5
+URxvt.keysym.KP_6:      6
+URxvt.keysym.KP_7:      7
+URxvt.keysym.KP_8:      8
+URxvt.keysym.KP_9:      9
+URxvt.keysym.KP_0:      0
+
 ! Base16 Solarized Dark
 ! Scheme: Ethan Schoonover (http://ethanschoonover.com/solarized)
 
@@ -17,6 +48,7 @@
 #define base0D #268bd2
 #define base0E #6c71c4
 #define base0F #d33682
+
 
 *.foreground:   base05
 #ifdef background_opacity
@@ -42,50 +74,20 @@
 *.color12:      base04
 *.color13:      base06
 *.color14:      base0F
-*.color15: base07
+*.color15:      base07
 
 !--------------------xdefauls
-urxvt*termName: rxvt
-urxvt*matcher.button: 1
-urxvt.transparent: true
-urxvt.boldFont:
+URxvt*termName: rxvt
+URxvt*matcher.button: 1
+URxvt*transparent: true
 Xft*hintstyle: hintfull
 Xft*rgba: rgb
 URxvt*geometry: 85x20
 *internalBorder: 10
 URxvt*fading: 0
 URxvt*tintColor: #ffffff
-URxvt*shading: 30
+URxvt*shading: 33
 URxvt*inheritPixmap: true
-URxvt.depth: 32
-URxvt.font:			xft:Hack:regular:pixelsize=14:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:regular:size=14:minspace=true,xft:Font Awesome 5 Free:regular:size=14
-URxvt.boldFont:		xft:DejaVu Sans Mono:bold:pixelsize=12:antialias=true:hinting=true
-URxvt.scrollBar:	false
-URxvt.saveLines:	65535
-URxvt.perl-ext-common: keyboard-select,url-select,clipboard
-URxvt.keysym.M-Escape: perl:keyboard-select:activate
-URxvt.keysym.M-s: perl:keyboard-select:search
-URxvt.keysym.M-u: perl:url-select:select_next
-URxvt.keysym.M-c:   perl:clipboard:copy
-URxvt.keysym.M-v:   perl:clipboard:paste
-URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
-Xft*dpi:       96
-Xft*antialias: True
-Xft*hinting:   Full
-URxvt.keysym.KP_Add:    +
-URxvt.keysym.KP_Subtract: -
-URxvt.keysym.KP_Multiply: *
-URxvt.keysym.KP_Divide  : /
-URxvt.keysym.KP_Decimal : .
-URxvt.keysym.KP_Separator : ,
-URxvt.keysym.KP_1:      1
-URxvt.keysym.KP_2:      2
-URxvt.keysym.KP_3:      3
-URxvt.keysym.KP_4:      4
-URxvt.keysym.KP_5:      5
-URxvt.keysym.KP_6:      6
-URxvt.keysym.KP_7:      7
-URxvt.keysym.KP_8:      8
-URxvt.keysym.KP_9:      9
-URxvt.keysym.KP_0:      0
-
+URxvt*depth: 32
+URxvt*background: [66]base00
+!URxvt*foreground: base05
