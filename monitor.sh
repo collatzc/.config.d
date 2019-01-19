@@ -15,7 +15,7 @@ fi
 
 case "$MONMODE" in
 	"DL")
-		xrandr --output "${MONITOR[0]}" --mode 1920x1080 --primary --output "${MONITOR[1]}" --mode 1920x1080--left-of "${MONITOR[0]}"
+		xrandr --output "${MONITOR[0]}" --auto --primary --output "${MONITOR[1]}" --mode 1920x1080--left-of "${MONITOR[0]}"
 		feh --bg-scale ~/Images/bg.jpg --bg-scale ~/Images/bg.jpg
 		;;
 	"DR")

@@ -13,23 +13,26 @@ workspace_layout default
 
 # Auto back and forth
 workspace_auto_back_and_forth no
-bindsym $mod+Tab workspace back_and_forth
+bindsym Mod1+Tab workspace back_and_forth
 
 # follow the focus
 focus_follows_mouse no
 
 # Hide edge and title bar
-new_window pixel 2
+hide_edge_borders smart
+new_window pixel 0
 new_float pixel 2
+
+# Borders
+default_border pixel 0
+default_floating_border pixel 2
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
-# bindsym $mod+Return exec xfce4-terminal
 # bindsym $mod+Return exec --no-startup-id terminator
 bindsym $mod+Return exec --no-startup-id urxvt
-# bindsym $mod+Return exec --no-startup-id termite
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -143,12 +146,15 @@ mode "" {
 }
 bindsym $mod+r mode ""
 
-for_window [class="[.]*"] floating enable
+#for_window [class="[.]*"] floating enable
+for_window [window_role="pop-up"] floating enable border pixel 2
+for_window [class="URxvt"] floating enable border pixel 2
+for_window [class="Wine"] floating enable
 for_window [class="Matplotlib"] floating enable
 for_window [title="Telegram"] floating enable
-for_window [class="VirtualBox"] floating enable, resize set 800 600
+for_window [class="VirtualBox"] floating enable resize set 800 600
 for_window [instance="pavucontrol"] floating enable
-for_window [class="Thunar"] floating enable,resize set 880 640
+for_window [class="Thunar"] floating enable resize set 880 640
 
 set $mode_system "L|S|P|R"
 
@@ -187,8 +193,8 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
 
 # Brightness
-bindsym XF86MonBrightnessUp exec xbacklight -inc 5
-bindsym XF86MonBrightnessDown exec xbacklight -dec 5
+bindsym XF86MonBrightnessUp exec xbacklight -inc 1
+bindsym XF86MonBrightnessDown exec xbacklight -dec 1
 
 # }}}
 
