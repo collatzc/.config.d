@@ -20,11 +20,11 @@ focus_follows_mouse no
 
 # Hide edge and title bar
 hide_edge_borders smart
-new_window pixel 0
+new_window pixel 1
 new_float pixel 2
 
 # Borders
-default_border pixel 0
+default_border pixel 1
 default_floating_border pixel 2
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -156,11 +156,12 @@ for_window [class="VirtualBox"] floating enable resize set 800 600
 for_window [instance="pavucontrol"] floating enable
 for_window [class="Thunar"] floating enable resize set 880 640
 
-set $mode_system "L|S|P|R"
+set $mode_system "L|S|H|P|R"
 
 mode $mode_system {
 	bindsym l exec --no-startup-id i3lock -c 000000, mode "default"
 	bindsym s exec --no-startup-id systemctl suspend, mode "default"
+	bindsym h exec --no-startup-id systemctl hibernate, mode "default"
 	bindsym p exec --no-startup-id systemctl poweroff -i, mode "default"
 	bindsym r exec --no-startup-id systemctl reboot, mode "default"
 	bindsym e exec --no-startup-id i3-msg exit, mode "default"
@@ -222,7 +223,7 @@ client.background				$back
 
 bar {
 	status_command i3status -c ~/.config/i3/i3status.conf
-	font pango:DejaVu Sans Mono, FontAwesome 8
+	font pango:DejaVu Sans Mono 12
 	position top
 	mode hide
 	hidden_state hide
