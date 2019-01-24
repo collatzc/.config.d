@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Mode: S-ingle D-ual 1-st 2-nd AUTO-detect
-MONMODE=${1:-AUTO}
+MONMODE=${1:-S}
 
 MONITOR=(`xrandr | grep "\sconnected" | cut -d ' ' -f 1`)
 MONITORNO="${#MONITOR[@]}"
@@ -16,7 +16,7 @@ fi
 
 case "$MONMODE" in
 	"DL")
-		xrandr --output "${MONITOR[0]}" --auto --output "${MONITOR[1]}" --auto --left-of "${MONITOR[0]}"
+		xrandr --output "${MONITOR[0]}" --auto --primary --output "${MONITOR[1]}" --auto --noprimary --left-of "${MONITOR[0]}"
 		feh --bg-scale ~/Images/bg.jpg --bg-scale ~/Images/bg.jpg
 		;;
 	"DR")
@@ -32,7 +32,7 @@ case "$MONMODE" in
 		feh --bg-scale ~/Images/bg.jpg --bg-scale ~/Images/bg.jpg
 		;;
 	"S")
-		xrandr --output "${MONITOR[1]}" --off --output "${MONITOR[2]}" --off --output "${MONITOR[0]}" --auto
+		xrandr --output "${MONITOR[1]}" --off --output "${MONITOR[0]}" --auto
 		feh --bg-scale ~/Images/bg.jpeg
 		;;
 	"AUTO")
