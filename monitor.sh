@@ -8,7 +8,7 @@ MONITORNO="${#MONITOR[@]}"
 echo "There are ${MONITORNO} monitor(s) be found:"
 printf '%s\n' "${MONITOR[@]}"
 if [ "$MONITORNO" = "1" ]; then
-	xrandr --output "${MONITOR[0]}" --auto
+	xrandr --auto
 	echo "There is only one monitor!"
 	echo "Fin"
 	exit
