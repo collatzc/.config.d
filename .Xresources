@@ -1,3 +1,4 @@
+!xrdb ~/.Xresources
 URxvt*font:            xft:Hack:regular:pixelsize=14:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:regular:size=14:minspace=true,xft:Font Awesome 5 Free:regular:size=14
 URxvt*boldFont:        xft:Hack:bold:pixelsize=14:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:regular:size=14:minspace=true,xft:Font Awesome 5 Free:regular:size=14
 URxvt*scrollBar:       false
@@ -82,7 +83,7 @@ URxvt*matcher.button: 1
 URxvt*transparent: true
 Xft*hintstyle: hintfull
 Xft*rgba: rgb
-URxvt*geometry: 85x20
+URxvt*geometry: 170x20
 *internalBorder: 10
 URxvt*fading: 0
 URxvt*tintColor: #ffffff
