@@ -76,16 +76,15 @@ URxvt.keysym.KP_0:      0
 *.color14:      base0F
 *.color15:      base07
 
-!--------------------xdefauls
 URxvt*termName: rxvt
 URxvt*matcher.button: 1
-URxvt*transparent: false
+URxvt*transparent: true
 Xft*hintstyle: hintfull
 Xft*rgba: rgb
 URxvt*geometry: 170x20
 *internalBorder: 10
-URxvt*fading: 0
+URxvt*fading: 33
 URxvt*tintColor: #ffffff
-URxvt*shading: 0
+URxvt*shading: 33
 URxvt*inheritPixmap: true
 URxvt*depth: 32
