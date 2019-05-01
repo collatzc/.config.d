@@ -1,6 +1,6 @@
 !xrdb ~/.Xresources
-URxvt*font:            xft:Hack:style=Regular:pixelsize=14:antialias=true:hinting=true,xft:Source Han Sans CN:style=Regular:pixelsize=14
-URxvt*boldFont:        xft:Hack:style=Bold:size=14:antialias=true:hinting=true,xft:WenQuanYi Micro Hei Mono:size=14:minspace=true
+URxvt*font:            xft:Hack:style=Regular:pixelsize=14:antialias=true:hinting=true,xft:Source Han Sans:size=14
+URxvt*boldFont:        xft:Hack:style=Bold:size=14:antialias=true:hinting=true,xft:Source Han Sans:style=Bold:size=14:minspace=true
 URxvt*scrollBar:       false
 URxvt*saveLines:       65535
 URxvt*perl-ext-common: default,tabbed,keyboard-select,url-select,clipboard
@@ -79,15 +79,13 @@ URxvt.keysym.KP_0:      0
 !--------------------xdefauls
 URxvt*termName: rxvt
 URxvt*matcher.button: 1
-URxvt*transparent: true
+URxvt*transparent: false
 Xft*hintstyle: hintfull
 Xft*rgba: rgb
 URxvt*geometry: 170x20
 *internalBorder: 10
 URxvt*fading: 0
 URxvt*tintColor: #ffffff
-URxvt*shading: 33
+URxvt*shading: 0
 URxvt*inheritPixmap: true
 URxvt*depth: 32
-URxvt*background: [66]base00
-!URxvt*foreground: base05
