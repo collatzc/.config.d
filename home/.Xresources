@@ -1,17 +1,86 @@
 !xrdb ~/.Xresources
-URxvt*font:            xft:Hack:style=Regular:pixelsize=14:antialias=true:hinting=true,xft:Source Han Sans:size=14
-URxvt*boldFont:        xft:Hack:style=Bold:size=14:antialias=true:hinting=true,xft:Source Han Sans:style=Bold:size=14:minspace=true
-URxvt*scrollBar:       false
-URxvt*saveLines:       65535
-URxvt*perl-ext-common: default,tabbed,keyboard-select,url-select,clipboard
+
+! Solarized color scheme for the X Window System
+! http://ethanschoonover.com/solarized
+
+! Common
+
+#define S_yellow        #b58900
+#define S_orange        #cb4b16
+#define S_red           #dc322f
+#define S_magenta       #d33682
+#define S_violet        #6c71c4
+#define S_blue          #268bd2
+#define S_cyan          #2aa198
+#define S_green         #859900
+
+
+! Dark
+
+#define S_base03        #002b36
+#define S_base02        #073642
+#define S_base01        #586e75
+#define S_base00        #657b83
+#define S_base0         #839496
+#define S_base1         #93a1a1
+#define S_base2         #eee8d5
+#define S_base3         #fdf6e3
+
+
+! Light
+
+!#define S_base03        #fdf6e3
+!#define S_base02        #eee8d5
+!#define S_base01        #93a1a1
+!#define S_base00        #839496
+!#define S_base0         #657b83
+!#define S_base1         #586e75
+!#define S_base2         #073642
+!#define S_base3         #002b36
+
+!URxvt.font:            xft:Hack Nerd Font, xft:Hack Nerd Font Mono, xft:Source Han Sans
+URxvt.font:            xft:monospace
+!URxvt*boldFont:        xft:hack nerd font:style=bold, xft:hack nerd font mono:style=bold, xft:source han sans:style=bold
+URxvt*boldFont:        xft:monospace:bold
+URxvt*italicFont:      xft:monospace:italic
+URxvt*boldItalicFont:  xft:monospace:bold:italic
+!URxvt.letterSpace:     1
+URxvt.scrollBar:       false
+URxvt.saveLines:       10000
+URxvt*skipBuiltinGlyphs: true
+URxvt.cursorBlink:     1
+
+URxvt.perl-ext-common: default,matcher,tabbed,resize-font,keyboard-select,url-select,clipboard
+URxvt.matcher.render.0: Uline Bold fg5
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
 URxvt.keysym.M-s:      perl:keyboard-select:search
 URxvt.keysym.M-u:      perl:url-select:select_next
 URxvt.keysym.M-c:      perl:clipboard:copy
 URxvt.keysym.M-v:      perl:clipboard:paste
 URxvt.keysym.M-C-v:    perl:clipboard:paste_escaped
-Xft*dpi:       96
-Xft*antialias: true
+URxvt.keysym.C-Down:   resize-font:smaller
+URxvt.keysym.C-Up:     resize-font:bigger
+
+URxvt.tabbed.autohide: yes
+URxvt.tabbed.tabbar-fg: 10
+URxvt.tabbed.tabbar-bg: 8
+URxvt.tabbed.tab-fg: 6
+URxvt.tabbed.tab-bg: 16
+URxvt.url-launcher:    /usr/bin/xdg-open
+! For the Ctrl+Shift bindings to work, a default binding needs to be disabled
+!URxvt.iso14755: false
+!URxvt.iso14755_52: false
+
+Xft.dpi:               96
+Xft.scale:             0.9
+Xft.autohint:          0
+Xft.antialias:         true
+Xft.hinting:           1
+Xft.lcdfilter:         lcddefault
+!Xft.hintstyle:         hintslight
+Xft.hintstyle:         hintfull
+Xft.rgba:              rgb
+
 URxvt.keysym.KP_Add:    +
 URxvt.keysym.KP_Subtract: -
 URxvt.keysym.KP_Multiply: *
@@ -29,62 +98,34 @@ URxvt.keysym.KP_8:      8
 URxvt.keysym.KP_9:      9
 URxvt.keysym.KP_0:      0
 
-! Base16 Solarized Dark
-! Scheme: Ethan Schoonover (http://ethanschoonover.com/solarized)
-
-#define base00 #002b36
-#define base01 #073642
-#define base02 #586e75
-#define base03 #657b83
-#define base04 #839496
-#define base05 #93a1a1
-#define base06 #eee8d5
-#define base07 #fdf6e3
-#define base08 #dc322f
-#define base09 #cb4b16
-#define base0A #b58900
-#define base0B #859900
-#define base0C #2aa198
-#define base0D #268bd2
-#define base0E #6c71c4
-#define base0F #d33682
-
-
-*.foreground:   base05
-#ifdef background_opacity
-*.background:   [background_opacity]base00
-#else
-*.background:   base00
-#endif
-*.cursorColor:  base05
-
-*.color0:       base00
-*.color1:       base08
-*.color2:       base0B
-*.color3:       base0A
-*.color4:       base0D
-*.color5:       base0E
-*.color6:       base0C
-*.color7:       base05
-
-*.color8:       base03
-*.color9:       base09
-*.color10:      base01
-*.color11:      base02
-*.color12:      base04
-*.color13:      base06
-*.color14:      base0F
-*.color15:      base07
-
-URxvt*termName: rxvt
-URxvt*matcher.button: 1
-URxvt*transparent: true
-Xft*hintstyle: hintfull
-Xft*rgba: rgb
-URxvt*geometry: 170x20
+URxvt.termName: rxvt-unicode-256color
+URxvt.matcher.button: 1
+URxvt.geometry: 170x20
 *internalBorder: 10
-URxvt*fading: 33
-URxvt*tintColor: #ffffff
-URxvt*shading: 33
-URxvt*inheritPixmap: true
-URxvt*depth: 32
+URxvt.depth: 32
+URxvt.background: [83]S_base03
+
+*background:              S_base03
+*foreground:              S_base0
+*fading:                  40
+*fadeColor:               S_base03
+*cursorColor:             S_base1
+*pointerColorBackground:  S_base01
+*pointerColorForeground:  S_base1
+
+*color0:                  S_base02
+*color1:                  S_red
+*color2:                  S_green
+*color3:                  S_yellow
+*color4:                  S_blue
+*color5:                  S_magenta
+*color6:                  S_cyan
+*color7:                  S_base2
+*color9:                  S_orange
+*color8:                  S_base03
+*color10:                 S_base01
+*color11:                 S_base00
+*color12:                 S_base0
+*color13:                 S_violet
+*color14:                 S_base1
+*color15:                 S_base3
