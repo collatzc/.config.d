@@ -5,7 +5,7 @@
 set $mod Mod4
 
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:hack nerd font 8
+font pango:DejaVuSansMono NF 8
 
 # Split hori by default
 default_orientation horizontal
@@ -149,6 +149,12 @@ bindsym $mod+r mode "  "
 
 #for_window [class="[.]*"] floating enable
 for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_role="About"] floating enable
+for_window [window_role="dialog"] floating enable
+for_window [window_role="menu"] floating enable
 for_window [class="URxvt"] floating enable
 for_window [class="Wine"] floating enable
 for_window [class="Matplotlib"] floating enable
@@ -225,12 +231,12 @@ client.background				$back
 
 bar {
 	status_command i3status -c ~/.config/i3/i3status.conf
-	font pango:hack nerd font 12
+	font pango:DejaVuSansMono NF 12
 	position top
 	mode hide
 	hidden_state hide
 	modifier Mod4
-	separator_symbol " "
+	separator_symbol "/"
 # Color panel
 	colors {
 		background	$black

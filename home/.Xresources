@@ -38,16 +38,14 @@
 !#define S_base2         #073642
 !#define S_base3         #002b36
 
-!URxvt.font:            xft:Hack Nerd Font, xft:Hack Nerd Font Mono, xft:Source Han Sans
-URxvt.font:            xft:monospace
-!URxvt*boldFont:        xft:hack nerd font:style=bold, xft:hack nerd font mono:style=bold, xft:source han sans:style=bold
-URxvt*boldFont:        xft:monospace:bold
-URxvt*italicFont:      xft:monospace:italic
-URxvt*boldItalicFont:  xft:monospace:bold:italic
+URxvt.font:            xft:DejaVuSansMono NF, xft:Source Han Sans, xft:emoji
+URxvt*boldFont:        xft:DejaVuSansMono NF:bold, xft:Source Han Sans:bold, xft:emoji
+URxvt*italicFont:      xft:DejaVuSansMono NF:italic, xft:Source Han Sans, xft:emoji
+URxvt*boldItalicFont:  xft:DejaVuSansMono NF:bold:italic, xft:Source Han Sans, xft:emoji
 !URxvt.letterSpace:     1
 URxvt.scrollBar:       false
 URxvt.saveLines:       10000
-URxvt*skipBuiltinGlyphs: true
+URxvt.skipBuiltinGlyphs: true
 URxvt.cursorBlink:     1
 
 URxvt.perl-ext-common: default,matcher,tabbed,resize-font,keyboard-select,url-select,clipboard
@@ -77,8 +75,8 @@ Xft.autohint:          0
 Xft.antialias:         true
 Xft.hinting:           1
 Xft.lcdfilter:         lcddefault
-!Xft.hintstyle:         hintslight
-Xft.hintstyle:         hintfull
+Xft.hintstyle:         hintslight
+!Xft.hintstyle:         hintfull
 Xft.rgba:              rgb
 
 URxvt.keysym.KP_Add:    +
