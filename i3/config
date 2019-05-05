@@ -125,6 +125,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 bindsym $mod+F1 exec --no-startup-id ~/.config.d/monitor.sh
 bindsym $mod+F2 exec --no-startup-id pavucontrol
+bindsym $mod+F3 exec --no-startup-id code
 
 # Moving between monitors
 bindsym $mod+m move workspace to output right
@@ -163,7 +164,7 @@ for_window [class="VirtualBox"] floating enable resize set 900 700
 for_window [instance="pavucontrol"] floating enable
 for_window [class="Thunar"] floating enable resize set 880 640
 
-set $mode_system " L|  S |  P |  R"
+set $mode_system " L |  S |  P |  R"
 
 mode $mode_system {
 	bindsym l exec --no-startup-id i3lock -c 000000, mode "default"
@@ -218,7 +219,7 @@ set $yellow			#f0c674
 set $red				#cc6666
 set $darkred		#a54242
 set $green			#b5bd56
-# Layout colors					board			bg				text				indicator
+# Layout colors					border		bg				text				indicator
 client.focused					$green		$green		$black			$green
 client.focused_inactive	$grey			$grey			$lightgrey	$grey
 client.unfocused				$grey			$grey			$lightgrey	$grey
