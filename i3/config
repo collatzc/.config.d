@@ -5,7 +5,7 @@
 set $mod Mod4
 
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVuSansMono NF 8
+font pango:DejaVuSansMono NF 9
 
 # Split hori by default
 default_orientation horizontal
@@ -152,7 +152,7 @@ bindsym $mod+r mode "  "
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="bubble"] floating enable
 for_window [window_role="task_dialog"] floating enable
-for_window [window_role="Preferences"] floating enable
+for_window [title="Preferences"] floating enable
 for_window [window_role="About"] floating enable
 for_window [window_role="dialog"] floating enable
 for_window [window_role="menu"] floating enable
@@ -232,7 +232,7 @@ client.background				$back
 
 bar {
 	status_command i3status -c ~/.config/i3/i3status.conf
-	font pango:DejaVuSansMono NF 12
+	font pango:DejaVuSansMono NF 9
 	position top
 	mode hide
 	hidden_state hide
