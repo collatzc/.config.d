@@ -153,6 +153,7 @@ for_window [window_role="pop-up"] floating enable
 for_window [window_role="bubble"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [title="Preferences"] floating enable
+for_window [class="manager$"] floating enable resize set 630 760
 for_window [window_role="About"] floating enable
 for_window [window_role="dialog"] floating enable
 for_window [window_role="menu"] floating enable
