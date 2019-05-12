@@ -23,7 +23,7 @@ ZSH_THEME="avit"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
@@ -48,7 +48,7 @@ ZSH_THEME="avit"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git z)
 # User configuration
 
 
@@ -73,6 +73,11 @@ elif [ -d /Users/cc/Library/Python/2.7/bin ]; then
 	export PATH=/Users/cc/Library/Python/2.7/bin:$PATH
 elif [ -d ~/Library/Python/2.7/bin ]; then
 	export PATH=~/Library/Python/2.7/bin:$PATH
+fi
+
+if [ -d "/opt/cuda-10.0/bin" ]; then
+	export PATH=/opt/cuda-10.0/bin:$PATH
+	export LD_LIBRARY_PATH=/opt/cuda-10.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 fi
 
 if [ -d ~/.local/bin ]; then
