@@ -1,5 +1,11 @@
+#!/usr/bin/perl -w
+
 sub on_user_command {
 	my ($self, $cmd) = @_;
-	my $output = `~/.config.d/dynamicColors/dynamicColors.sh cycle`;
-	$self->cmd_parse($output);
+	if ($cmd eq "urxvt-colors:cycle") {
+		my $output = `~/.config.d/dynamicColors/dynamicColors.sh cycle`;
+		$self->cmd_parse($output);
+	}
+
+	()
 }

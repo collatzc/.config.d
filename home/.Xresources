@@ -49,7 +49,7 @@ URxvt.skipBuiltinGlyphs: true
 URxvt.cursorBlink:     1
 
 URxvt.perl-ext-common: default,matcher,tabbed,resize-font,keyboard-select,url-select,clipboard,urxvt-colors
-URxvt.keysym.M-C-c:    perl:urxvt-colors:
+URxvt.keysym.CM-c:    perl:urxvt-colors:cycle
 URxvt.matcher.render.0: Uline Bold fg5
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
 URxvt.keysym.M-s:      perl:keyboard-select:search
@@ -102,7 +102,7 @@ URxvt.matcher.button: 1
 URxvt.geometry: 170x20
 *internalBorder: 10
 URxvt.depth: 32
-URxvt.background: [83]S_base03
+URxvt.background: [89]S_base03
 
 *background:              S_base03
 *foreground:              S_base0
