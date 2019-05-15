@@ -48,7 +48,8 @@ URxvt.saveLines:       10000
 URxvt.skipBuiltinGlyphs: true
 URxvt.cursorBlink:     1
 
-URxvt.perl-ext-common: default,matcher,tabbed,resize-font,keyboard-select,url-select,clipboard
+URxvt.perl-ext-common: default,matcher,tabbed,resize-font,keyboard-select,url-select,clipboard,urxvt-colors
+URxvt.keysym.M-C-c:    perl:urxvt-colors:
 URxvt.matcher.render.0: Uline Bold fg5
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
 URxvt.keysym.M-s:      perl:keyboard-select:search
@@ -61,13 +62,13 @@ URxvt.keysym.C-Up:     resize-font:bigger
 
 URxvt.tabbed.autohide: yes
 URxvt.tabbed.tabbar-fg: 10
-URxvt.tabbed.tabbar-bg: 8
+URxvt.tabbed.tabbar-bg: 16
 URxvt.tabbed.tab-fg: 6
 URxvt.tabbed.tab-bg: 16
 URxvt.url-launcher:    /usr/bin/xdg-open
 ! For the Ctrl+Shift bindings to work, a default binding needs to be disabled
-!URxvt.iso14755: false
-!URxvt.iso14755_52: false
+URxvt.iso14755: false
+URxvt.iso14755_52: false
 
 Xft.dpi:               96
 Xft.scale:             0.9
