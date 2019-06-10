@@ -204,9 +204,9 @@ bindsym XF86AudioStop exec audtool playback-stop
 bindsym XF86AudioNext exec audtool playlist-advance
 bindsym XF86AudioPrev exec audtool playlist-reverse
 
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
-bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5% && pkill --signal SIGRTMIN+2 i3blocks
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5% && pkill --signal SIGRTMIN+2 i3blocks
+bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle && pkill --signal SIGRTMIN+1 i3blocks
 
 # Brightness
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5
