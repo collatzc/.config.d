@@ -83,6 +83,11 @@ fi
 if [ -d ~/.local/bin ]; then
 	export PATH=~/.local/bin:$PATH
 fi
+
+# node.js
+if [ -d ~/.yarn/bin ]; then
+	export PATH=~/.yarn/bin:$PATH
+fi
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
