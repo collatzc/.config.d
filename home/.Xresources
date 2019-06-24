@@ -70,7 +70,7 @@ URxvt.url-launcher:    /usr/bin/xdg-open
 URxvt.iso14755: false
 URxvt.iso14755_52: false
 
-Xft.dpi:               96
+Xft.dpi:               $DPI
 Xft.scale:             0.9
 Xft.autohint:          0
 Xft.antialias:         true
