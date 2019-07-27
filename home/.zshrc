@@ -80,6 +80,7 @@ if [ -d "/opt/cuda-10.0/bin" ]; then
 	export LD_LIBRARY_PATH=/opt/cuda-10.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 fi
 
+# .local/bin
 if [ -d ~/.local/bin ]; then
 	export PATH=~/.local/bin:$PATH
 fi
@@ -88,6 +89,12 @@ fi
 if [ -d ~/.yarn/bin ]; then
 	export PATH=~/.yarn/bin:$PATH
 fi
+
+# macOS ruby@2.0
+if [ -d /usr/local/opt/ruby@2.0/bin ]; then
+	export PATH=/usr/local/opt/ruby@2.0/bin:$PATH
+fi
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -124,3 +131,12 @@ else
 fi
 # alias zshconfig="vim ~/.zshrc"
 # alias ohmyzsh="vim ~/.oh-my-zsh"
+
+export iOSOpenDevPath=/opt/iOSOpenDev
+export iOSOpenDevDevice=
+export PATH=/opt/iOSOpenDev/bin:$PATH
+
+
+export MonkeyDevPath=/opt/MonkeyDev
+export MonkeyDevDeviceIP=
+export PATH=/opt/MonkeyDev/bin:$PATH
