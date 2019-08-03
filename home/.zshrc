@@ -95,6 +95,10 @@ if [ -d /usr/local/opt/ruby@2.0/bin ]; then
 	export PATH=/usr/local/opt/ruby@2.0/bin:$PATH
 fi
 
+if [ -e /usr/libexec/java_home ]; then
+	export JAVA_HOME=$(/usr/libexec/java_home)
+fi
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -132,11 +136,14 @@ fi
 # alias zshconfig="vim ~/.zshrc"
 # alias ohmyzsh="vim ~/.oh-my-zsh"
 
-export iOSOpenDevPath=/opt/iOSOpenDev
-export iOSOpenDevDevice=
-export PATH=/opt/iOSOpenDev/bin:$PATH
+if [ -d /opt/iOSOpenDev ]; then
+	export iOSOpenDevPath=/opt/iOSOpenDev
+	export iOSOpenDevDevice=
+	export PATH=/opt/iOSOpenDev/bin:$PATH
+fi
 
-
-export MonkeyDevPath=/opt/MonkeyDev
-export MonkeyDevDeviceIP=
-export PATH=/opt/MonkeyDev/bin:$PATH
+if [ -d /opt/MonkeyDev ]; then
+	export MonkeyDevPath=/opt/MonkeyDev
+	export MonkeyDevDeviceIP=
+	export PATH=/opt/MonkeyDev/bin:$PATH
+fi
