@@ -33,19 +33,19 @@ case "$MONMODE" in
 		;;
 	"S")
 		xrandr --output "${MONITOR[1]}" --off --output "${MONITOR[0]}" --auto
-		feh --bg-scale ~/Images/bg.jpeg
+		feh --bg-scale ~/Images/bg.jpg
 		;;
 	"AUTO")
 		xrandr --auto
-		feh --bg-scale ~/Images/bg.jpeg
+		feh --bg-scale ~/Images/bg.jpg
 		;;
 	"1")
 		xrandr --output "${MONITOR[1]}" --mode 1920x1080 --output "${MONITOR[2]}" --off --output "${MONITOR[0]}" --off
-		feh --bg-scale ~/Images/bg.jpeg
+		feh --bg-scale ~/Images/bg.jpg
 		;;
 	"2")
 		xrandr --output "${MONITOR[2]}" --mode 1920x1080 --output "${MONITOR[1]}" --off --output "${MONITOR[0]}" --off
-		feh --bg-scale ~/Images/bg.jpeg
+		feh --bg-scale ~/Images/bg.jpg
 		;;
 esac
 
