@@ -168,6 +168,7 @@ for_window [class="R_x11"] floating enable
 for_window [class="Wine"] floating enable
 for_window [class="Matplotlib"] floating enable
 for_window [title="Telegram"] floating enable
+for_window [class="org.remmina.Remmina"] floating enable
 for_window [class="VirtualBox"] floating enable
 for_window [class="baidunetdisk"] floating enable
 for_window [instance="pavucontrol"] floating enable

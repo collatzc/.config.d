@@ -99,7 +99,7 @@ URxvt.keysym.KP_0:      0
 
 URxvt.termName: screen-256color
 URxvt.matcher.button: 1
-URxvt.geometry: 170x20
+URxvt.geometry: 170x30
 *internalBorder: 10
 URxvt.depth: 32
 URxvt.background: [89]S_base03
