@@ -125,7 +125,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # Binding Keys {{{
 
-bindsym $mod+F1 exec --no-startup-id ~/.config.d/monitor.sh
+bindsym $mod+F1 exec --no-startup-id ~/.config.d/monitor.sh && notify-send "Auto Screen Mode"
 bindsym $mod+F2 exec --no-startup-id pavucontrol
 bindsym $mod+F12 exec --no-startup-id xset s off -dpms && notify-send "Display always on!"
 
@@ -168,6 +168,7 @@ for_window [class="R_x11"] floating enable
 for_window [class="Wine"] floating enable
 for_window [class="Matplotlib"] floating enable
 for_window [title="Telegram"] floating enable
+for_window [class="Qq"] floating enable
 for_window [class="org.remmina.Remmina"] floating enable
 for_window [class="VirtualBox"] floating enable
 for_window [class="baidunetdisk"] floating enable

@@ -59,7 +59,7 @@ if [ -d "$HOME/go" ]; then
 	export GOPATH=$HOME/go
 	export PATH=$GOPATH/bin:$PATH
 	# go.mod
-	export GO111MODULE=no
+	export GO111MODULE=off
 fi
 
 # Android Studio @linux
