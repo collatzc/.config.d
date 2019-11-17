@@ -27,6 +27,7 @@
 	Plugin 'elzr/vim-json'
 	Plugin 'collatzc/vim-pug'
 	Plugin 'pangloss/vim-javascript'
+	Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 	call vundle#end()
 " }
 
@@ -81,7 +82,7 @@
 	set magic
 	set showmatch
 	set mat=2
-	set number
+	set nu rnu
 	set ffs=unix,dos,mac
 	set nobackup
 	set nowb
