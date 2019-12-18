@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=TelegPika
+Exec=sh -c "telegram-desktop -many -exename Pika -workdir ~/.tgpika"
+Categories=Messenger
+Icon=telegram
+Terminal=false
+StartupWMClass=TelegramPika
+Type=Application
+Categories=Network;InstantMessaging;Qt;
+MimeType=x-scheme-handler/tg;
+Keywords=tg;chat;im;messaging;messenger;sms;tdesktop;
+X-GNOME-UsesNotifications=true

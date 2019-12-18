@@ -1,15 +1,11 @@
 # Update config
-# rm ~/.config/fcitx/rime/default.yaml && fcitx-remote -r
-#
+# rm ~/.config/fcitx/rime/build/default.yaml && fcitx-remote -r
 
 patch:
-  "style/font_point": 16
+  "style/font_point": 14
   schema_list:
     - schema: double_pinyin_flypy
-    - schema: double_pinyin_mspy
-  ascii_composer/switch_key:
-    Shift_L: noop
-    Control_L: inline_ascii
   switcher:
     hotkeys:
-      - F4
+      - "F4"
+      - "Control+Shift+grave"
