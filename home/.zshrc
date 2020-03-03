@@ -129,6 +129,7 @@ export LANG=en_US.UTF-8
 alias rm='rm -i -v'
 alias cp='cp -i -v'
 alias mv='mv -i -v'
+alias diff='diff --color=auto'
 
 if [ -x "$(command -v nvim)" ]; then
 	alias __=nvim

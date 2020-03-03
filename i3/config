@@ -18,6 +18,9 @@ bindsym Mod1+Tab workspace back_and_forth
 # follow the focus
 focus_follows_mouse no
 
+# no focus
+no_focus [window_role="pop-up"]
+
 # Hide edge and title bar
 hide_edge_borders none
 new_window none
@@ -35,8 +38,8 @@ floating_modifier $mod
 # bindsym $mod+Return exec --no-startup-id terminator
 bindsym $mod+Return exec --no-startup-id urxvt
 
-bindsym $mod+Shift+q kill
 # kill focused window
+bindsym $mod+Shift+q kill
 
 # start rofi (a program launcher)
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -show run'
