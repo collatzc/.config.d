@@ -15,11 +15,13 @@ workspace_layout default
 workspace_auto_back_and_forth yes
 bindsym Mod1+Tab workspace back_and_forth
 
-# follow the focus
+# Not follow the focus
 focus_follows_mouse no
+focus_wrapping workspace
 
 # no focus
 no_focus [window_role="pop-up"]
+
 
 # Hide edge and title bar
 hide_edge_borders none
@@ -144,6 +146,9 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+# read 1 character and mark the current window with this character
+bindsym $mod+m exec i3-input -F 'mark %s' -l 1 -P 'Mark: '
+bindsym $mod+Shift+m exec i3-input -F '[con_mark="%s"] focus' -l 1 -P 'Goto: '
 
 # }}}
 
@@ -152,11 +157,12 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 bindsym $mod+F1 exec --no-startup-id ~/.config.d/monitor.sh && notify-send "Auto Screen Mode"
 bindsym $mod+F2 exec --no-startup-id pavucontrol
 bindsym $mod+F4 exec --no-startup-id deepin-screenshot
+bindsym $mod+F5 exec --no-startup-id ~/.config.d/monitor.sh DL && notify-send "Dual Screen Left Mode"
 bindsym $mod+F12 exec --no-startup-id xset s off -dpms && notify-send "Display always on!"
 
 # Moving between monitors
-bindsym $mod+m move workspace to output right
-bindsym $mod+n move workspace to output left
+bindsym $mod+. move workspace to output right
+bindsym $mod+comma move workspace to output left
 
 # }}}
 
@@ -224,7 +230,7 @@ bindsym $mod+x mode $mode_system
 
 # Autostart {{{
 
-exec_always --no-startup-id picom --config ~/.config/compton.conf
+exec_always --no-startup-id picom --config ~/.config/picom.conf
 exec_always --no-startup-id fcitx
 exec_always --no-startup-id feh --bg-scale ~/Images/bg.jpg
 exec_always --no-startup-id nm-applet
@@ -275,6 +281,7 @@ client.background				$back
 bar {
 	status_command i3blocks -c ~/.config/i3/i3blocks.conf
 	font pango:DejaVuSansMono NF 9
+	tray_output eDP1
 	position top
 	mode hide
 	hidden_state hide
