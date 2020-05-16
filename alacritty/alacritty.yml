@@ -1,0 +1,54 @@
+env:
+  TERM: xterm-256color
+window:
+  dimensions:
+    columns: 120
+    lines: 40
+  padding:
+    x: 3
+    y: 3
+  decorations: none
+scrolling:
+  history: 10000
+  multiplier: 3
+font:
+  size: 12.0
+  glyph_offset:
+    x: 0
+    y: 0
+  use_thin_strokes: true
+  normal:
+    family: Hack
+  bold:
+    family: Hack
+  italic:
+    family: Hack
+draw_bold_text_with_bright_colors: true
+background_opacity: 0.6
+# Visual Bell
+# #
+# # Any time the BEL code is received, Alacritty "rings" the visual bell. Once
+# # rung, the terminal background will be set to white and transition back to the
+# # default background color. You can control the rate of this transition by
+# # setting the `duration` property (represented in milliseconds). You can also
+# # configure the transition function by setting the `animation` property.
+# #
+# # Values for `animation`:
+# #   - Ease
+# #   - EaseOut
+# #   - EaseOutSine
+# #   - EaseOutQuad
+# #   - EaseOutCubic
+# #   - EaseOutQuart
+# #   - EaseOutQuint
+# #   - EaseOutExpo
+# #   - EaseOutCirc
+# #   - Linear
+# #
+# # Specifying a `duration` of `0` will disable the visual bell.
+visual_bell:
+  animation: EaseOutExpo
+  duration: 0
+  color: '0xffffff'
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
