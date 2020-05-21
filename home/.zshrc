@@ -51,8 +51,12 @@ DISABLE_AUTO_TITLE="true"
 plugins=(git z)
 # User configuration
 
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-#export PATH=$HOME/bin:/usr/local/bin:$PATH
+# [macOS] if using nodejs@10
+if [ -d "/usr/local/opt/node@10" ]; then
+	export PATH=/usr/local/opt/node@10/bin:$PATH
+fi
 
 # GOPATH
 if [ -d "$HOME/go" ]; then
