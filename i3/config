@@ -17,10 +17,10 @@ bindsym Mod1+Tab workspace back_and_forth
 
 # Not follow the focus
 focus_follows_mouse no
-focus_wrapping workspace
+focus_wrapping true
 
 # no focus
-no_focus [window_role="pop-up"]
+# no_focus [window_role="pop-up"]
 
 
 # Hide edge and title bar
@@ -48,7 +48,6 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec "rofi -show-icons -modi combi -show combi -combi-modi run,drun"
 bindsym $mod+Shift+w exec "rofi -show window"
 
-floating_minimum_size 640 x 480
 floating_maximum_size -1 x -1
 
 # change focus
@@ -171,6 +170,7 @@ bindsym $mod+F1 exec --no-startup-id ~/.config.d/monitor.sh && notify-send "Auto
 bindsym $mod+F2 exec --no-startup-id pavucontrol
 bindsym $mod+F4 exec --no-startup-id deepin-screen-recorder
 bindsym $mod+F5 exec --no-startup-id ~/.config.d/monitor.sh DL && notify-send "Dual Screen Left Mode"
+bindsym $mod+F11 exec --no-startup-id xbacklight -set 100% && notify-send "Full Brightness!"
 bindsym $mod+F12 exec --no-startup-id xset s off -dpms && notify-send "Display always on!"
 
 # Moving between monitors
@@ -201,8 +201,6 @@ for_window [title="Preferences"] floating enable
 for_window [title="Configuration"] floating enable
 for_window [class="manager"] floating enable resize set 630 760
 for_window [class="editor$"] floating enable
-for_window [window_role="About"] floating enable
-for_window [window_type="dialog"] floating enable
 for_window [window_type="utility"] floating enable
 for_window [window_type="toolbar"] floating enable
 for_window [window_type="splash"] floating enable
@@ -212,6 +210,8 @@ for_window [window_type="popup_menu"] floating enable
 for_window [window_type="tooltip"] floating enable
 for_window [window_type="notification"] floating enable
 for_window [class="Tor"] floating enable
+for_window [class="jetbrains-.+"] floating enable
+for_window [class="jetbrains-.+"][window_type="dialog"] focus
 for_window [class="main.py"] floating enable
 for_window [instance="sun-awt-X11-XDialogPeer"] floating enable
 for_window [class="URxvt"] floating enable
@@ -223,7 +223,7 @@ for_window [class="Qq"] floating enable
 for_window [title="Remmina Remote Desktop Client"] floating enable
 for_window [class="VirtualBox"] floating enable
 for_window [instance="pavucontrol"] floating enable
-for_window [class="Thunar"] floating enable resize set 880 640
+for_window [class="Thunar"] floating enable resize set 800 640
 
 set $mode_system " L |  S |  P |  R"
 
