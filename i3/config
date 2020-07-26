@@ -170,6 +170,7 @@ bindsym $mod+F1 exec --no-startup-id ~/.config.d/monitor.sh && notify-send "Auto
 bindsym $mod+F2 exec --no-startup-id pavucontrol
 bindsym $mod+F4 exec --no-startup-id flameshot gui
 bindsym $mod+F5 exec --no-startup-id ~/.config.d/monitor.sh DL && notify-send "Dual Screen Left Mode"
+bindsym $mod+F10 exec --no-startup-id setxkbmap -option altwin:swap_alt_win
 bindsym $mod+F11 exec --no-startup-id xbacklight -set 100% && notify-send "Full Brightness!"
 bindsym $mod+F12 exec --no-startup-id xset s off -dpms && notify-send "Display always on!"
 
@@ -223,7 +224,9 @@ for_window [class="Qq"] floating enable
 for_window [title="Remmina Remote Desktop Client"] floating enable
 for_window [class="VirtualBox"] floating enable
 for_window [instance="pavucontrol"] floating enable
-for_window [class="Thunar"] floating enable resize set 800 640
+for_window [class="Thunar"] floating enable
+for_window [instance="audacious"] floating enable resize set 777 415
+for_window [instance="main"] floating enable
 
 set $mode_system " L |  S |  P |  R"
 
@@ -250,6 +253,7 @@ exec_always --no-startup-id feh --bg-scale ~/Images/bg.jpg
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id blueman-applet
 exec_always --no-startup-id dunst
+exec_always --no-startup-id setxkbmap -option altwin:swap_alt_win
 
 # }}}
 

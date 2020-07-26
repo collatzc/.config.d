@@ -1,0 +1,65 @@
+[
+  {
+    "key": "ctrl+k ctrl+u",
+    "command": "git.pushTo"
+  },
+  {
+    "key": "ctrl+shift+t",
+    "command": "workbench.action.terminal.focus",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+t",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+x ctrl+d",
+    "command": "workbench.action.files.openFolder"
+  },
+  {
+    "key": "ctrl+x ctrl+p",
+    "command": "workbench.action.openRecent"
+  },
+  {
+    "key": "ctrl+k ctrl+t",
+    "command": "go.test.cursor",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+b",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "ctrl+shift+m",
+    "command": "workbench.action.toggleMaximizedPanel",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+shift+m",
+    "command": "workbench.action.gotoSymbol",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "alt+;",
+    "command": "editor.action.commentLine",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+;",
+    "command": "-editor.action.commentLine",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+shift+q ctrl+shift+b",
+    "command": "workbench.view.extension.bookmarks"
+  },
+  {
+    "key": "ctrl+x ctrl+t",
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
+  {
+    "key": "ctrl+`",
+    "command": "-workbench.action.terminal.toggleTerminal"
+  }
+]
