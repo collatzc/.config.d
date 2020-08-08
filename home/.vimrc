@@ -23,12 +23,14 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'Shougo/neocomplcache.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'majutsushi/tagbar'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'elzr/vim-json'
 Plugin 'collatzc/vim-pug'
 Plugin 'pangloss/vim-javascript'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+Plugin 'fatih/vim-go'
 call vundle#end()
 " }}}
 
@@ -50,7 +52,7 @@ set lazyredraw
 set iminsert=0
 set imsearch=0
 " Using OS clipboard
-set clipboard^=unnamed
+set clipboard=unnamedplus
 " enable usage of .vimrc from working dir
 set exrc
 " .vimrc cannot exec shell
@@ -150,6 +152,9 @@ nnoremap <leader>d :bd<cr>
 " Tabs
 nnoremap <leader>t :tabnew<cr>
 nnoremap <leader>c :tabclose<cr>
+nnoremap <leader>y :tabNext<cr>
+" Tagbar
+nnoremap <leader>v :TagbarToggle<cr>
 
 autocmd FileType python call s:runPython()
 function! s:runPython()

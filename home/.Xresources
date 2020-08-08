@@ -78,7 +78,7 @@ URxvt.url-launcher:    /usr/bin/xdg-open
 URxvt.iso14755: false
 URxvt.iso14755_52: false
 
-Xft.dpi:               $DPI
+!Xft.dpi:               96
 Xft.scale:             0.9
 Xft.autohint:          0
 Xft.antialias:         true
@@ -107,7 +107,7 @@ URxvt.keysym.KP_0:      0
 
 URxvt.termName: screen-256color
 URxvt.matcher.button: 1
-URxvt.geometry: 140x30
+URxvt.geometry: 140x40
 *internalBorder: 10
 URxvt.depth: 32
 URxvt.colorIT: #87af5f

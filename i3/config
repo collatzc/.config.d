@@ -4,7 +4,12 @@
 # General {{{
 set $mod Mod4
 
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
+# Gaps
+smart_gaps on
+gaps inner 9
+gaps outer 0
+
+# Text rendering and scalability on retina/hidpi displays (thanks to pango).
 font pango:DejaVuSansMono NF 9
 
 # Split hori by default
@@ -13,7 +18,7 @@ workspace_layout default
 
 # Auto back and forth
 workspace_auto_back_and_forth yes
-bindsym Mod1+Tab workspace back_and_forth
+bindsym $mod+Tab workspace back_and_forth
 
 # Not follow the focus
 focus_follows_mouse no
@@ -21,7 +26,6 @@ focus_wrapping true
 
 # no focus
 no_focus [window_type="tooltip"]
-
 
 # Hide edge and title bar
 hide_edge_borders none
@@ -45,8 +49,8 @@ bindsym $mod+Shift+q kill
 
 # start rofi (a program launcher)
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -show run'
-bindsym $mod+d exec "rofi -show-icons -modi combi -show combi -combi-modi run,drun"
-bindsym $mod+Shift+w exec "rofi -show window"
+bindsym $mod+d exec "rofi -theme Arc-Dark -show-icons -modi combi -show combi -combi-modi run,drun"
+bindsym $mod+Escape exec "rofi -theme Arc-Dark -show-icons -show window"
 
 floating_maximum_size -1 x -1
 
@@ -55,6 +59,7 @@ bindsym $mod+j focus left
 bindsym $mod+k focus down
 bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
+bindsym $mod+c [urgent=latest] focus
 
 # move focused window
 bindsym $mod+Shift+j move left
@@ -96,7 +101,7 @@ bindsym $mod+z focus child
 
 # scratchpad
 bindsym $mod+Shift+minus move scratchpad
-bindsym $mod+Tab scratchpad show
+bindsym Mod1+Tab scratchpad show
 bindsym $mod+Shift+p mark "configmarkp", move scratchpad
 bindsym $mod+p [con_mark="configmarkp"] scratchpad show
 bindsym $mod+Shift+o mark "configmarko", move scratchpad
@@ -198,18 +203,18 @@ mode "  " {
 bindsym $mod+r mode "  "
 
 #for_window [class="[.]*"] floating enable
-for_window [title="Preferences"] floating enable
-for_window [title="Configuration"] floating enable
-for_window [class="manager"] floating enable resize set 630 760
-for_window [class="editor$"] floating enable
-for_window [window_type="utility"] floating enable
-for_window [window_type="toolbar"] floating enable
-for_window [window_type="splash"] floating enable
-for_window [window_type="menu"] floating enable
-for_window [window_type="dropdown_menu"] floating enable
-for_window [window_type="popup_menu"] floating enable
-for_window [window_type="tooltip"] floating enable
-for_window [window_type="notification"] floating enable
+#for_window [title="Preferences"] floating enable
+#for_window [title="Configuration"] floating enable
+#for_window [class="manager"] floating enable resize set 630 760
+#for_window [class="editor$"] floating enable
+#for_window [window_type="utility"] floating enable
+#for_window [window_type="toolbar"] floating enable
+#for_window [window_type="splash"] floating enable
+#for_window [window_type="menu"] floating enable
+#for_window [window_type="dropdown_menu"] floating enable
+#for_window [window_type="popup_menu"] floating enable
+#for_window [window_type="tooltip"] floating enable
+#for_window [window_type="notification"] floating enable
 for_window [class="Tor"] floating enable
 for_window [class="jetbrains-.+"] floating enable
 for_window [class="jetbrains-.+"][window_type="dialog"] focus
@@ -247,11 +252,12 @@ bindsym $mod+x mode $mode_system
 
 # Autostart {{{
 
-exec_always --no-startup-id picom --config ~/.config/picom.conf
-exec_always --no-startup-id fcitx
-exec_always --no-startup-id feh --bg-scale ~/Images/bg.jpg
-exec_always --no-startup-id nm-applet
-exec_always --no-startup-id blueman-applet
+exec --no-startup-id picom --config ~/.config/picom.conf
+exec --no-startup-id feh --bg-scale ~/Images/bg.jpg
+#exec_always --no-startup-id fcitx
+#exec_always --no-startup-id nm-applet
+#exec_always --no-startup-id blueman-applet
+exec_always --no-startup-id bash ~/.config.d/autostart.sh
 exec_always --no-startup-id dunst
 exec_always --no-startup-id setxkbmap -option altwin:swap_alt_win
 
@@ -297,17 +303,18 @@ client.background				$back
 # Bar {{{
 
 bar {
+	i3bar_command i3bar -t
 	status_command i3blocks -c ~/.config/i3/i3blocks.conf
-	font pango:DejaVuSansMono NF 11
-	tray_output eDP1
+	mode dock
+	modifier None
+	tray_output primary
+	font pango:DejaVuSansMono NF 10
 	position bottom
-	mode hide
-	hidden_state hide
-	modifier Mod4
-	separator_symbol "/"
+	# separator_symbol "/"
 # Color panel
 	colors {
-		background	$black
+		#background	$black
+		background	#00000000
 		statusline	$lightgrey
 		separator		$lightgrey
 #   Indicadores panel

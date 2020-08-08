@@ -14,7 +14,9 @@ pgrep redshift &> /dev/null || redshift &> /dev/null &
 
 # enable custom keybinding
 [[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap
+
 # color theme
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 
 exec i3
+#exec awesome
