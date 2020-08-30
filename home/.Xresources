@@ -54,7 +54,9 @@ URxvt.saveLines:       10000
 URxvt.skipBuiltinGlyphs: true
 URxvt.cursorBlink:     1
 
-URxvt.perl-ext-common: default,matcher,tabbed,resize-font,keyboard-select,url-select,clipboard,urxvt-colors
+URxvt.perl-ext-common: default,matcher,tabbedex,resize-font,keyboard-select,selection-to-clipboard,url-select,clipboard,urxvt-colors
+URxvt.tabbed.new-button: false
+URxvt.clipboard.autocopy: true
 URxvt.keysym.CM-c:    perl:urxvt-colors:cycle
 URxvt.matcher.render.0: Uline Bold fg5
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
@@ -67,8 +69,10 @@ URxvt.keysym.M-v:      perl:clipboard:paste
 URxvt.keysym.M-C-v:    perl:clipboard:paste_escaped
 URxvt.keysym.C-Down:   resize-font:smaller
 URxvt.keysym.C-Up:     resize-font:bigger
+URxvt.keysym.Control-t:     perl:tabbedex:new_tab
+URxvt.keysym.Control-Tab: perl:tabbedex:next_tab
 
-URxvt.tabbed.autohide: yes
+URxvt.tabbed.autohide: true
 URxvt.tabbed.tabbar-fg: 10
 URxvt.tabbed.tabbar-bg: 16
 URxvt.tabbed.tab-fg: 6
@@ -79,7 +83,7 @@ URxvt.iso14755: false
 URxvt.iso14755_52: false
 
 !Xft.dpi:               96
-Xft.scale:             0.9
+Xft.scale:             1.0
 Xft.autohint:          0
 Xft.antialias:         true
 Xft.hinting:           1
@@ -108,7 +112,7 @@ URxvt.keysym.KP_0:      0
 URxvt.termName: screen-256color
 URxvt.matcher.button: 1
 URxvt.geometry: 140x40
-*internalBorder: 10
+*internalBorder: 6
 URxvt.depth: 32
 URxvt.colorIT: #87af5f
 URxvt.colorBD: #d7d7d7

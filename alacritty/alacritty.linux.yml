@@ -3,11 +3,12 @@ env:
 
 window:
   dimensions:
-    columns: 120
+    columns: 140
     lines: 40
   padding:
     x: 3
     y: 3
+  dynamic_padding: true
   decorations: none
 
 scrolling:
@@ -15,20 +16,23 @@ scrolling:
   multiplier: 3
 
 font:
-  size: 12.0
+  size: 8.0
   glyph_offset:
     x: 0
     y: 0
   use_thin_strokes: true
   normal:
-    family: Hack
+    family: Fira Code
+    style: Regular
   bold:
-    family: Hack
+    family: Fira Code
+    style: Bold
   italic:
-    family: Hack
+    family: Fira Code
+    style: Italic
 
 draw_bold_text_with_bright_colors: true
-background_opacity: 0.7
+background_opacity: 0.80
 # Visual Bell
 # #
 # # Any time the BEL code is received, Alacritty "rings" the visual bell. Once
@@ -57,7 +61,9 @@ bell:
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
 key_bindings:
-  - { key: N, mods: Command, action: SpawnNewInstance }
+  - { key: Escape, mods: Alt, action: ToggleViMode }
+  - { key: V, mods: Alt, action: Paste }
+  - { key: C, mods: Alt, action: Copy }
 colors:
   primary:
     background: '#2e3440'

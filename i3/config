@@ -42,7 +42,8 @@ floating_modifier $mod
 
 # start a terminal
 # bindsym $mod+Return exec --no-startup-id terminator
-bindsym $mod+Return exec --no-startup-id urxvt
+# bindsym $mod+Return exec --no-startup-id urxvt
+bindsym $mod+Return exec --no-startup-id alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -175,7 +176,7 @@ bindsym $mod+F1 exec --no-startup-id ~/.config.d/monitor.sh && notify-send "Auto
 bindsym $mod+F2 exec --no-startup-id pavucontrol
 bindsym $mod+F4 exec --no-startup-id flameshot gui
 bindsym $mod+F5 exec --no-startup-id ~/.config.d/monitor.sh DL && notify-send "Dual Screen Left Mode"
-bindsym $mod+F10 exec --no-startup-id setxkbmap -option altwin:swap_alt_win
+bindsym $mod+F10 exec --no-startup-id setxkbmap -option altwin:swap_alt_win && notify-send "[ALT] & [WIN] swapped"
 bindsym $mod+F11 exec --no-startup-id xbacklight -set 100% && notify-send "Full Brightness!"
 bindsym $mod+F12 exec --no-startup-id xset s off -dpms && notify-send "Display always on!"
 
@@ -221,6 +222,7 @@ for_window [class="jetbrains-.+"][window_type="dialog"] focus
 for_window [class="main.py"] floating enable
 for_window [instance="sun-awt-X11-XDialogPeer"] floating enable
 for_window [class="URxvt"] floating enable
+for_window [class="Alacritty"] floating enable
 for_window [class="R_x11"] floating enable
 for_window [class="Wine"] floating enable
 for_window [class="Matplotlib"] floating enable
@@ -308,7 +310,7 @@ bar {
 	mode dock
 	modifier None
 	tray_output primary
-	font pango:DejaVuSansMono NF 10
+	font pango:Fira Code 10
 	position bottom
 	# separator_symbol "/"
 # Color panel
