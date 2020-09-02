@@ -37,7 +37,6 @@ Plugin 'morhetz/gruvbox'
 Plugin 'mhartington/oceanic-next'
 Plugin 'arcticicestudio/nord-vim'
 Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
 Plugin 'mhinz/vim-startify'
 Plugin 'leafOfTree/vim-vue-plugin'
 Plugin 'junegunn/fzf.vim'
@@ -83,9 +82,9 @@ function! Fcitx2zh()
 endfunction
 
 set ttimeoutlen=150
-"退出插入模式
+" 退出插入模式
 autocmd InsertLeave * call Fcitx2en()
-"进入插入模式
+" 进入插入模式
 autocmd InsertEnter * call Fcitx2zh()
 " auto fcitx end
 
@@ -104,6 +103,8 @@ function! s:check_back_space() abort
 endfunction
 
 " vim-go
+let g:go_gopls_enabled=1
+" let g:go_debug=['lsp']
 let g:go_def_mode="gopls"
 let g:go_info_mode="gopls"
 let g:go_fmt_command="goimports"
@@ -269,7 +270,6 @@ let g:NERDTrimTrailingWhitespace = 1
 " Keys {{{
 " Fast save
 nmap <leader>w :w!<cr>
-nmap <leader>s :wq<cr>
 " Quit
 nmap <leader>q :q<cr>
 
@@ -322,7 +322,7 @@ nmap <leader>mu :CocCommand<space>bookmark.clearForCurrentFile<cr>
 inoremap <silent><expr> <c-h> coc#refresh()
 
 " fzf
-nnoremap <silent> gf :CocList words<cr>
+nnoremap <silent> gf :Rg<cr>
 nnoremap <silent> gF :GFiles<cr>
 nnoremap <silent> gt :BTags<cr>
 nnoremap <silent> gT :Tags<cr>
