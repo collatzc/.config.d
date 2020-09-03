@@ -330,7 +330,7 @@ nnoremap <silent> ga :Rg<cr>
 nnoremap <silent> gw :CocList windows<cr>
 
 " Filetype go
-au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <f6> <Plug>(go-run)
 au FileType go nmap <f5> :GoTestFunc<cr>
 
 autocmd FileType python call s:runPython()
@@ -362,6 +362,7 @@ nnoremap <A-l> <C-w>l
 " Using CocList
 " Show all diagnostics
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <space>f  :<C-u>CocList grep<cr>
 " Manage extensions
 nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
 " Show commands

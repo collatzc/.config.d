@@ -10,9 +10,15 @@
     }
   },
 	"list": {
+		"insertMappings": {
+			"<Tab>": "feedkeys:\\<Down>"
+		},
 		"source": {
 			"files": {
-				"excludePatterns": ["**/node_modules/*"]
+				"excludePatterns": ["node_modules/*", ".git/*", "data/*", "/tmp/*"]
+			},
+			"grep": {
+				"excludePatterns": ["node_modules/*", ".git/*", "data/*", "/tmp/*"]
 			}
 		}
 	}

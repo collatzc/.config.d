@@ -181,7 +181,7 @@ bindsym $mod+F11 exec --no-startup-id xbacklight -set 100% && notify-send "Full 
 bindsym $mod+F12 exec --no-startup-id xset s off -dpms && notify-send "Display always on!"
 
 # Moving between monitors
-bindsym $mod+. move workspace to output right
+bindsym $mod+period move workspace to output right
 bindsym $mod+comma move workspace to output left
 
 # }}}
