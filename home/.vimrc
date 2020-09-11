@@ -26,7 +26,6 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'Shougo/neocomplcache.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'majutsushi/tagbar'
 Plugin 'itchyny/lightline.vim'
 Plugin 'elzr/vim-json'
 Plugin 'collatzc/vim-pug'
@@ -34,8 +33,8 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 Plugin 'fatih/vim-go'
 Plugin 'morhetz/gruvbox'
-Plugin 'mhartington/oceanic-next'
-Plugin 'arcticicestudio/nord-vim'
+Plugin 'rakr/vim-one'
+Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'tpope/vim-fugitive'
 Plugin 'mhinz/vim-startify'
 Plugin 'leafOfTree/vim-vue-plugin'
@@ -111,6 +110,7 @@ let g:go_fmt_command="goimports"
 let g:go_term_mode="split"
 let g:go_fmt_autosave=1
 let g:go_term_enabled=1
+let g:go_term_reuse=1
 let g:go_term_close_on_exit=0
 let g:go_test_show_name=1
 let g:go_auto_type_info=1
@@ -148,11 +148,12 @@ set secure
 
 " Edit {{{
 " Syntax highlighting
+let g:gruvbox_contrast_dark='soft'
+let g:gruvbox_contrast_light='soft'
 syntax on
 colo gruvbox
 set background=dark " setting dark mode
 " set background=light " setting light mode
-" colo OceanicNext
 " Spell checking on
 " set spell
 set ruler
@@ -198,6 +199,7 @@ set laststatus=2
 
 " Lightline {{{
 let g:lightline = {
+			\ 'colorscheme': 'powerline',
 			\ 'mode_map': {
 			\ 	'n': 'N',
 			\ 	'i': 'I',
@@ -292,14 +294,21 @@ nnoremap <leader>sc :SClose<cr>
 nnoremap <leader>ss :SSave<space>
 
 " Tabs
-nnoremap <leader>tn :tabnew<cr>
-nnoremap <leader>tc :tabclose<cr>
-nnoremap <leader>tt :tabnext<cr>
-nnoremap <leader>tr :tabnext<space>-<cr>
+nnoremap tn :tabnew<cr>
+nnoremap tc :tabclose<cr>
+nnoremap tt :tabnext<cr>
+nnoremap tr :tabprevious<cr>
+nnoremap t1 1gt
+nnoremap t2 2gt
+nnoremap t3 3gt
+nnoremap t4 4gt
+nnoremap t5 5gt
+nnoremap t6 6gt
+nnoremap t7 7gt
+nnoremap t8 8gt
+nnoremap t9 9gt
 " Work directory
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
-" Tagbar
-nnoremap <leader>v :TagbarToggle<cr>
 " Remap keys for goto
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -324,8 +333,6 @@ inoremap <silent><expr> <c-h> coc#refresh()
 " fzf
 nnoremap <silent> gf :Rg<cr>
 nnoremap <silent> gF :GFiles<cr>
-nnoremap <silent> gt :BTags<cr>
-nnoremap <silent> gT :Tags<cr>
 nnoremap <silent> ga :Rg<cr>
 nnoremap <silent> gw :CocList windows<cr>
 
