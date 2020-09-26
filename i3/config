@@ -10,7 +10,7 @@ gaps inner 9
 gaps outer 0
 
 # Text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVuSansMono NF 9
+font pango:Source Han Sans SC 9
 
 # Split hori by default
 default_orientation horizontal
@@ -111,8 +111,8 @@ bindsym $mod+Shift+i mark "configmarki", move scratchpad
 bindsym $mod+i [con_mark="configmarki"] scratchpad show
 bindsym $mod+Shift+u mark "configmarku", move scratchpad
 bindsym $mod+u [con_mark="configmarku"] scratchpad show
-
-
+bindsym $mod+Shift+y mark "configmarky", move scratchpad
+bindsym $mod+y [con_mark="configmarky"] scratchpad show
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -175,7 +175,7 @@ bindsym $mod+Shift+m exec i3-input -F '[con_mark="%s"] focus' -l 1 -P 'Goto: '
 bindsym $mod+F1 exec --no-startup-id ~/.config.d/monitor.sh && notify-send "Auto Screen Mode"
 bindsym $mod+F2 exec --no-startup-id pavucontrol
 bindsym $mod+F4 exec --no-startup-id flameshot gui
-bindsym $mod+F5 exec --no-startup-id ~/.config.d/monitor.sh DL && notify-send "Dual Screen Left Mode"
+bindsym $mod+F5 exec --no-startup-id ~/.config.d/monitor.sh DL && notify-send -h string:fgcolor:#ff4444 -h string:frcolor:#ff4444 "Dual Screen Left Mode"
 bindsym $mod+F10 exec --no-startup-id setxkbmap -option altwin:swap_alt_win && notify-send "[ALT] & [WIN] swapped"
 bindsym $mod+F11 exec --no-startup-id xbacklight -set 100% && notify-send "Full Brightness!"
 bindsym $mod+F12 exec --no-startup-id xset s off -dpms && notify-send "Display always on!"
@@ -189,7 +189,8 @@ bindsym $mod+comma move workspace to output left
 # Mode {{{
 
 # resize window (you can also use the mouse for that)
-mode "  " {
+set $mode_resize "  "
+mode $mode_resize {
 	bindsym j resize shrink width 10 px or 10 ppt
 	bindsym k resize grow height 10 px or 10 ppt
 	bindsym l resize shrink height 10 px or 10 ppt
@@ -201,7 +202,7 @@ mode "  " {
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
 }
-bindsym $mod+r mode "  "
+bindsym $mod+r mode $mode_resize
 
 #for_window [class="[.]*"] floating enable
 #for_window [title="Preferences"] floating enable
@@ -217,6 +218,7 @@ bindsym $mod+r mode "  "
 #for_window [window_type="tooltip"] floating enable
 #for_window [window_type="notification"] floating enable
 for_window [class="Tor"] floating enable
+for_window [class=".+editor"] floating enable
 for_window [class="jetbrains-.+"] floating enable
 for_window [class="jetbrains-.+"][window_type="dialog"] focus
 for_window [class="main.py"] floating enable
@@ -235,7 +237,7 @@ for_window [class="Thunar"] floating enable
 for_window [instance="audacious"] floating enable resize set 777 415
 for_window [instance="main"] floating enable
 
-set $mode_system " L |  S |  P |  R"
+set $mode_system "  L |  S |  P |  R "
 
 mode $mode_system {
 	bindsym l exec --no-startup-id i3lock -c 000000, mode "default"
@@ -284,21 +286,28 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 5
 
 # Color {{{
 
-set $back				#1d1f21
-set $black			#282a2e
-set $grey				#373b41
-set $lightgrey	#707880
-set $white			#c5c8c6
-set $yellow			#f0c674
-set $red				#cc6666
-set $darkred		#a54242
-set $green			#b5bd56
-# Layout colors					border		bg				text				indicator
-client.focused					$green		$green		$black			$green
-client.focused_inactive	$grey			$grey			$lightgrey	$grey
-client.unfocused				$grey			$grey			$lightgrey	$grey
-client.urgent						$red			$red			$black			$red
-client.background				$back
+set $nord0			#2e3440
+set $nord1			#3b4252
+set $nord2			#434c5e
+set $nord3			#4c566a
+set $nord4			#d8dee9
+set $nord5			#e5e9f0
+set $nord6			#eceff4
+set $nord7			#8fbcbb
+set $nord8			#88c0d0
+set $nord9			#81a1c1
+set $nord10			#5e81ac
+set $nord11			#bf616a
+set $nord12			#d08770
+set $nord13			#ebcb8b
+set $nord14			#a3be8c
+set $nord15			#b48ead
+# Layout colors					border		bg				text			indicator
+client.focused					$nord14		$nord14		$nord3		$nord14
+client.focused_inactive	$nord4		$nord4		$nord3		$nord6
+client.unfocused				$nord4		$nord4		$nord3		$nord8
+client.urgent						$nord11		$nord11		$nord1		$nord11
+client.background				$nord0
 
 # }}}
 
@@ -310,21 +319,19 @@ bar {
 	mode dock
 	modifier None
 	tray_output primary
-	font pango:Fira Code 10
+	font pango:FiraCode Nerd Font Bold 9
 	position bottom
-	# separator_symbol "/"
 # Color panel
 	colors {
 		#background	$black
 		background	#00000000
-		statusline	$lightgrey
-		separator		$lightgrey
+		statusline	#00000000
 #   Indicadores panel
-#												border		bg					text
-		focused_workspace		$black		$green			$black
-		active_workspace		$black		$lightgrey	$black
-		inactive_workspace	$black		$grey				$green
-		urgent_workspace		$black		$darkred		$red
+#												border		bg				text
+		focused_workspace		$nord13		$nord13		$nord3
+		active_workspace		$nord9		$nord9		$nord3
+		inactive_workspace	$nord7		$nord7		$nord10
+		urgent_workspace		$nord11		$nord11		$nord13
 	}
 }
 

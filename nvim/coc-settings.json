@@ -11,7 +11,8 @@
   },
 	"list": {
 		"insertMappings": {
-			"<Tab>": "feedkeys:\\<Down>"
+			"<Tab>": "feedkeys:\\<Down>",
+			"<C-q>": "feedkeys:\\<Up>"
 		},
 		"source": {
 			"files": {
@@ -20,6 +21,13 @@
 			"grep": {
 				"excludePatterns": ["node_modules/*", ".git/*", "data/*", "/tmp/*"]
 			}
+		}
+	},
+	"explorer": {
+		"width": 25,
+		"quitOnOpen": true,
+		"icon": {
+			"enableNerdfont": true
 		}
 	}
 }

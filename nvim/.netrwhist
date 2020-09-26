@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/home/cc/.Log.d'
+let g:netrw_dirhist_6='/'
+let g:netrw_dirhist_5='/home'
+let g:netrw_dirhist_4='/home/cc'
+let g:netrw_dirhist_3='/home/cc/go/src/gitlab.com/cdeiscde/t2s'
+let g:netrw_dirhist_2='/home/cc/go/src/gitlab.com/cdeiscde/t2s/model'
+let g:netrw_dirhist_1='/usr/share/nvim/runtime/doc'

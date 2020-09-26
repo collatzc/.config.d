@@ -43,10 +43,10 @@
 *color14:                 S_base1
 *color15:                 S_base3
 
-URxvt.font:            xft:DejaVuSansMono NF, xft:Source Han Sans, xft:emoji
-URxvt*boldFont:        xft:DejaVuSansMono NF:bold, xft:Source Han Sans:bold, xft:emoji
-URxvt*italicFont:      xft:DejaVuSansMono NF:italic, xft:Source Han Sans, xft:emoji
-URxvt*boldItalicFont:  xft:DejaVuSansMono NF:bold:italic, xft:Source Han Sans, xft:emoji
+URxvt.font:            xft:FiraCode Nerd Font, xft:Source Han Sans, xft:emoji
+URxvt*boldFont:        xft:FiraCode Nerd Font:bold, xft:Source Han Sans:bold, xft:emoji
+URxvt*italicFont:      xft:FiraCode Nerd Font:italic, xft:Source Han Sans, xft:emoji
+URxvt*boldItalicFont:  xft:FiraCode Nerd Font:bold:italic, xft:Source Han Sans, xft:emoji
 URxvt.letterSpace:     0
 URxvt.secondaryWheel:  1
 URxvt.scrollBar:       false

@@ -11,7 +11,7 @@ if [ "$MONITORNO" = "1" ]; then
 	xrandr --auto
 	echo "There is only one monitor!"
 	echo "Fin"
-	exit
+	exit 1
 fi
 
 case "$MONMODE" in

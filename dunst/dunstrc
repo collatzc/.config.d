@@ -148,8 +148,8 @@ dmenu = /usr/bin/dmenu -p dunst:
 browser = /usr/bin/chromium
 
 # Align icons left/right/off
-icon_position = off
-max_icon_size = 80
+icon_position = left
+max_icon_size = 48
 
 # Paths to default icons.
 icon_path = /usr/share/icons/Paper/16x16/mimetypes/:/usr/share/icons/Paper/48x48/status/:/usr/share/icons/Paper/16x16/devices/:/usr/share/icons/Paper/48x48/notifications/:/usr/share/icons/Paper/48x48/emblems/
@@ -178,7 +178,7 @@ history = mod1+grave
 # Context menu.
 context = ctrl+shift+period
 
-	[urgency_low]
+[urgency_low]
 # IMPORTANT: colors have to be defined in quotation marks.
 # Otherwise the "#" and following would be interpreted as a comment.
 frame_color = "#3B7C87"

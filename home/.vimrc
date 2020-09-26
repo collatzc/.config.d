@@ -24,7 +24,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'Shougo/neocomplcache.vim'
-Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'itchyny/lightline.vim'
 Plugin 'elzr/vim-json'
@@ -33,8 +32,9 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 Plugin 'fatih/vim-go'
 Plugin 'morhetz/gruvbox'
+Plugin 'arcticicestudio/nord-vim'
+Plugin 'cocopon/iceberg.vim'
 Plugin 'rakr/vim-one'
-Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'tpope/vim-fugitive'
 Plugin 'mhinz/vim-startify'
 Plugin 'leafOfTree/vim-vue-plugin'
@@ -116,9 +116,13 @@ let g:go_test_show_name=1
 let g:go_auto_type_info=1
 let g:go_def_mapping_enabled=0
 let g:go_highlight_types=1
+let g:go_highlight_extra_types=1
 let g:go_highlight_fields=1
 let g:go_highlight_functions=1
+let g:go_highlight_function_parameters=1
 let g:go_highlight_function_calls=1
+let g:go_highlight_variable_declarations=1
+let g:go_highlight_variable_assignments=1
 
 " vim-vue
 let g:vim_vue_plugin_use_scss=1
@@ -151,7 +155,7 @@ set secure
 let g:gruvbox_contrast_dark='soft'
 let g:gruvbox_contrast_light='soft'
 syntax on
-colo gruvbox
+colo nord
 set background=dark " setting dark mode
 " set background=light " setting light mode
 " Spell checking on
@@ -199,7 +203,7 @@ set laststatus=2
 
 " Lightline {{{
 let g:lightline = {
-			\ 'colorscheme': 'powerline',
+			\ 'colorscheme': 'nord',
 			\ 'mode_map': {
 			\ 	'n': 'N',
 			\ 	'i': 'I',
@@ -221,15 +225,20 @@ let g:lightline = {
 			\ 	'left': [ [ 'projectpath', 'modified' ] ]
 			\ },
 			\ 'component_function': {
-			\ 	'gitbranch': 'FugitiveHead',
+			\ 	'gitbranch': 'LightlineGitBranch',
 			\ 	'projectpath': 'LightlineProjectPath'
 			\ },
 			\}
 function! LightlineProjectPath()
 	return expand('%:p:h:t').'/'.expand('%:t')
 endfunction
+function! LightlineGitBranch()
+	let branch = FugitiveHead()
+	if branch != '' | return ' '.FugitiveHead() | endif
+	return ''
+endfunction
 " Use autocmd to force lightline update
-"autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 " }}}
 
 " vim-airline {{{
@@ -251,14 +260,28 @@ let g:neocomplcache_enable_smart_case=1
 " }}}
 
 " NerdTree {{{
-if isdirectory(expand("~/.vim/bundle/nerdtree"))
-	let NERDTreeIgnore=['\.pyc$', '\.pyo', '__pycache__$', '\.git']
-	" Load only if vim is run without arguments
-	autocmd StdinReadPre * let s:std_in=1
-	autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
-	nmap <leader>xd :NERDTreeToggle<cr>
-	nmap <leader>xl :NERDTreeFind<cr>
-endif
+" if isdirectory(expand("~/.vim/bundle/nerdtree"))
+	" let NERDTreeIgnore=['\.pyc$', '\.pyo', '__pycache__$', '\.git']
+	" " Load only if vim is run without arguments
+	" autocmd StdinReadPre * let s:std_in=1
+	" autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+	" nmap <leader>xd :NERDTreeToggle<cr>
+	" nmap <leader>xl :NERDTreeFind<cr>
+	" let g:NERDTreeQuitOnOpen=1
+	" let g:NERDTreeAutoDeleteBuffer=1
+	" let g:NERDTreeMinimalUI=1
+	" let g:NERDTreeDirArrows=1
+" endif
+" }}}
+
+" File explorer {{{
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'cd '.argv()[0] | endif
+nmap <leader>xd :CocCommand explorer<cr>
+let g:netrw_banner=0
+let g:netrw_liststyle=3
+let g:netrw_browse_split=4
+let g:netrw_altv=1
+let g:netrw_winsize=10
 " }}}
 
 " NERDCommenter {{{
@@ -297,6 +320,7 @@ nnoremap <leader>ss :SSave<space>
 nnoremap tn :tabnew<cr>
 nnoremap tc :tabclose<cr>
 nnoremap tt :tabnext<cr>
+nnoremap <Tab> :tabnext<cr>
 nnoremap tr :tabprevious<cr>
 nnoremap t1 1gt
 nnoremap t2 2gt
