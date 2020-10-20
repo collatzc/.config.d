@@ -136,6 +136,7 @@ let g:startify_lists=[
 let g:startify_bookmarks=[ {'c': '~/.vimrc'}, {'z': '~/.zshrc'}, {'w': '~/.config/i3/config'}, {'a': '~/.config/alacritty/alacritty.yml'}, {'u': '~/.Xresources'} ]
 let g:startify_session_autoload=1
 let g:startify_session_persistence=0
+let g:startify_custom_header='startify#center(startify#fortune#cowsay())'
 
 " automatically change the current directory
 "set autochdir
@@ -224,18 +225,62 @@ let g:lightline = {
 			\ 'inactive': {
 			\ 	'left': [ [ 'projectpath', 'modified' ] ]
 			\ },
+			\ 'component': {
+			\ 	'lineinfo': '%3l:%-2c',
+			\ },
 			\ 'component_function': {
 			\ 	'gitbranch': 'LightlineGitBranch',
-			\ 	'projectpath': 'LightlineProjectPath'
+			\ 	'projectpath': 'LightlineProjectPath',
+			\ 	'readonly': 'LightlineReadonly',
+			\ 	'mode': 'LightlineMode',
+			\ 	'modified': 'LightlineModified',
+			\ 	'filetype': 'LightlineFiletype',
+			\ 	'fileformat': 'LightlineFileformat',
+			\ 	'fileencoding': 'LightlineFileencoding'
 			\ },
+			\ 'tabline' : {
+			\ 	'left': [ [ 'tabs' ] ],
+			\ 	'right': []
+			\ },
+			\ 'separator': { 'left': '', 'right': '' },
+			\ 'subseparator': { 'left': '', 'right': '' }
 			\}
 function! LightlineProjectPath()
-	return expand('%:p:h:t').'/'.expand('%:t')
+	let fname = expand('%:t')
+	return winwidth(0) < 50 ? '' :
+				\ fname =~# '\[coc-explorer\]' ? 'Fi' :
+				\ expand('%:p:h:t').'/'.expand('%:t')
 endfunction
 function! LightlineGitBranch()
 	let branch = FugitiveHead()
-	if branch != '' | return ' '.FugitiveHead() | endif
-	return ''
+	return winwidth(0) < 50 ? '' :
+				\ branch != '' ? ' '.branch : ''
+endfunction
+function! LightlineReadonly()
+	return winwidth(0) < 50 ? '' :
+				\ &readonly ? '' : ''
+endfunction
+function! LightlineModified()
+	return &ft ==# 'help' ? '' :
+				\ winwidth(0) < 50 ? '' :
+				\ &modified ? '+' : ''
+endfunction
+function! LightlineMode()
+	let fname = expand('%:t')
+	return fname =~# '^__Tagbar__' ? 'Tagbar' :
+				\ fname =~# '\[coc-explorer\]' ? 'Fi' :
+				\ lightline#mode()
+endfunction
+function! LightlineFiletype()
+	return winwidth(0) < 50 ? '' :
+				\ &filetype !=# '' ? &filetype : ''
+endfunction
+function! LightlineFileformat()
+	return winwidth(0) < 50 ? '' : &fileformat
+endfunction
+function! LightlineFileencoding()
+	return winwidth(0) < 50 ? '' :
+				\ &fenc !=# '' ? &fenc : &enc
 endfunction
 " Use autocmd to force lightline update
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
@@ -284,6 +329,22 @@ let g:netrw_altv=1
 let g:netrw_winsize=10
 " }}}
 
+" Functions {{{
+function! ClearBuf()
+	let bufnrs = range(1, bufnr('$'))
+	call filter(bufnrs, {_, v -> bufexists(v)})
+	for bufsingle in bufnrs
+		let bufsinglename = bufname(bufsingle)
+		echo bufsinglename
+		if empty(bufsinglename) || bufsinglename == 'NetrwTreeListing' || bufsinglename =~# '\[coc-explorer\]'
+			execute 'bwipeout!' bufsingle
+		endif
+	endfor
+endfunction
+nmap <leader>bc :call ClearBuf()<cr>
+autocmd VimLeavePre * call ClearBuf()
+" }}}
+
 " NERDCommenter {{{
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
@@ -322,6 +383,7 @@ nnoremap tc :tabclose<cr>
 nnoremap tt :tabnext<cr>
 nnoremap <Tab> :tabnext<cr>
 nnoremap tr :tabprevious<cr>
+nnoremap <S-Tab> :tabprevious<cr>
 nnoremap t1 1gt
 nnoremap t2 2gt
 nnoremap t3 3gt

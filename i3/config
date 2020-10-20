@@ -28,14 +28,14 @@ focus_wrapping true
 no_focus [window_type="tooltip"]
 
 # Hide edge and title bar
-hide_edge_borders none
-new_window none
-new_float none
+hide_edge_borders both
+#new_window none
+#new_float none
 
 # Borders
 default_border none
 default_floating_border none
-for_window [class=".*"] border pixel 0
+#for_window [class=".*"] border pixel 0
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
