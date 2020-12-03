@@ -53,6 +53,12 @@ plugins=(git z)
 
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# [macOS] icu4c
+if [ -d "/usr/local/opt/icu4c/bin" ]; then
+	export PATH=/usr/local/opt/icu4c/bin:$PATH
+	export PATH=/usr/local/opt/icu4c/sbin:$PATH
+fi
+
 # [macOS] if using nodejs@10
 if [ -d "/usr/local/opt/node@10" ]; then
 	export PATH=/usr/local/opt/node@10/bin:$PATH
