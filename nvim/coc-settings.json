@@ -7,6 +7,16 @@
       "initializationOptions": {
         "usePlaceholders": true
       }
+    },
+		"ccls": {
+      "command": "ccls",
+      "filetypes": ["c", "cpp", "objc", "objcpp"],
+      "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
+      "initializationOptions": {
+         "cache": {
+           "directory": "/tmp/ccls"
+         }
+       }
     }
   },
 	"list": {
@@ -16,10 +26,12 @@
 		},
 		"source": {
 			"files": {
-				"excludePatterns": ["node_modules/*", ".git/*", "data/*", "/tmp/*"]
+				"command": "rg",
+				"args": ["--hidden", "--files"],
+				"excludePatterns": ["**/dist/**", "**/node_modules/**", "**/.git/**", "**/data/**", "**/tmp**", "**/_**"]
 			},
 			"grep": {
-				"excludePatterns": ["node_modules/*", ".git/*", "data/*", "/tmp/*"]
+				"excludePatterns": ["**/node_modules/**", "**/.git/**", "**/data/**", "**/tmp**"]
 			}
 		}
 	},

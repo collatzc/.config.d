@@ -4,6 +4,7 @@
 " must be first line
 set nocompatible
 set modeline
+set termguicolors
 set modelines=5
 set showtabline=2
 set encoding=utf-8
@@ -39,13 +40,12 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'mhinz/vim-startify'
 Plugin 'leafOfTree/vim-vue-plugin'
 Plugin 'junegunn/fzf.vim'
-Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plugin 'neoclide/coc.nvim', {'branch': 'release'}
+Plugin 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --fronzen-lockfile'}
 call vundle#end()
 " }}}
 
 " Setting {{{
-let mapleader=","
+let mapleader="\\"
 " History (default 20)
 set history=500
 " Auto detect file types
@@ -58,6 +58,7 @@ set wildmenu
 " Unsaved file will hide; use :ls to show it
 set hid
 set lazyredraw
+
 " 默認不使用輸入法
 set iminsert=0
 set imsearch=0
@@ -89,7 +90,7 @@ autocmd InsertEnter * call Fcitx2zh()
 
 " coc
 set hidden
-set updatetime=1000
+set updatetime=500
 set signcolumn=yes
 inoremap <silent><expr> <TAB>
 	\ pumvisible() ? "\<C-n>" :
@@ -102,8 +103,9 @@ function! s:check_back_space() abort
 endfunction
 
 " vim-go
-let g:go_gopls_enabled=1
+let g:go_gopls_enabled=0
 " let g:go_debug=['lsp']
+let g:go_doc_keywordprg_enabled=0
 let g:go_def_mode="gopls"
 let g:go_info_mode="gopls"
 let g:go_fmt_command="goimports"
@@ -113,8 +115,8 @@ let g:go_term_enabled=1
 let g:go_term_reuse=1
 let g:go_term_close_on_exit=0
 let g:go_test_show_name=1
-let g:go_auto_type_info=1
 let g:go_def_mapping_enabled=0
+let g:go_test_timeout='3000s'
 let g:go_highlight_types=1
 let g:go_highlight_extra_types=1
 let g:go_highlight_fields=1
@@ -168,11 +170,15 @@ set mousehide
 set backspace=indent,eol,start
 set whichwrap=b,s,h,l,<,>,[,]
 " Highlight problematic white space
-set showbreak=↪\ 
+set showbreak=↪
 set listchars=tab:▸\ ,trail:·,extends:»,nbsp:·,eol:↲
 set list
-hi NonText ctermfg=8 guifg=gray
+hi NonText ctermfg=8 guifg=#434C5E
 hi SpecialKey ctermfg=8 guifg=gray
+hi Comment guifg=#6A7895
+hi Ignore ctermfg=8 guifg=#616E88
+hi CocHighlightText gui=bold guifg=#88C0D0 guibg=#4C566A
+
 "智能當前行高亮
 autocmd VimEnter,InsertLeave,WinEnter * set cursorline
 autocmd InsertEnter,WinLeave * set nocursorline
@@ -220,7 +226,7 @@ let g:lightline = {
 			\ },
 			\ 'active': {
 			\ 	'left': [ [ 'mode', 'paste' ],
-			\ 						[ 'gitbranch', 'readonly', 'projectpath', 'modified' ] ]
+			\ 						[ 'cocstatus', 'gitbranch', 'readonly', 'projectpath', 'modified' ] ]
 			\ }, 
 			\ 'inactive': {
 			\ 	'left': [ [ 'projectpath', 'modified' ] ]
@@ -229,6 +235,7 @@ let g:lightline = {
 			\ 	'lineinfo': '%3l:%-2c',
 			\ },
 			\ 'component_function': {
+			\ 	'cocstatus': 'coc#status',
 			\ 	'gitbranch': 'LightlineGitBranch',
 			\ 	'projectpath': 'LightlineProjectPath',
 			\ 	'readonly': 'LightlineReadonly',
@@ -333,11 +340,13 @@ let g:netrw_winsize=10
 function! ClearBuf()
 	let bufnrs = range(1, bufnr('$'))
 	call filter(bufnrs, {_, v -> bufexists(v)})
-	for bufsingle in bufnrs
-		let bufsinglename = bufname(bufsingle)
-		echo bufsinglename
-		if empty(bufsinglename) || bufsinglename == 'NetrwTreeListing' || bufsinglename =~# '\[coc-explorer\]'
-			execute 'bwipeout!' bufsingle
+	for bufnr in bufnrs
+		let bufname = bufname(bufnr)
+		if len(win_findbuf(bufnr)) == 0 && getbufvar(bufnr, '&mod') == 0
+			execute 'bwipeout!' bufnr
+		endif
+		if empty(bufname) || bufname == 'NetrwTreeListing' || bufname =~# '\[coc-explorer\]'
+			execute 'bwipeout!' bufnr
 		endif
 	endfor
 endfunction
@@ -371,7 +380,7 @@ nnoremap <leader>bd :bwipeout!<cr>
 nnoremap <leader>ba :ball<space>
 
 " Fils
-noremap <leader>xf :CocList files<cr>
+nnoremap <silent><nowait> <leader>xf :<C-u>CocList files<cr>
 
 " Session
 nnoremap <leader>sc :SClose<cr>
@@ -400,9 +409,27 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+function! s:show_documentation()
+	if (index(['vim','help'], &filetype) >= 0)
+		execute 'h ' . expand('<cword>')
+	elseif (coc#rpc#ready())
+		call CocActionAsync('doHover')
+	else
+		execute '!' . &keywordprg . ' ' . expand('<cword>')
+	endif
+endfunction
+nnoremap <silent> K :call <SID>show_documentation()<cr>
+
+" Highlight the symbol and its references when holding the cursor
+au CursorHold * silent call CocActionAsync('highlight')
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
 " Formatting selected code.
 xmap <leader>ff <Plug>(coc-format-selected)
-nmap <leader>ff <Plug>(coc-format-selected)
+nmap <leader>ff :Format<cr>
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
 nmap <silent> [[ <Plug>(coc-diagnostics-prev)
@@ -461,7 +488,7 @@ nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
 " Show commands
 nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
 " Bookmark
 nnoremap <silent> <space>m  :<C-u>CocList bookmark<cr>
 " Search workspace symbols
@@ -472,6 +499,19 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+" Use <leader>x for convert visual selected code to snippet
+xmap <leader>x  <Plug>(coc-convert-snippet)
 " }}}
 
 " FileTypes {{{

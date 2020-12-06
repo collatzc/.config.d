@@ -10,7 +10,7 @@ gaps inner 9
 gaps outer 0
 
 # Text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:Source Han Sans SC 9
+font pango:"Source Han Sans SC" 9
 
 # Split hori by default
 default_orientation horizontal
@@ -174,8 +174,9 @@ bindsym $mod+Shift+m exec i3-input -F '[con_mark="%s"] focus' -l 1 -P 'Goto: '
 
 bindsym $mod+F1 exec --no-startup-id ~/.config.d/monitor.sh && notify-send "Auto Screen Mode"
 bindsym $mod+F2 exec --no-startup-id pavucontrol
-bindsym $mod+F4 exec --no-startup-id flameshot gui
+bindsym $mod+F4 exec --no-startup-id deepin-screen-recorder
 bindsym $mod+F5 exec --no-startup-id ~/.config.d/monitor.sh DL && notify-send -h string:fgcolor:#ff4444 -h string:frcolor:#ff4444 "Dual Screen Left Mode"
+bindsym $mod+F7 exec --no-startup-id ~/.config.d/monitor.sh DR && notify-send -h string:fgcolor:#ff4444 -h string:frcolor:#ff4444 "Dual Screen RIGHT Mode"
 bindsym $mod+F10 exec --no-startup-id setxkbmap -option altwin:swap_alt_win && notify-send "[ALT] & [WIN] swapped"
 bindsym $mod+F11 exec --no-startup-id xbacklight -set 100% && notify-send "Full Brightness!"
 bindsym $mod+F12 exec --no-startup-id xset s off -dpms && notify-send "Display always on!"
@@ -217,6 +218,7 @@ bindsym $mod+r mode $mode_resize
 #for_window [window_type="popup_menu"] floating enable
 #for_window [window_type="tooltip"] floating enable
 #for_window [window_type="notification"] floating enable
+for_window [class="Blueman-manager"] floating enable
 for_window [class="Tor"] floating enable
 for_window [class=".+editor"] floating enable
 for_window [class="jetbrains-.+"] floating enable
