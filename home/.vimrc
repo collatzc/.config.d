@@ -4,7 +4,11 @@
 " must be first line
 set nocompatible
 set modeline
-set termguicolors
+if stridx($TERM, "256color") != -1
+	set t_Co=256
+else
+	set termguicolors
+endif
 set modelines=5
 set showtabline=2
 set encoding=utf-8
@@ -14,9 +18,6 @@ setglobal fileencoding=utf-8
 set fileencodings=utf-8,ucs-bom
 set visualbell
 set noshowmode
-if !has('gui_running')
-	set t_Co=256
-endif
 set nobomb
 " }}}
 
@@ -175,6 +176,8 @@ set listchars=tab:▸\ ,trail:·,extends:»,nbsp:·,eol:↲
 set list
 hi NonText ctermfg=8 guifg=#434C5E
 hi SpecialKey ctermfg=8 guifg=gray
+hi Visual ctermbg=8
+hi CursorLine cterm=underline ctermbg=0 guibg=#3B4252
 hi Comment guifg=#6A7895
 hi Ignore ctermfg=8 guifg=#616E88
 hi CocHighlightText gui=bold guifg=#88C0D0 guibg=#4C566A
@@ -444,7 +447,7 @@ nmap <leader>mu :CocCommand<space>bookmark.clearForCurrentFile<cr>
 inoremap <silent><expr> <c-h> coc#refresh()
 
 " fzf
-nnoremap <silent> gf :Rg<cr>
+nnoremap <silent> gf :CocList grep<cr>
 nnoremap <silent> gF :GFiles<cr>
 nnoremap <silent> ga :Rg<cr>
 nnoremap <silent> gw :CocList windows<cr>

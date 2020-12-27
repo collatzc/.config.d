@@ -53,13 +53,33 @@ plugins=(git z)
 
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# [macOS] icu4c
+# [darwin/*] icu4c
 if [ -d "/usr/local/opt/icu4c/bin" ]; then
 	export PATH=/usr/local/opt/icu4c/bin:$PATH
 	export PATH=/usr/local/opt/icu4c/sbin:$PATH
 fi
 
-# [macOS] if using nodejs@10
+# [darwin/arm64] Go
+if [ -d "/opt/go" ]; then
+	export PATH=/opt/go/bin:$PATH
+fi
+
+# [darwin/arm64] Homebrew
+if [ -d "/opt/homebrew" ]; then
+	export PATH=/opt/homebrew/bin:$PATH
+fi
+
+# [darwin/arm64] redis
+if [ -d "/opt/redis" ]; then
+	export PATH=/opt/redis/bin:$PATH
+fi
+
+# [darwin/arm64] VIMRUNTIME
+if [ -d "/usr/share/vim/vim82" ]; then
+	export VIMRUNTIME="/usr/share/vim/vim82"
+fi
+
+# [darwin/*] if using nodejs@10
 if [ -d "/usr/local/opt/node@10" ]; then
 	export PATH=/usr/local/opt/node@10/bin:$PATH
 fi
@@ -70,6 +90,11 @@ if [ -d "$HOME/go" ]; then
 	export PATH=$GOPATH/bin:$PATH
 	# go.mod
 	export GO111MODULE=auto
+fi
+
+# Rust cargo
+if [ -d "$HOME/.cargo" ]; then
+	source ~/.cargo/env
 fi
 
 # Android Studio @linux
@@ -141,11 +166,6 @@ alias cp='cp -i -v'
 alias mv='mv -i -v'
 alias diff='diff --color=auto'
 
-if [ -x "$(command -v nvim)" ]; then
-	alias __=nvim
-else
-	alias __=vim
-fi
 # alias zshconfig="vim ~/.zshrc"
 # alias ohmyzsh="vim ~/.oh-my-zsh"
 
@@ -160,3 +180,26 @@ if [ -d /opt/MonkeyDev ]; then
 	export MonkeyDevDeviceIP=
 	export PATH=/opt/MonkeyDev/bin:$PATH
 fi
+# [macOS]
+export CLICOLOR=1
+export LSCOLORS=ExFxBxDxCxegedabagacad
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/homebrew/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/homebrew/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/opt/homebrew/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/homebrew/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
