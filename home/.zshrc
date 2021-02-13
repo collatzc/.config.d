@@ -48,7 +48,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git z)
+plugins=(git)
 # User configuration
 
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -164,7 +164,8 @@ export LANG=en_US.UTF-8
 alias rm='rm -i -v'
 alias cp='cp -i -v'
 alias mv='mv -i -v'
-alias diff='diff --color=auto'
+#alias diff='diff --color=auto'
+alias diff='diff'
 
 # alias zshconfig="vim ~/.zshrc"
 # alias ohmyzsh="vim ~/.oh-my-zsh"

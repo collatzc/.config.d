@@ -47,6 +47,20 @@ call vundle#end()
 
 " Setting {{{
 let mapleader="\\"
+
+function! GetRunningOS()
+  if has("win32")
+    return "win"
+  endif
+  if has("unix")
+    if system('uname')=~'Darwin'
+      return "mac"
+    else
+      return "linux"
+    endif
+  endif
+endfunction
+let os=GetRunningOS()
 " History (default 20)
 set history=500
 " Auto detect file types
@@ -92,7 +106,16 @@ autocmd InsertEnter * call Fcitx2zh()
 " coc
 set hidden
 set updatetime=500
-set signcolumn=yes
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+if has('patch-8.1.1564')
+	set signcolumn=number
+else
+	set signcolumn=yes
+endif
+
 inoremap <silent><expr> <TAB>
 	\ pumvisible() ? "\<C-n>" :
 	\ <SID>check_back_space() ? "\<TAB>" :
@@ -147,7 +170,7 @@ autocmd VimEnter * silent! cd %:p:h
 " autocmd VimEnter * if argc() == 1 | cd argv()[0] | endif
 
 " Using OS clipboard
-set clipboard=unnamedplus
+set clipboard=unnamedplus,autoselect
 " enable usage of .vimrc from working dir
 set exrc
 " .vimrc cannot exec shell
@@ -176,13 +199,13 @@ set listchars=tab:▸\ ,trail:·,extends:»,nbsp:·,eol:↲
 set list
 hi NonText ctermfg=8 guifg=#434C5E
 hi SpecialKey ctermfg=8 guifg=gray
-hi Visual ctermbg=8
-hi CursorLine cterm=underline ctermbg=0 guibg=#3B4252
+hi Visual term=reverse cterm=reverse ctermbg=8
+hi CursorLine term=underline cterm=underline ctermbg=0 guibg=#3B4252
 hi Comment guifg=#6A7895
 hi Ignore ctermfg=8 guifg=#616E88
-hi CocHighlightText gui=bold guifg=#88C0D0 guibg=#4C566A
+hi CocHighlightText term=reverse ctermbg=8 guifg=#88C0D0 guibg=#4C566A
 
-"智能當前行高亮
+" 智能當前行高亮
 autocmd VimEnter,InsertLeave,WinEnter * set cursorline
 autocmd InsertEnter,WinLeave * set nocursorline
 
@@ -381,6 +404,12 @@ nnoremap <leader>bw :ls!<cr>:bwipeout!<space>
 nnoremap <leader>bd :bwipeout!<cr>
 " Rearrange the screen to open 1 win per buffer
 nnoremap <leader>ba :ball<space>
+
+" System clipboard [darwin]
+if os == 'mac'
+	vmap y :yank<cr> :call system('pbcopy', getreg('"'))<cr>
+	nmap yy :yank<cr> :call system('pbcopy', getreg('"'))<cr>
+endif
 
 " Fils
 nnoremap <silent><nowait> <leader>xf :<C-u>CocList files<cr>
