@@ -4,7 +4,22 @@
 " must be first line
 set nocompatible
 set modeline
-if stridx($TERM, "256color") != -1
+
+function! GetRunningOS()
+  if has("win32")
+    return "win"
+  endif
+  if has("unix")
+    if system('uname')=~'Darwin'
+      return "mac"
+    else
+      return "linux"
+    endif
+  endif
+endfunction
+let os=GetRunningOS()
+
+if os == 'mac' && stridx($TERM, "256color") != -1
 	set t_Co=256
 else
 	set termguicolors
@@ -48,19 +63,6 @@ call vundle#end()
 " Setting {{{
 let mapleader="\\"
 
-function! GetRunningOS()
-  if has("win32")
-    return "win"
-  endif
-  if has("unix")
-    if system('uname')=~'Darwin'
-      return "mac"
-    else
-      return "linux"
-    endif
-  endif
-endfunction
-let os=GetRunningOS()
 " History (default 20)
 set history=500
 " Auto detect file types
@@ -170,7 +172,11 @@ autocmd VimEnter * silent! cd %:p:h
 " autocmd VimEnter * if argc() == 1 | cd argv()[0] | endif
 
 " Using OS clipboard
-set clipboard=unnamedplus,autoselect
+if os == 'mac'
+	set clipboard=unnamedplus,autoselect
+else
+	set clipboard=unnamedplus
+endif
 " enable usage of .vimrc from working dir
 set exrc
 " .vimrc cannot exec shell

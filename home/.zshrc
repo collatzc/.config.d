@@ -127,6 +127,11 @@ if [ -d ~/.yarn/bin ]; then
 	export PATH=~/.yarn/bin:$PATH
 fi
 
+# [linux] nvm
+if [ -d /usr/share/nvm ]; then
+	source /usr/share/nvm/init-nvm.sh
+fi
+
 # macOS ruby@2.0
 if [ -d /usr/local/opt/ruby@2.0/bin ]; then
 	export PATH=/usr/local/opt/ruby@2.0/bin:$PATH
