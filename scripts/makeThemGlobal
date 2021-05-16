@@ -1,0 +1,4 @@
+#!/bin/sh
+
+ln -s ~/.config.d/scripts/fuck ~/.local/bin/fuck
+ln -s ~/.config.d/scripts/donefuck ~/.local/bin/donefuck

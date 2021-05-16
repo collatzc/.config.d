@@ -60,9 +60,9 @@ if [ -d "/usr/local/opt/icu4c/bin" ]; then
 fi
 
 # [darwin/arm64] Go
-if [ -d "/opt/go" ]; then
-	export PATH=/opt/go/bin:$PATH
-fi
+#if [ -d "/opt/go" ]; then
+#	export PATH=/opt/go/bin:$PATH
+#fi
 
 # [darwin/arm64] Homebrew
 if [ -d "/opt/homebrew" ]; then
@@ -186,6 +186,7 @@ if [ -d /opt/MonkeyDev ]; then
 	export MonkeyDevDeviceIP=
 	export PATH=/opt/MonkeyDev/bin:$PATH
 fi
+
 # [macOS]
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
@@ -196,16 +197,22 @@ export NVM_DIR="$HOME/.nvm"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/homebrew/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/opt/homebrew/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/opt/homebrew/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/homebrew/anaconda3/bin:$PATH"
-    fi
+if [ -d /opt/homebrew/anaconda3/bin ]; then
+	__conda_setup="$('/opt/homebrew/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+	if [ $? -eq 0 ]; then
+			eval "$__conda_setup"
+	else
+			if [ -f "/opt/homebrew/anaconda3/etc/profile.d/conda.sh" ]; then
+					. "/opt/homebrew/anaconda3/etc/profile.d/conda.sh"
+			else
+					export PATH="/opt/homebrew/anaconda3/bin:$PATH"
+			fi
+	fi
+	unset __conda_setup
 fi
-unset __conda_setup
 # <<< conda initialize <<<
 
+# [macOS] OpenJDK
+if [ -d /opt/homebrew/opt/openjdk ]; then
+	export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+fi

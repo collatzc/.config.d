@@ -40,22 +40,23 @@ set nobomb
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'editorconfig/editorconfig-vim'
 Plugin 'Shougo/neocomplcache.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'itchyny/lightline.vim'
 Plugin 'elzr/vim-json'
 Plugin 'collatzc/vim-pug'
 Plugin 'pangloss/vim-javascript'
+Plugin 'leafgarland/typescript-vim' " TypeScript syntax
+Plugin 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 Plugin 'fatih/vim-go'
 Plugin 'morhetz/gruvbox'
 Plugin 'arcticicestudio/nord-vim'
 Plugin 'cocopon/iceberg.vim'
-Plugin 'rakr/vim-one'
 Plugin 'tpope/vim-fugitive'
 Plugin 'mhinz/vim-startify'
 Plugin 'leafOfTree/vim-vue-plugin'
-Plugin 'junegunn/fzf.vim'
 Plugin 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --fronzen-lockfile'}
 call vundle#end()
 " }}}
@@ -214,6 +215,8 @@ hi CocHighlightText term=reverse ctermbg=8 guifg=#88C0D0 guibg=#4C566A
 " 智能當前行高亮
 autocmd VimEnter,InsertLeave,WinEnter * set cursorline
 autocmd InsertEnter,WinLeave * set nocursorline
+
+au FileType gitcommit let b:EditorConfig_disable = 1
 
 set ignorecase
 set smartcase
@@ -470,14 +473,8 @@ xmap <leader>ff <Plug>(coc-format-selected)
 nmap <leader>ff :Format<cr>
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
-nmap <silent> [[ <Plug>(coc-diagnostics-prev)
+nmap <silent> [[ <Plug>(coc-codeaction)
 nmap <silent> [] <Plug>(coc-diagnostics-next)
-" Bookmarks
-nmap <leader>mk <Plug>(coc-bookmark-toggle)
-nmap <leader>mi <Plug>(coc-bookmark-annotate)
-nmap <leader>mj <Plug>(coc-bookmark-prev)
-nmap <leader>ml <Plug>(coc-bookmark-next)
-nmap <leader>mu :CocCommand<space>bookmark.clearForCurrentFile<cr>
 " Use to trigger completion
 inoremap <silent><expr> <c-h> coc#refresh()
 
@@ -495,6 +492,8 @@ autocmd FileType python call s:runPython()
 function! s:runPython()
 	imap <f5> <esc>:w<cr>:!clear;python3 %<cr>
 endfunction
+
+au FileType javascript,typescript,css,scss,html set expandtab ts=2
 
 " Lazy Moving
 nnoremap <C-k> :m .-2<CR>==
@@ -527,8 +526,8 @@ nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
 nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document
 nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
-" Bookmark
-nnoremap <silent> <space>m  :<C-u>CocList bookmark<cr>
+" Marks: don't use coc-bookmark anymore
+nnoremap <silent> <space>m  :<C-u>CocList marks<cr>
 " Search workspace symbols
 nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
