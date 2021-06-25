@@ -1,5 +1,5 @@
 { 
-    "editor.fontFamily": "Fira Code Medium, Source Han Sans SC",
+    "editor.fontFamily": "Fira Code, Source Han Sans SC",
     "editor.fontLigatures": true,
     "editor.fontSize": 14,
     "editor.tabSize": 2,
@@ -50,6 +50,5 @@
     "vim.handleKeys": {
         "<C-d>": false
     },
-    "workbench.colorTheme": "GitHub Light",
     "go.useLanguageServer": true
 }
