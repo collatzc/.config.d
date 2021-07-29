@@ -64,11 +64,6 @@ fi
 #	export PATH=/opt/go/bin:$PATH
 #fi
 
-# [darwin/arm64] Homebrew
-if [ -d "/opt/homebrew" ]; then
-	export PATH=/opt/homebrew/bin:$PATH
-fi
-
 # [darwin/arm64] redis
 if [ -d "/opt/redis" ]; then
 	export PATH=/opt/redis/bin:$PATH
@@ -84,7 +79,7 @@ if [ -d "/usr/local/opt/node@10" ]; then
 	export PATH=/usr/local/opt/node@10/bin:$PATH
 fi
 
-# GOPATH
+# [*/*] GOPATH
 if [ -d "$HOME/go" ]; then
 	export GOPATH=$HOME/go
 	export PATH=$GOPATH/bin:$PATH
@@ -92,19 +87,19 @@ if [ -d "$HOME/go" ]; then
 	export GO111MODULE=auto
 fi
 
-# Rust cargo
+# [*/*] Rust cargo
 if [ -d "$HOME/.cargo" ]; then
 	source ~/.cargo/env
 fi
 
-# Android Studio @linux
+# [*/*] Android Studio @linux
 if [ -d "~/Android/Sdk" ]; then
 	export ANDROID_HOME=~/Android/Sdk
 	export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 fi
 
-# Python
-if [ -d /Users/cc/Library/Python/3.6/bin ]; then
+# [darwin/*] Python
+if [ -d /Users/$(whoami)/Library/Python/3.6/bin ]; then
 	export PATH=/Users/cc/Library/Python/3.6/bin:$PATH
 elif [ -d /Users/cc/Library/Python/2.7/bin ]; then
 	export PATH=/Users/cc/Library/Python/2.7/bin:$PATH
@@ -112,6 +107,10 @@ elif [ -d ~/Library/Python/2.7/bin ]; then
 	export PATH=~/Library/Python/2.7/bin:$PATH
 fi
 
+# [darwin/*] mactex
+if [ -d /usr/local/texlive/2021/bin/universal-darwin ]; then
+	export PATH=/usr/local/texlive/2021/bin/universal-darwin:$PATH
+fi
 if [ -d "/opt/cuda-10.0/bin" ]; then
 	export PATH=/opt/cuda-10.0/bin:$PATH
 	export LD_LIBRARY_PATH=/opt/cuda-10.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
@@ -127,7 +126,7 @@ if [ -d ~/.yarn/bin ]; then
 	export PATH=~/.yarn/bin:$PATH
 fi
 
-# [linux] nvm
+# [linux/*] nvm
 if [ -d /usr/share/nvm ]; then
 	source /usr/share/nvm/init-nvm.sh
 fi
@@ -215,4 +214,9 @@ fi
 # [macOS] OpenJDK
 if [ -d /opt/homebrew/opt/openjdk ]; then
 	export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+fi
+
+# [macOS] homebrew
+if [ -d /opt/homebrew/bin ]; then
+	export PATH="/opt/homebrew/bin:$PATH"
 fi
