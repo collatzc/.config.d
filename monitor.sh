@@ -15,8 +15,18 @@ if [ "$MONITORNO" = "1" ]; then
 fi
 
 case "$MONMODE" in
+	"S4K")
+		xrandr --dpi 192
+		#xrandr --output "${MONITOR[1]}" --mode 2560x1440 --primary --output "${MONITOR[0]}" --off
+		xrandr --output "${MONITOR[1]}" --mode 3840x2160 --scale 0.8x0.8 --primary --output "${MONITOR[0]}" --off
+		feh --bg-scale ~/Images/bg.jpg
+		;;
 	"DL")
 		xrandr --output "${MONITOR[1]}" --auto --output "${MONITOR[0]}" --auto --primary --right-of "${MONITOR[1]}"
+		feh --bg-scale ~/Images/bg.jpg --bg-scale ~/Images/bg.jpg
+		;;
+	"DLR21")
+		xrandr --output "${MONITOR[1]}" --auto --output "${MONITOR[2]}" --mode 1920x1080 --right-of "${MONITOR[1]}" --output "${MONITOR[0]}" --off
 		feh --bg-scale ~/Images/bg.jpg --bg-scale ~/Images/bg.jpg
 		;;
 	"TL21")
@@ -31,6 +41,11 @@ case "$MONMODE" in
 		xrandr --output "${MONITOR[2]}" --auto --output "${MONITOR[0]}" --auto --right-of "${MONITOR[2]}" --output "${MONITOR[1]}" --auto --right-of "${MONITOR[0]}"
 		feh --bg-scale ~/Images/bg.jpg --bg-scale ~/Images/bg.jpg --bg-scale ~/Images/bg.jpg
 		;;
+	"TMTR12")
+		xrandr --output "${MONITOR[0]}" --auto --output "${MONITOR[2]}" --auto --right-of "${MONITOR[0]}" --output "${MONITOR[1]}" --auto --above "${MONITOR[0]}"
+		feh --bg-scale ~/Images/bg.jpg --bg-scale ~/Images/bg.jpg --bg-scale ~/Images/bg.jpg
+		;;
+
 	"DT")
 		xrandr --output "${MONITOR[0]}" --mode 1920x1080 --primary --output "${MONITOR[1]}" --auto --above "${MONITOR[0]}"
 		feh --bg-scale ~/Images/bg.jpg --bg-scale ~/Images/bg.jpg

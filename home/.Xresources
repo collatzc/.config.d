@@ -43,6 +43,8 @@
 *color14:                 S_base1
 *color15:                 S_base3
 
+Xcursor.size:          16
+
 URxvt.font:            xft:FiraCode Nerd Font, xft:Source Han Sans, xft:emoji
 URxvt*boldFont:        xft:FiraCode Nerd Font:bold, xft:Source Han Sans:bold, xft:emoji
 URxvt*italicFont:      xft:FiraCode Nerd Font:italic, xft:Source Han Sans, xft:emoji
