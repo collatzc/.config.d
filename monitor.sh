@@ -26,7 +26,11 @@ case "$MONMODE" in
 		feh --bg-scale ~/Images/bg.jpg --bg-scale ~/Images/bg.jpg
 		;;
 	"DLR21")
-		xrandr --output "${MONITOR[1]}" --auto --output "${MONITOR[2]}" --mode 1920x1080 --right-of "${MONITOR[1]}" --output "${MONITOR[0]}" --off
+		xrandr --output "${MONITOR[1]}" --mode 1920x1080 --output "${MONITOR[2]}" --mode 1920x1080 --right-of "${MONITOR[1]}" --output "${MONITOR[0]}" --off
+		feh --bg-scale ~/Images/bg.jpg --bg-scale ~/Images/bg.jpg
+		;;
+	"DRL21")
+		xrandr --output "${MONITOR[1]}" --mode 1920x1080 --output "${MONITOR[2]}" --mode 1920x1080 --left-of "${MONITOR[1]}" --output "${MONITOR[0]}" --off
 		feh --bg-scale ~/Images/bg.jpg --bg-scale ~/Images/bg.jpg
 		;;
 	"TL21")

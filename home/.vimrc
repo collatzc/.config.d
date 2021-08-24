@@ -154,8 +154,19 @@ let g:go_highlight_variable_declarations=1
 let g:go_highlight_variable_assignments=1
 
 " vim-vue
-let g:vim_vue_plugin_use_scss=1
-
+let g:vim_vue_plugin_config = { 
+      \'syntax': {
+      \   'template': ['html'],
+      \   'script': ['javascript'],
+      \   'style': ['css'],
+      \},
+      \'full_syntax': [],
+      \'initial_indent': [],
+      \'attribute': 0,
+      \'keyword': 0,
+      \'foldexpr': 0,
+      \'debug': 0,
+      \}
 " vim-startify
 let g:startify_session_dir="~/.vim/sessions"
 let g:startify_lists=[
