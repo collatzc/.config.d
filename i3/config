@@ -206,6 +206,19 @@ mode $mode_resize {
 }
 bindsym $mod+r mode $mode_resize
 
+set $mode_workspace "   "
+mode $mode_workspace {
+	bindsym j move workspace to output eDP1
+	bindsym k move workspace to output DP1
+	bindsym l move workspace to output HDMI1
+	bindsym semicolon move workspace to output HDMI2
+
+	# back to normal: Enter or Escape
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+bindsym $mod+q mode $mode_workspace
+
 #for_window [class="[.]*"] floating enable
 #for_window [title="Preferences"] floating enable
 #for_window [title="Configuration"] floating enable
