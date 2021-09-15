@@ -8,7 +8,7 @@ MONITORNO="${#MONITOR[@]}"
 echo "There are ${MONITORNO} monitor(s) be found:"
 printf '%s\n' "${MONITOR[@]}"
 if [ "$MONITORNO" = "1" ]; then
-	xrandr --auto
+	xrandr --output "${MONITOR[0]}" --primary --mode 1920x1080 --output "VIRTUAL1" --off
 	echo "There is only one monitor!"
 	echo "Fin"
 	exit 1
@@ -22,7 +22,7 @@ case "$MONMODE" in
 		feh --bg-scale ~/Images/bg.jpg
 		;;
 	"S1")
-		xrandr --output "${MONITOR[1]}" --mode 1920x1080 --output "${MONITOR[0]}" --off
+		xrandr --output "${MONITOR[0]}" --mode 1920x1080 --primary
 		feh --bg-scale ~/Images/bg.jpg
 		;;
 	"S2")
@@ -34,7 +34,7 @@ case "$MONMODE" in
 		feh --bg-scale ~/Images/bg.jpg --bg-scale ~/Images/bg.jpg
 		;;
 	"DLR21")
-		xrandr --output "${MONITOR[1]}" --mode 1920x1080 --output "${MONITOR[2]}" --mode 1920x1080 --right-of "${MONITOR[1]}" --output "${MONITOR[0]}" --off
+		xrandr --output "${MONITOR[1]}" --mode 1920x1080 --primary --output "${MONITOR[2]}" --mode 1920x1080 --right-of "${MONITOR[1]}" --output "${MONITOR[0]}" --off
 		feh --bg-scale ~/Images/bg.jpg --bg-scale ~/Images/bg.jpg
 		;;
 	"DRL21")

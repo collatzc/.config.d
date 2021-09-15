@@ -187,7 +187,7 @@ autocmd VimEnter * silent! cd %:p:h
 if os == 'mac'
 	set clipboard=unnamedplus,autoselect
 else
-	set clipboard=unnamedplus
+	set clipboard+=unnamed
 endif
 " enable usage of .vimrc from working dir
 set exrc
