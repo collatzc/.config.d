@@ -75,9 +75,9 @@ if [ -d "/usr/share/vim/vim82" ]; then
 fi
 
 # [darwin/*] if using nodejs@10
-if [ -d "/usr/local/opt/node@10" ]; then
-	export PATH=/usr/local/opt/node@10/bin:$PATH
-fi
+# if [ -d "/usr/local/opt/node@10" ]; then
+#   export PATH=/usr/local/opt/node@10/bin:$PATH
+# fi
 
 # [*/*] GOPATH
 if [ -d "$HOME/go" ]; then
