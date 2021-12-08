@@ -8,6 +8,8 @@
 # commit_code：當已輸入編碼時，編碼上屏並切換到西文
 
 patch:
+  menu:
+    page_size: 9
   schema_list:
     - schema: double_pinyin_flypy
     - schema: luna_pinyin_simp
@@ -26,4 +28,12 @@ patch:
     save_options:
       - simplification
       - extended_charset
+  key_binder:
+    bindings:
+      - { when: composing, accept: Control+a, send: Home } # 光标跳转至行首
+      - { when: composing, accept: Control+e, send: End }  # 光标跳转至行尾
+      # move_by_word_with_tab: 这个太他妈好用了，Tab/Shift+Tab 切换光标至下/上一个拼音
+      - { when: composing, accept: ISO_Left_Tab, send: Shift+Left }
+      - { when: composing, accept: Shift+Tab, send: Shift+Left }
+      - { when: composing, accept: Tab, send: Shift+Right }
 

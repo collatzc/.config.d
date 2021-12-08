@@ -6,4 +6,26 @@ patch:
   show_notifications_via_notification_center: true
 
   style:
-    color_scheme: clean_white
+    color_scheme: purity_of_form_custom
+  preset_color_schemes:
+    purity_of_form_custom: # 对 purity_of_form 进行了略微调整，让色彩更柔和一点
+      name: 純粹的形式／Purity of Form
+      author: Collatz
+      candidate_format: "%c  %@  "
+      text_color: 0x333333 #0xc2c2c2
+      back_color: 0x444444
+      candidate_text_color: 0xeeeeee
+      corner_radius: 8
+      hilited_text_color: 0xeeeeee
+      hilited_back_color: 0x444444
+      hilited_candidate_text_color: 0x000000
+      hilited_candidate_back_color: 0xE3E3E3 #0xfafafa
+      comment_text_color: 0x808080
+      font_face: "SFCompactText-Regular"
+      font_point: 18
+      label_font_point: 13
+  app_options:
+    com.apple.Spotlight:
+      ascii_mode: true
+    com.microsoft.VSCode:
+      ascii_mode: true
