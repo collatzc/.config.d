@@ -6,24 +6,26 @@ patch:
   show_notifications_via_notification_center: true
 
   style:
-    color_scheme: purity_of_form_custom
+    color_scheme: apathy
+    candidate_list_layout: linear
+    text_orientation: horizontal
+    inline_preedit: true
   preset_color_schemes:
-    purity_of_form_custom: # 对 purity_of_form 进行了略微调整，让色彩更柔和一点
-      name: 純粹的形式／Purity of Form
-      author: Collatz
-      candidate_format: "%c  %@  "
-      text_color: 0x333333 #0xc2c2c2
-      back_color: 0x444444
-      candidate_text_color: 0xeeeeee
-      corner_radius: 8
-      hilited_text_color: 0xeeeeee
-      hilited_back_color: 0x444444
-      hilited_candidate_text_color: 0x000000
-      hilited_candidate_back_color: 0xE3E3E3 #0xfafafa
-      comment_text_color: 0x808080
-      font_face: "SFCompactText-Regular"
-      font_point: 18
-      label_font_point: 13
+    apathy:
+      author: "LIANG Hai | placeless"
+      candidate_format: "%c'%@''"
+      comment_text_color: 0x999999
+      corner_radius: 5
+      font_face: PingFangSC
+      font_point: 17
+      label_font_point: 17
+      back_color: 0xFFFFFF
+      text_color: 0x424242
+      label_color: 0xFFFFFF
+      hilited_candidate_back_color: 0xFFF0E4
+      hilited_candidate_text_color: 0xEE6E00
+      hilited_candidate_label_color: 0xFFF0E4
+      name: "冷漠／Apathy"
   app_options:
     com.apple.Spotlight:
       ascii_mode: true
