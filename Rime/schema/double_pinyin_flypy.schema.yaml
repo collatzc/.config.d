@@ -10,30 +10,33 @@ schema:
     - Rime schema by 佛振 <chen.sst@gmail.com>
     - cc <cc@collatz.me>
   description: |
-    朙月拼音＋小鶴雙拼方案。
+    小鶴雙拼方案。
   dependencies:
     - stroke
-
-switches:
+# 基本不用切换，因为不用扩展字符集，也不用 emoji
+switches: 
   - name: ascii_mode
     reset: 0
     states: [ 中文, 西文 ]
   - name: full_shape
+    reset: 0
     states: [ 半角, 全角 ]
-  - name: simplification
-    reset: 1
-    states: [ 漢字, 汉字 ]
   - name: ascii_punct
     states: [ 。，, ．， ]
 
+# 只有简化字中文，所以
+# 删掉了 ascii_composer
+# 删掉了 ascii_segmentor
+# 删掉了 filters
+# selector 提前，方便;次选及'一选
 engine:
   processors:
     - ascii_composer
     - recognizer
     - key_binder
     - speller
-    - punctuator
     - selector
+    - punctuator
     - navigator
     - express_editor
   segmentors:
@@ -44,15 +47,14 @@ engine:
     - fallback_segmentor
   translators:
     - punct_translator
-    - reverse_lookup_translator
     - script_translator
-  filters:
-    - simplifier
-    - uniquifier
 
+# 增加了 :./-=_+ 作为输入码
+# 便于在打字中，不中断地输入 3.14、2:00-3:00 等
+# 始码限制为：仅字母和数字
 speller:
-  alphabet: zyxwvutsrqponmlkjihgfedcba
-  delimiter: " '"
+  alphabet: 'zyxwvutsrqponmlkjihgfedcba0987654321,.:!()/-=_+'
+  initials: 'zyxwvutsrqponmlkjihgfedcba0987654321'
   algebra:
     - erase/^xx$/
     - derive/^([jqxy])u$/$1v/
@@ -84,58 +86,42 @@ speller:
     - xform/ui$/V/
     - xform/in$/B/
     - xlit/QWRTYUIOPSDFGHJKLZXCVBNM/qwrtyuiopsdfghjklzxcvbnm/
-    #- abbrev/^(.).+$/$1/
 
+# 当前只有八股文简化字和袖珍简化字词库
+# 其它词库，在 extended 中增加引用
+# 繁体词库编译错误，需要修改前面的 switcher 和 filters
+# 增加八股文简化字语言模型，优化长句输入
 translator:
-  dictionary: luna_pinyin
+  dictionary: extended
   prism: double_pinyin_flypy
-  preedit_format:
-    - xform/([bpmfdtnljqx])n/$1iao/
-    - xform/(\w)g/$1eng/
-    - xform/(\w)q/$1iu/
-    - xform/(\w)w/$1ei/
-    - xform/([dtnlgkhjqxyvuirzcs])r/$1uan/
-    - xform/(\w)t/$1ve/
-    - xform/(\w)y/$1un/
-    - xform/([dtnlgkhvuirzcs])o/$1uo/
-    - xform/(\w)p/$1ie/
-    - xform/([jqx])s/$1iong/
-    - xform/(\w)s/$1ong/
-    - xform/(\w)d/$1ai/
-    - xform/(\w)f/$1en/
-    - xform/(\w)h/$1ang/
-    - xform/(\w)j/$1an/
-    - xform/([gkhvuirzcs])k/$1uai/
-    - xform/(\w)k/$1ing/
-    - xform/([jqxnl])l/$1iang/
-    - xform/(\w)l/$1uang/
-    - xform/(\w)z/$1ou/
-    - xform/([gkhvuirzcs])x/$1ua/
-    - xform/(\w)x/$1ia/
-    - xform/(\w)c/$1ao/
-    - xform/([dtgkhvuirzcs])v/$1ui/
-    - xform/(\w)b/$1in/
-    - xform/(\w)m/$1ian/
-    - xform/([aoe])\1(\w)/$1$2/
-    - "xform/(^|[ '])v/$1zh/"
-    - "xform/(^|[ '])i/$1ch/"
-    - "xform/(^|[ '])u/$1sh/"
-    - xform/([jqxy])v/$1u/
-    - xform/([nl])v/$1ü/
+  contextual_suggestions: true
+  max_homophones: 7
 
-reverse_lookup:
-  dictionary: stroke
-  enable_completion: true
-  prefix: "`"
-  suffix: "'"
-  tips: 〔筆畫〕
-  preedit_format:
-    - xlit/hspnz/一丨丿丶乙/
-  comment_format:
-    - xform/([nl])v/$1ü/
+grammar:
+  language: zh-hans-t-essay-bgw
 
+# 无前缀输入简单的预制表情和键盘符号
+# 小鹤双拼没有 bq 和 kb 的编码
 punctuator:
   import_preset: default
+  symbols:
+    "bq": [😂️, 😅️, 🎉, 🐂, 😱️, 👌, 😇️, 🙃️, 🤔️, 💊️, 💯️, 👍️, 🙈️, 💩️, 😈️ ]
+    "kb": [⌘, ⌥, ⇧, ⌃, ⎋, ⇪, , ⌫, ⌦, ↩︎, ⏎, ↑, ↓, ←, →, ↖, ↘, ⇟, ⇞]
+  half_shape:
+    "\\" : "、"
+    "#" : "#"
+    "@" : "@"
+    "~": "~"
+    "/": "/"
+    "'": {pair: ["「", "」"]}
+    "[": "["
+    "]": "]"
+    "{": "{"
+    "}": "}"
+    "*": "*"
+    "%": "%"
+    "<" : ["<", "《"]
+    ">" : [">", "》"]
 
 key_binder:
   import_preset: default
@@ -143,4 +129,4 @@ key_binder:
 recognizer:
   import_preset: default
   patterns:
-    reverse_lookup: "`[a-z]*'?$"
+    punct: "^(bq|kb)$"
