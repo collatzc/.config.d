@@ -13,7 +13,6 @@ schema:
     小鶴雙拼方案。
   dependencies:
     - stroke
-# 基本不用切换，因为不用扩展字符集，也不用 emoji
 switches: 
   - name: ascii_mode
     reset: 0
@@ -24,9 +23,6 @@ switches:
   - name: ascii_punct
     states: [ 。，, ．， ]
 
-# 只有简化字中文，所以
-# 删掉了 ascii_composer
-# 删掉了 ascii_segmentor
 # 删掉了 filters
 # selector 提前，方便;次选及'一选
 engine:
@@ -120,11 +116,12 @@ punctuator:
     "}": "}"
     "*": "*"
     "%": "%"
-    "<" : ["<", "《"]
-    ">" : [">", "》"]
 
 key_binder:
   import_preset: default
+  bindings:
+    - { when: paging, accept: bracketleft, send: Page_Up }
+    - { when: has_menu, accept: bracketright, send: Page_Down }
 
 recognizer:
   import_preset: default
