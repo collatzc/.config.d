@@ -49,7 +49,7 @@ engine:
 # 便于在打字中，不中断地输入 3.14、2:00-3:00 等
 # 始码限制为：仅字母和数字
 speller:
-  alphabet: 'zyxwvutsrqponmlkjihgfedcba0987654321,.:!()/-=_+'
+  alphabet: 'zyxwvutsrqponmlkjihgfedcba0987654321:!()/-=_+'
   initials: 'zyxwvutsrqponmlkjihgfedcba0987654321'
   algebra:
     - erase/^xx$/
