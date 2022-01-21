@@ -27,6 +27,8 @@ patch:
       hilited_candidate_label_color: 0xFFF0E4
       name: "冷漠／Apathy"
   app_options:
+    com.apple.Terminal:
+      ascii_mode: true
     com.apple.Spotlight:
       ascii_mode: true
     com.microsoft.VSCode:
