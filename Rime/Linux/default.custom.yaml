@@ -2,6 +2,10 @@
 # rm ~/.config/fcitx/rime/build/default.yaml && fcitx-remote -r
 
 patch:
+  menu:
+    page_size: 3
+    alternative_select_keys: " ;'"
+    page_down_cycle: true
   "style/font_point": 14
   schema_list:
     - schema: double_pinyin_flypy

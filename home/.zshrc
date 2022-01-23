@@ -59,6 +59,11 @@ if [ -d "/usr/local/opt/icu4c/bin" ]; then
 	export PATH=/usr/local/opt/icu4c/sbin:$PATH
 fi
 
+# [linux] Go
+if [ -d "/usr/local/go" ]; then
+	export PATH=/usr/local/go/bin:$PATH
+fi
+
 # [darwin/arm64] redis
 if [ -d "/opt/redis" ]; then
 	export PATH=/opt/redis/bin:$PATH
@@ -179,27 +184,24 @@ fi
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-if [ "x${TERM_PROGRAM}" != "xvscode" ]; then
-	# >>> conda initialize >>>
-	# !! Contents within this block are managed by 'conda init' !!
-	if [ -d /opt/homebrew/anaconda3/bin ]; then
-		__conda_setup="$('/opt/homebrew/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-		if [ $? -eq 0 ]; then
-				eval "$__conda_setup"
-		else
-				if [ -f "/opt/homebrew/anaconda3/etc/profile.d/conda.sh" ]; then
-						. "/opt/homebrew/anaconda3/etc/profile.d/conda.sh"
-				else
-						export PATH="/opt/homebrew/anaconda3/bin:$PATH"
-				fi
-		fi
-		unset __conda_setup
-	fi
-	# <<< conda initialize <<<
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/cc/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/cc/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/cc/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/cc/anaconda3/bin:$PATH"
+    fi
 fi
+unset __conda_setup
+# <<< conda initialize <<<
 
 # [macOS] OpenJDK
 if [ -d /opt/homebrew/opt/openjdk ]; then
