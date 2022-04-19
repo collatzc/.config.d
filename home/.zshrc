@@ -64,6 +64,11 @@ if [ -d "/usr/local/go" ]; then
 	export PATH=/usr/local/go/bin:$PATH
 fi
 
+# [linux] snap
+if [ -d "/snap/bin" ]; then
+	export PATH=/snap/bin:$PATH
+fi
+
 # [darwin/arm64] redis
 if [ -d "/opt/redis" ]; then
 	export PATH=/opt/redis/bin:$PATH
