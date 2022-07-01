@@ -69,9 +69,11 @@ if [ -d "/snap/bin" ]; then
 	export PATH=/snap/bin:$PATH
 fi
 
-# [darwin/arm64] redis
-if [ -d "/opt/redis" ]; then
-	export PATH=/opt/redis/bin:$PATH
+# [darwin/arm64] flutter
+if [ -d "/opt/flutter" ]; then
+	export PATH=$PATH:/opt/flutter/bin
+	export PUB_HOSTED_URL=https://pub.flutter-io.cn
+	export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 fi
 
 # [darwin/arm64] VIMRUNTIME
@@ -83,6 +85,11 @@ fi
 # if [ -d "/usr/local/opt/node@10" ]; then
 #   export PATH=/usr/local/opt/node@10/bin:$PATH
 # fi
+
+# [darwin/*] if using nodejs@16
+if [ -d "/opt/homebrew/opt/node@16" ]; then
+  export PATH=/opt/homebrew/opt/node@16/bin:$PATH
+fi
 
 # [*/*] GOPATH
 if [ -d "$HOME/go" ]; then
@@ -101,6 +108,11 @@ fi
 if [ -d "~/Android/Sdk" ]; then
 	export ANDROID_HOME=~/Android/Sdk
 	export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+fi
+
+# [darwin/*] Android SDK Command-Line Tools
+if [ -d ~/Library/Android/sdk/tools/bin ]; then
+	export PATH=$PATH:~/Library/Android/sdk/tools/bin
 fi
 
 # [darwin/*] Python
@@ -194,9 +206,10 @@ fi
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# [*] nvm
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -219,6 +232,6 @@ if [ -d /opt/homebrew/opt/openjdk ]; then
 fi
 
 # [macOS] homebrew
-if [ -d /opt/homebrew/bin ]; then
-	export PATH="/opt/homebrew/bin:$PATH"
-fi
+#if [ -d /opt/homebrew/bin ]; then
+#	export PATH="/opt/homebrew/bin:$PATH"
+#fi
