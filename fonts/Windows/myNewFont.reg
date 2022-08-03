@@ -11,4 +11,4 @@ Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\FontSubstitutes]
 
-"Segoe UI"="Source Han Sans SC VF"
+"Segoe UI"="Source Han Sans SC VF Normal"
