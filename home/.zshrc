@@ -235,3 +235,8 @@ fi
 #if [ -d /opt/homebrew/bin ]; then
 #	export PATH="/opt/homebrew/bin:$PATH"
 #fi
+
+# pnpm
+export PNPM_HOME="/home/cc/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
