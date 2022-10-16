@@ -6,7 +6,7 @@ patch:
     page_size: 3
     alternative_select_keys: " ;'"
     page_down_cycle: true
-  "style/font_point": 14
+  "style/font_point": 12
   schema_list:
     - schema: double_pinyin_flypy
   switcher:
