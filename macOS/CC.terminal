@@ -147,11 +147,11 @@
 	AAAZAAAAAAAAAAAAAAAAAAAA2Q==
 	</data>
 	<key>BackgroundAlphaInactive</key>
-	<real>0.34888518258426965</real>
+	<real>0.69999999999999996</real>
 	<key>BackgroundBlur</key>
 	<real>0.34999999999999998</real>
 	<key>BackgroundBlurInactive</key>
-	<real>0.15189784631010167</real>
+	<real>0.34999999999999998</real>
 	<key>BackgroundColor</key>
 	<data>
 	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
@@ -217,7 +217,7 @@
 	<key>UseBrightBold</key>
 	<true/>
 	<key>WindowTitle</key>
-	<string>Nord</string>
+	<string></string>
 	<key>name</key>
 	<string>CC</string>
 	<key>type</key>
