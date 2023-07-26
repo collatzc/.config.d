@@ -100,8 +100,8 @@ if [ -d "$HOME/go" ]; then
 fi
 
 # [*/*] Rust cargo
-if [ -d "$HOME/.cargo" ]; then
-	source ~/.cargo/env
+if [ -d "$HOME/.cargo/env" ]; then
+	source $HOME/.cargo/env
 fi
 
 # [*/*] Android Studio @linux
@@ -164,7 +164,9 @@ fi
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
-source $ZSH/oh-my-zsh.sh
+if [ -d "$ZSH" ]; then
+	source $ZSH/oh-my-zsh.sh
+fi
 
 export LANG=en_US.UTF-8
 
