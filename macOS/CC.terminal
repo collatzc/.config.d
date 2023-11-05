@@ -196,6 +196,14 @@
 	amVjdAgRGiQpMjdJTFFTV11kand+n6GjqLO8xMcAAAAAAAABAQAAAAAAAAAZAAAAAAAA
 	AAAAAAAAAAAA0A==
 	</data>
+	<key>ShowCommandKeyInTitle</key>
+	<false/>
+	<key>ShowRepresentedURLPathInTitle</key>
+	<true/>
+	<key>ShowShellCommandInTitle</key>
+	<true/>
+	<key>ShowWindowSettingsNameInTitle</key>
+	<false/>
 	<key>TextBoldColor</key>
 	<data>
 	YnBsaXN0MDDUAQIDBAUGBwpYJHZlcnNpb25ZJGFyY2hpdmVyVCR0b3BYJG9iamVjdHMS
@@ -218,8 +226,12 @@
 	<true/>
 	<key>WindowTitle</key>
 	<string></string>
+	<key>columnCount</key>
+	<integer>160</integer>
 	<key>name</key>
 	<string>CC</string>
+	<key>rowCount</key>
+	<integer>40</integer>
 	<key>type</key>
 	<string>Window Settings</string>
 </dict>
