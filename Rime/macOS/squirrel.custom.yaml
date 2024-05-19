@@ -2,6 +2,7 @@
 # encoding: utf-8
 
 patch:
+  keyboard_layout: 'USExtended'
   us_keyboard_layout: true
   show_notifications_via_notification_center: true
 
