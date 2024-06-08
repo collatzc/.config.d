@@ -158,7 +158,7 @@ if [ -d /usr/local/opt/ruby@2.0/bin ]; then
 	export PATH=/usr/local/opt/ruby@2.0/bin:$PATH
 fi
 
-if [ -e /usr/libexec/java_home ]; then
+if [ -d /usr/libexec/java_home ]; then
 	export JAVA_HOME=$(/usr/libexec/java_home)
 fi
 
@@ -209,9 +209,9 @@ export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 
 # [*] nvm
-#export NVM_DIR="$HOME/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 if [[ -v USRCC_CONDA && ! -z "$USRCC_CONDA" ]]; then
 	# >>> conda initialize >>>
@@ -263,9 +263,14 @@ if [ -d /opt/homebrew/opt/openjdk ]; then
 fi
 
 # [macOS] homebrew
-#if [ -d /opt/homebrew/bin ]; then
-#	export PATH="/opt/homebrew/bin:$PATH"
-#fi
+if [ -d /opt/homebrew ]; then
+	export HOMEBREW_PREFIX="/opt/homebrew";
+	export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
+	export HOMEBREW_REPOSITORY="/opt/homebrew";
+	export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
+	export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
+	export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
+fi
 
 # pnpm
 export PNPM_HOME="/home/cc/.local/share/pnpm"
