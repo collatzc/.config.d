@@ -59,6 +59,11 @@ if [ -d "/usr/local/opt/icu4c/bin" ]; then
 	export PATH=/usr/local/opt/icu4c/sbin:$PATH
 fi
 
+# [*/*] local bin
+if [ -d "/Users/cc/.local/bin" ]; then
+	export PATH=/Users/cc/.local/bin:$PATH
+fi
+
 # [linux] Go
 if [ -d "/usr/local/go" ]; then
 	export PATH=/usr/local/go/bin:$PATH
