@@ -102,11 +102,11 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
 [window]
 decorations = "none"
 dynamic_padding = true
-opacity = 0.9
+opacity = 0.8
 
 [window.dimensions]
-columns = 140
-lines = 33
+columns = 180
+lines = 53
 
 [window.padding]
 x = 3
