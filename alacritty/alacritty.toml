@@ -3,6 +3,9 @@ animation = "EaseOutExpo"
 color = "0xffffff"
 duration = 0
 
+[cursor]
+style = { shape="Block", blinking="Always" }
+
 [colors]
 draw_bold_text_with_bright_colors = true
 
@@ -103,9 +106,10 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
 decorations = "none"
 dynamic_padding = true
 opacity = 0.8
+blur = true
 
 [window.dimensions]
-columns = 180
+columns = 80
 lines = 53
 
 [window.padding]
