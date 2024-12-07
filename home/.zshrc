@@ -50,6 +50,13 @@ DISABLE_AUTO_TITLE="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 # User configuration
+RPROMPT="%D{%Y-%m-%d %H:%M:%S}"
+
+# kitty
+if [ "$TERM" = "xterm-kitty" ]; then
+  export KITTY_CONFIG_DIRECTORY="/Users/{$USER}/.config/kitty"
+  alias ssh="kitty +kitten ssh"
+fi
 
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -197,8 +204,12 @@ export LANG=en_US.UTF-8
 alias rm='rm -i -v'
 alias cp='cp -i -v'
 alias mv='mv -i -v'
-#alias diff='diff --color=auto'
-alias diff='diff'
+alias diff='diff --color=auto'
+
+if command -v lazygit 2>&1 >/dev/null
+then
+  alias lg='lazygit'
+fi
 
 # alias zshconfig="vim ~/.zshrc"
 # alias ohmyzsh="vim ~/.oh-my-zsh"
