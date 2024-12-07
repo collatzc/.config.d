@@ -5,6 +5,7 @@
     "lazyvim.plugins.extras.editor.mini-move",
     "lazyvim.plugins.extras.lang.vue",
     "lazyvim.plugins.extras.ui.edgy",
+    "lazyvim.plugins.extras.ui.mini-animate",
     "lazyvim.plugins.extras.util.dot",
     "plugins.extras.coding.ai.codeium",
     "plugins.extras.coding.annotation",
@@ -26,6 +27,7 @@
     "plugins.extras.editor.flash-extended",
     "plugins.extras.editor.git.diffview",
     "plugins.extras.editor.gitsigns-extended",
+    "plugins.extras.editor.marks.arrow",
     "plugins.extras.editor.marks.grapple",
     "plugins.extras.editor.neo-tree-extended",
     "plugins.extras.editor.package-info",
@@ -66,17 +68,16 @@
     "plugins.extras.ui.noice-extended",
     "plugins.extras.ui.rainbow-delimeters",
     "plugins.extras.ui.smooth-scrolling",
+    "plugins.extras.ui.transparent",
     "plugins.extras.ui.which-key-extended",
     "plugins.extras.util.icon-picker",
     "plugins.extras.util.kitty-scrollback",
     "plugins.extras.util.mason-lock",
-    "plugins.extras.util.neovide",
     "plugins.extras.util.persistence-extended",
     "plugins.extras.util.smart-splits",
     "plugins.extras.util.snacks-extended",
     "plugins.extras.util.vscode",
-    "plugins.extras.util.yadm",
-    "plugins.extras.util.yazi"
+    "plugins.extras.util.yadm"
   ],
   "news": {
     "NEWS.md": "7429"

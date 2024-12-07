@@ -30,6 +30,7 @@ map("n", "<leader>fT", "<Nop>")
 -- Save without formatting
 map("n", "<A-s>", "<cmd>noautocmd w<CR>", { desc = "Save Without Formatting" })
 -- Save
+map("i", "<D-s>", "<Esc><cmd>w<CR>", { desc = "Save Without Formatting" })
 map("n", "<D-s>", "<cmd>w<CR>", { desc = "Save Without Formatting" })
 
 -- Cursor navigation on insert mode
@@ -46,9 +47,10 @@ map("n", "+", "<C-a>")
 map("n", "-", "<C-x>")
 
 -- Tabs
-map("n", "]<tab>", "<cmd>tabnext<cr>", { desc = "Next Tab" })
-map("n", "[<tab>", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
-map("n", "<s-tab>", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
+map("n", "]<tab>", "<cmd>tabnext<cr>", { desc = "Tab Next" })
+map("n", "[<tab>", "<cmd>tabprevious<cr>", { desc = "Tab Previous" })
+map("n", "<s-tab>", "<cmd>tabprevious<cr>", { desc = "Tab Previous" })
+map("n", "<s-q>", "<cmd>tabclose<cr>", { desc = "Tab Close" })
 for i = 1, 9 do
   map("n", "<leader><tab>" .. i, "<cmd>tabn " .. i .. "<cr>", { desc = "Tab " .. i })
 end

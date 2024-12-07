@@ -5,7 +5,7 @@ local ag = vim.api.nvim_create_augroup
 ac("BufRead", {
   pattern = ".env",
   callback = function()
-    vim.diagnostic.disable(false)
+    vim.diagnostic.enable(false)
   end,
 })
 
@@ -23,7 +23,8 @@ local auto_close_filetype = {
 ac("BufLeave", {
   group = ag("lazyvim_auto_close_win", { clear = true }),
   callback = function(event)
-    local ft = vim.api.nvim_buf_get_option(event.buf, "filetype")
+    local ft = vim.api.nvim_get_option_value("filetype", { buf = event.buf })
+      or vim.api.nvim_buf_get_option(event.buf, "filetype")
 
     if vim.fn.index(auto_close_filetype, ft) ~= -1 then
       local winids = vim.fn.win_findbuf(event.buf)
@@ -75,7 +76,7 @@ ac({ "BufNewFile", "BufRead" }, {
   group = ag("DisableEslintOnNodeModules", { clear = true }),
   pattern = { "**/node_modules/**", "node_modules", "/node_modules/*" },
   callback = function()
-    vim.diagnostic.disable(false)
+    vim.diagnostic.enable(false)
   end,
 })
 

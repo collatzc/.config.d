@@ -20,6 +20,22 @@ return {
     build = function()
       require("go.install").update_all_sync()
     end,
+    config = function()
+      require("go").setup({
+        goimports = "gopls",
+        gofmt = "gopls",
+        fillstruct = "gopls",
+        lsp_cfg = true,
+        diagnostic = { -- set diagnostic to false to disable vim.diagnostic.config setup,
+          -- true: default nvim setup
+          hdlr = true, -- hook lsp diag handler and send diag to quickfix
+          underline = false,
+          virtual_text = { spacing = 1, prefix = "" }, -- virtual text setup
+          signs = { "", "", "", "" }, -- set to true to use default signs, an array of 4 to specify custom signs
+          update_in_insert = false,
+        },
+      })
+    end,
   },
   {
     "mfussenegger/nvim-lint",

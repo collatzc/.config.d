@@ -18,11 +18,12 @@ end
 
 local linter = function()
   local linters = require("lint").linters_by_ft[vim.bo.filetype]
+  -- local linters = require("lint").get_running()
   if #linters == 0 then
     return ""
   end
 
-  return "󱉶 "
+  return "󱉶 " .. vim.inspect(linters)
 end
 
 return {
@@ -31,7 +32,15 @@ return {
     opts.options.component_separators = { left = "", right = "" }
     opts.options.section_separators = { left = "", right = "" }
 
-    opts.sections.lualine_a = { { "mode", fmt = function(res) return res:sub(1,1) end, icon = "" } }
+    opts.sections.lualine_a = {
+      {
+        "mode",
+        fmt = function(res)
+          return res:sub(1, 1)
+        end,
+        icon = "",
+      },
+    }
     opts.sections.lualine_c[4] = {
       LazyVim.lualine.pretty_path({
         filename_hl = "Bold",

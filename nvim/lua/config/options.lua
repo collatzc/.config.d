@@ -55,3 +55,29 @@ if vim.fn.has("nvim-0.10") == 1 then
 end
 
 o.conceallevel = 2
+
+-- Icon for diagnostics
+vim.diagnostic.config({
+  virtual_text = {
+    prefix = " ",
+  },
+  underline = false,
+  update_in_insert = false,
+})
+-- Highlight line number instead of having icons in sign column
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+for _, diag in ipairs({ "Error", "Warn", "Info", "Hint" }) do
+  vim.fn.sign_define("DiagnosticSign" .. diag, {
+    text = signs[diag],
+    texthl = "DiagnosticSign" .. diag,
+    linehl = "",
+    numhl = "DiagnosticSign" .. diag,
+  })
+end
+-- Show line diagnostics automatically in hover window
+vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+  group = vim.api.nvim_create_augroup("float_diagnostic_cursor", { clear = true }),
+  callback = function()
+    vim.diagnostic.open_float(nil, { focus = false, scope = "cursor" })
+  end,
+})
