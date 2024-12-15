@@ -24,12 +24,15 @@ require("lazy").setup({
     backdrop = 100,
   },
   defaults = {
-    lazy = true,
+    lazy = false,
     version = false, -- always use the latest git commit
     -- version = "*", -- try installing the latest stable version for plugins that support semver
   },
+  install = {
+    colorscheme = { "catppuccin", "everforest", "nord" },
+  },
   local_spec = true,
-  checker = { enabled = true }, -- automatically check for plugin updates
+  checker = { enabled = true, notify = false }, -- automatically check for plugin updates
   performance = {
     cache = {
       enabled = true,

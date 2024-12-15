@@ -3,7 +3,6 @@ local palette = require("catppuccin.palettes").get_palette("macchiato") -- Impor
 return {
   {
     "catppuccin/nvim",
-    lazy = false,
     name = "catppuccin",
     opts = {
       styles = {
@@ -12,6 +11,11 @@ return {
       background = {
         light = "latte",
         dark = "macchiato",
+      },
+      dim_inactive = {
+        enable = true,
+        shade = "dark",
+        percentage = 0.2,
       },
       term_colors = true,
       custom_highlights = function()
@@ -35,12 +39,7 @@ return {
       integrations = {
         alpha = true,
         cmp = true,
-        barbecue = {
-          dim_dirname = true, -- directory name is dimmed by default
-          bold_basename = true,
-          dim_context = false,
-          alt_background = false,
-        },
+        blink_cmp = true,
         colorful_winsep = {
           enabled = true,
           color = "lavender",
@@ -71,12 +70,14 @@ return {
             hints = { "italic" },
             warnings = { "italic" },
             information = { "italic" },
+            ok = { "italic" },
           },
           underlines = {
             errors = { "underline" },
             hints = { "underline" },
             warnings = { "underline" },
             information = { "underline" },
+            ok = { "italic" },
           },
           inlay_hints = {
             background = true,

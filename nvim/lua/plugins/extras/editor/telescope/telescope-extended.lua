@@ -9,6 +9,11 @@ return {
     -- stylua: ignore
     keys = {
       {
+        "<M-S-o>",
+        LazyVim.pick("lsp_document_symbols", { symbols = { "Class", "Function", "Method", "Constructor", "Interface", "Variable", "Module", "Struct", "Trait", "Field", "Property", "Enum", "EnumMember", "Constant", "Key" } }),
+        desc = "All",
+      },
+      {
         symbols_prefix .. "a",
         LazyVim.pick("lsp_document_symbols", { symbols = { "Class", "Function", "Method", "Constructor", "Interface", "Module", "Struct", "Trait", "Field", "Property", "Enum", "Constant" } }),
         desc = "All",

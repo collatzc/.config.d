@@ -41,6 +41,7 @@ return {
         icon = "",
       },
     }
+
     opts.sections.lualine_c[4] = {
       LazyVim.lualine.pretty_path({
         filename_hl = "Bold",

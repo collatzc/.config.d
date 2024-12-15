@@ -49,8 +49,7 @@ map("n", "-", "<C-x>")
 -- Tabs
 map("n", "]<tab>", "<cmd>tabnext<cr>", { desc = "Tab Next" })
 map("n", "[<tab>", "<cmd>tabprevious<cr>", { desc = "Tab Previous" })
-map("n", "<s-tab>", "<cmd>tabprevious<cr>", { desc = "Tab Previous" })
-map("n", "<s-q>", "<cmd>tabclose<cr>", { desc = "Tab Close" })
+-- map("n", "<s-tab>", "<cmd>tabprevious<cr>", { desc = "Tab Previous" })
 for i = 1, 9 do
   map("n", "<leader><tab>" .. i, "<cmd>tabn " .. i .. "<cr>", { desc = "Tab " .. i })
 end
@@ -88,8 +87,9 @@ end, { desc = "Tabs" })
 map("n", "<leader>bf", "<cmd>bfirst<cr>", { desc = "First Buffer" })
 map("n", "<leader>ba", "<cmd>blast<cr>", { desc = "Last Buffer" })
 map("n", "<leader>b<tab>", "<cmd>tabnew %<cr>", { desc = "Current Buffer in New Tab" })
+map("n", "<s-q>", "<cmd>bd<cr>", { desc = "Unload buffer" })
 
--- Toggle statusline
+-- Toggle status line
 map("n", "<leader>uS", function()
   if o.laststatus:get() == 0 then
     o.laststatus = 3

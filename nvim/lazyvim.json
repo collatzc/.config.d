@@ -1,11 +1,11 @@
 {
   "extras": [
     "lazyvim.plugins.extras.coding.mini-surround",
+    "lazyvim.plugins.extras.coding.nvim-cmp",
     "lazyvim.plugins.extras.editor.dial",
     "lazyvim.plugins.extras.editor.mini-move",
     "lazyvim.plugins.extras.lang.vue",
     "lazyvim.plugins.extras.ui.edgy",
-    "lazyvim.plugins.extras.ui.mini-animate",
     "lazyvim.plugins.extras.util.dot",
     "plugins.extras.coding.ai.codeium",
     "plugins.extras.coding.annotation",
@@ -13,6 +13,7 @@
     "plugins.extras.coding.multicursor",
     "plugins.extras.coding.recorder",
     "plugins.extras.coding.refactoring",
+    "plugins.extras.coding.treesitter.auto-indent",
     "plugins.extras.coding.treesitter.endwise",
     "plugins.extras.coding.treesitter.node-action",
     "plugins.extras.coding.treesitter.puppeteer",
@@ -61,13 +62,14 @@
     "plugins.extras.lsp.mason-extended",
     "plugins.extras.ui.bufferline-extended",
     "plugins.extras.ui.colorschemes.catppuccin",
+    "plugins.extras.ui.colorschemes.everforest",
     "plugins.extras.ui.context",
     "plugins.extras.ui.edgy-extended",
     "plugins.extras.ui.highlight-colors",
     "plugins.extras.ui.lualine-extended",
+    "plugins.extras.ui.minimap",
     "plugins.extras.ui.noice-extended",
     "plugins.extras.ui.rainbow-delimeters",
-    "plugins.extras.ui.smooth-scrolling",
     "plugins.extras.ui.transparent",
     "plugins.extras.ui.which-key-extended",
     "plugins.extras.util.icon-picker",
@@ -80,7 +82,7 @@
     "plugins.extras.util.yadm"
   ],
   "news": {
-    "NEWS.md": "7429"
+    "NEWS.md": "10960"
   },
   "version": 7
 }

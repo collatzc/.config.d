@@ -1,6 +1,5 @@
 local keys = {}
 
--- stylua: ignore start
 for i = 1, 9 do
   table.insert(keys, { "<M-" .. i .. ">", "<cmd>BufferLineGoToBuffer " .. i .. "<cr>", desc = "Buffer " .. i })
 end
@@ -12,16 +11,27 @@ table.insert(keys, { "<leader>bs", "<Cmd>BufferLineSortByExtension<CR>", desc = 
 
 table.insert(keys, { "<space><", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer prev" })
 table.insert(keys, { "<space>>", "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer next" })
--- stylua: ignore end
+
+table.insert(keys, { "<Tab>", "<cmd>BufferLineCycleNext<cr>", desc = "Next Tab" })
+table.insert(keys, { "<S-Tab>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Tab" })
 
 return {
   "akinsho/bufferline.nvim",
+  optional = true,
+  event = "VeryLazy",
   keys = keys,
   opts = {
     options = {
-      modified_icon = "",
+      indicator = {
+        -- icon = "▎", -- this should be omitted if indicator style is not 'icon'
+        -- style = "icon",
+        style = "underline",
+      },
+      auto_toggle_bufferline = true,
       color_icons = true,
-      separator_style = "slope",
+      separator_style = "thick",
+      show_buffer_close_icons = false,
+      show_close_icon = false,
     },
   },
 }
