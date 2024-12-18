@@ -23,7 +23,7 @@ local linter = function()
     return ""
   end
 
-  return "󱉶 " .. vim.inspect(linters)
+  return "󱉶 "
 end
 
 return {

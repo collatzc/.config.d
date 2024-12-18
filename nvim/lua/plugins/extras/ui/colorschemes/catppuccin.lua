@@ -1,4 +1,4 @@
-local palette = require("catppuccin.palettes").get_palette("macchiato") -- Import your favorite catppuccin colors
+local palette = require("catppuccin.palettes").get_palette("mocha") -- Import your favorite catppuccin colors
 
 return {
   {
@@ -8,9 +8,10 @@ return {
       styles = {
         comments = { "italic" },
       },
+      flavour = "macchiato",
       background = {
         light = "latte",
-        dark = "macchiato",
+        dark = "mocha",
       },
       dim_inactive = {
         enable = true,
@@ -18,24 +19,6 @@ return {
         percentage = 0.2,
       },
       term_colors = true,
-      custom_highlights = function()
-        return {
-          Visual = { bg = palette.surface2 },
-          FloatermBorder = { fg = palette.base },
-          TelescopeMatching = { fg = palette.blue },
-          TelescopeSelection = { fg = palette.text, bg = palette.surface0, bold = true },
-          TelescopePromptPrefix = { bg = palette.surface0 },
-          TelescopePromptNormal = { bg = palette.surface0 },
-          TelescopeResultsNormal = { bg = palette.mantle },
-          TelescopePreviewNormal = { bg = palette.mantle },
-          TelescopePromptBorder = { bg = palette.surface0, fg = palette.surface0 },
-          TelescopeResultsBorder = { bg = palette.mantle, fg = palette.mantle },
-          TelescopePreviewBorder = { bg = palette.mantle, fg = palette.mantle },
-          TelescopePromptTitle = { bg = palette.red, fg = palette.mantle },
-          TelescopeResultsTitle = { fg = palette.mantle },
-          TelescopePreviewTitle = { bg = palette.green, fg = palette.mantle },
-        }
-      end,
       integrations = {
         alpha = true,
         cmp = true,
@@ -80,10 +63,10 @@ return {
             ok = { "italic" },
           },
           inlay_hints = {
-            background = true,
+            background = false,
           },
         },
-        lsp_trouble = false,
+        lsp_trouble = true,
         navic = { enabled = false, custom_bg = "lualine" },
         neotest = true,
         neogit = false,
@@ -113,19 +96,19 @@ return {
         styles = { "italic", "bold" },
         custom = {
           all = {
-            fill = {
-              bg = palette.mantle,
-            },
+            -- fill = {
+            --   bg = palette.mantle,
+            -- },
             separator_selected = {
               bg = palette.base,
               fg = palette.mantle,
             },
-            separator = {
-              bg = palette.mantle,
-              fg = palette.mantle,
-            },
+            -- separator = {
+            --   bg = palette.base,
+            --   fg = palette.mantle,
+            -- },
             tab_separator = {
-              bg = palette.mantle,
+              bg = palette.base,
               fg = palette.mantle,
             },
             tab_selected = {

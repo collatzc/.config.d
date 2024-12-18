@@ -25,16 +25,31 @@ return {
         goimports = "gopls",
         gofmt = "gopls",
         fillstruct = "gopls",
-        lsp_cfg = true,
-        diagnostic = { -- set diagnostic to false to disable vim.diagnostic.config setup,
-          -- true: default nvim setup
-          hdlr = true, -- hook lsp diag handler and send diag to quickfix
-          underline = false,
-          virtual_text = { spacing = 1, prefix = "" }, -- virtual text setup
-          signs = { "", "", "", "" }, -- set to true to use default signs, an array of 4 to specify custom signs
-          update_in_insert = false,
-        },
+        lsp_cfg = false,
+        diagnostics = true,
+        -- diagnostic = { -- set diagnostic to false to disable vim.diagnostic.config setup,
+        --   -- true: default nvim setup
+        --   hdlr = true, -- hook lsp diag handler and send diag to quickfix
+        --   underline = false,
+        --   virtual_text = { spacing = 1, prefix = "" }, -- virtual text setup
+        --   signs = { "", "", "", "" }, -- set to true to use default signs, an array of 4 to specify custom signs
+        --   update_in_insert = false,
+        -- },
+        trouble = true,
       })
+
+      -- require("lspconfig").gopls.setup({
+      --   handlers = {
+      --     ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+      --       border = "rounded",
+      --     }),
+      --     ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+      --       border = "rounded",
+      --     }),
+      --   },
+      -- })
+      local cfg = require("go.lsp").config()
+      require("lspconfig").gopls.setup(cfg)
     end,
   },
   {

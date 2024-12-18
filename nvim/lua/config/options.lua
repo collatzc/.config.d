@@ -41,7 +41,7 @@ o.cmdheight = 0
 
 -- Enable spell checking
 o.spell = true
-o.spelllang:append("en_us")
+o.spelllang:append("en")
 
 -- Backspacing and indentation when wrapping
 o.backspace = { "start", "eol", "indent" }
@@ -65,7 +65,7 @@ o.title = true
 o.titlelen = 0
 
 o.list = true
-o.titlestring = [[ %{v:progname} %{fnamemodify(getcwd(), ':t')} %h%m%r%w]]
+o.titlestring = [[ %{fnamemodify(getcwd(), ':t')} %h%m%r%w]]
 
 -- Icon for diagnostics
 vim.diagnostic.config({

@@ -19,22 +19,7 @@ return {
       -- stylua: ignore end
     end,
     opts = {
-      diagnostics = {
-        virtual_text = {
-          float = {
-            border = {
-              { "┌", "FloatBorder" },
-              { "─", "FloatBorder" },
-              { "┐", "FloatBorder" },
-              { "│", "FloatBorder" },
-              { "┘", "FloatBorder" },
-              { "─", "FloatBorder" },
-              { "└", "FloatBorder" },
-              { "│", "FloatBorder" },
-            },
-          },
-        },
-      },
+      diagnostics = {},
       inlay_hints = {
         enabled = nvim_0_10,
       },
@@ -54,12 +39,28 @@ return {
         },
       },
     },
+    config = function()
+      vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+        border = "rounded",
+      })
+
+      vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+        border = "rounded",
+      })
+
+      vim.diagnostic.config({
+        float = { border = "rounded" },
+      })
+      require("lspconfig.ui.windows").default_options = {
+        border = "rounded",
+      }
+    end,
   },
   {
     "folke/which-key.nvim",
     opts = {
       spec = {
-        { "<leader>cl", group = "lsp", icon = " " },
+        { prefix, group = "lsp", icon = " " },
       },
     },
   },

@@ -3,6 +3,6 @@ return {
   event = "LspAttach",
   opts = {
     notifications = true,
-    grace_period = 60 * 10,
+    grace_period = 60 * 8,
   },
 }
