@@ -52,7 +52,7 @@ plugins=(git)
 # User configuration
 RPROMPT="%D{%Y-%m-%d %H:%M:%S}"
 
-# kitty
+# [darwin/*] kitty
 if [ "$TERM" = "xterm-kitty" ]; then
   export KITTY_CONFIG_DIRECTORY="/Users/{$USER}/.config/kitty"
   alias ssh="kitty +kitten ssh"

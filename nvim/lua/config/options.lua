@@ -31,8 +31,8 @@ go.root_spec = {
   "cwd",
 }
 
-go.floaterm_height = 0.3
-go.floaterm_position = "bottom"
+-- go.floaterm_height = 0.3
+-- go.floaterm_position = "bottom"
 
 -- Disable annoying cmd line stuff
 o.showcmd = false
@@ -95,7 +95,7 @@ vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
   end,
 })
 
--- Colorscheme
+-- Color Scheme
 go.everforest_background = "soft"
 go.everforest_better_performance = 1
 go.everforest_cursor = "orange"

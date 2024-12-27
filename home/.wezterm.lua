@@ -82,8 +82,13 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, _config, hover, max_wi
 	end
 
 	local title = tab.active_pane.title
-	-- broken?
-	-- local title = " " .. wezterm.truncate_to_width(tab.active_pane.title, 30) .. " "
+	local titleIcon = " " .. wezterm.nerdfonts.cod_window .. " "
+	if wezterm.truncate_right(title, 1) == "" then
+		titleIcon = " "
+	end
+	if string.find(title, "@", 1, true) then
+		titleIcon = " " .. wezterm.nerdfonts.cod_remote_explorer .. " "
+	end
 
 	return {
 		{ Attribute = { Italic = false } },
@@ -93,7 +98,7 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, _config, hover, max_wi
 		{ Text = SOLID_RIGHT_ARROW },
 		{ Background = { Color = background } },
 		{ Foreground = { Color = foreground } },
-		{ Text = " " .. wezterm.nerdfonts.cod_window .. " " .. title .. " " },
+		{ Text = titleIcon .. title .. " " },
 		{ Background = { Color = trailing_bg } },
 		{ Foreground = { Color = trailing_fg } },
 		{ Text = SOLID_RIGHT_ARROW },
