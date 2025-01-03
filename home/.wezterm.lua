@@ -1,10 +1,10 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
-local my_colorscheme_dark = wezterm.color.get_builtin_schemes()["Tomorrow (dark) (terminal.sexy)"]
+local my_colorscheme_dark = wezterm.color.get_builtin_schemes()["Everforest Dark (Gogh)"]
 my_colorscheme_dark.cursor_bg = "#47FF9C"
 my_colorscheme_dark.cursor_border = "#47FF9C"
-local my_colorscheme_light = wezterm.color.get_builtin_schemes()["nord-light"]
+local my_colorscheme_light = wezterm.color.get_builtin_schemes()["Everforest Light Medium (Gogh)"]
 
 config.color_schemes = {
 	["my_colorscheme_dark"] = my_colorscheme_dark,
@@ -31,6 +31,10 @@ config.colors = {
 config.font = wezterm.font("Maple Mono NF CN")
 config.harfbuzz_features = { "zero" }
 config.font_size = 12
+
+config.cursor_thickness = "200%"
+config.default_cursor_style = "BlinkingBar"
+config.cursor_blink_rate = 300
 
 config.enable_tab_bar = true
 config.tab_bar_at_bottom = true
@@ -82,7 +86,7 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, _config, hover, max_wi
 	end
 
 	local title = tab.active_pane.title
-	local titleIcon = " " .. wezterm.nerdfonts.cod_window .. " "
+	local titleIcon = " " .. wezterm.nerdfonts.cod_terminal_powershell .. " "
 	if wezterm.truncate_right(title, 1) == "" then
 		titleIcon = " "
 	end
@@ -139,10 +143,16 @@ config.window_decorations = "RESIZE"
 config.native_macos_fullscreen_mode = true
 config.window_background_opacity = 0.85
 config.macos_window_background_blur = 10
+config.window_padding = {
+	left = 0,
+	right = 0,
+	top = 0,
+	bottom = 0,
+}
 
 config.inactive_pane_hsb = {
-	saturation = 0.9,
-	brightness = 0.8,
+	saturation = 0.5,
+	brightness = 0.3,
 }
 
 wezterm.on("toggle-color-scheme", function(window, pane)
@@ -161,6 +171,26 @@ config.keys = {
 		key = "t",
 		mods = "LEADER",
 		action = wezterm.action({ EmitEvent = "toggle-color-scheme" }),
+	},
+	{
+		key = "Enter",
+		mods = "SUPER",
+		action = wezterm.action.SplitVertical({
+			domain = "CurrentPaneDomain",
+		}),
+	},
+	{
+		key = "x",
+		mods = "LEADER",
+		action = wezterm.action.CloseCurrentPane({ confirm = true }),
+	},
+}
+
+config.mouse_bindings = {
+	{
+		event = { Up = { streak = 1, button = "Left" } },
+		mods = "SUPER",
+		action = wezterm.action.StartWindowDrag,
 	},
 }
 

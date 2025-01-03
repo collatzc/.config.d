@@ -29,7 +29,8 @@ return {
         },
         auto_toggle_bufferline = true,
         color_icons = true,
-        separator_style = { "|", "|" },
+        -- separator_style = { "|", "|" },
+        separator_style = "thin",
         show_buffer_close_icons = false,
         show_close_icon = false,
         hover = {

@@ -30,8 +30,8 @@ map("n", "<leader>fT", "<Nop>")
 -- Save without formatting
 map("n", "<A-s>", "<cmd>noautocmd w<CR>", { desc = "Save Without Formatting" })
 -- Save
-map("i", "<D-s>", "<Esc><cmd>w<CR>", { desc = "Save Without Formatting" })
-map("n", "<D-s>", "<cmd>w<CR>", { desc = "Save Without Formatting" })
+map("i", "<D-s>", "<Esc><cmd>w<CR>", { desc = "Save With Formatting" })
+map("n", "<D-s>", "<cmd>w<CR>", { desc = "Save With Formatting" })
 
 -- Cursor navigation on insert mode
 map("i", "<M-h>", "<left>", { desc = "Move Cursor Left" })

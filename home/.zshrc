@@ -205,6 +205,7 @@ alias rm='rm -i -v'
 alias cp='cp -i -v'
 alias mv='mv -i -v'
 alias diff='diff --color=auto'
+alias ls=lsd
 
 if command -v lazygit 2>&1 >/dev/null
 then

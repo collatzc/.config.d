@@ -1,0 +1,9 @@
+font-family = ""
+font-family = "Maple Mono NF CN"
+window-title-font-family = "Maple Mono NF CN"
+
+term = xterm-256color
+
+macos-titlebar-style = tabs
+
+window-save-state = always
