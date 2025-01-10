@@ -63,9 +63,11 @@ o.listchars:append({ tab = "▸ ", trail = "·", extends = "❯", precedes = "�
 
 o.title = true
 o.titlelen = 0
-
 o.list = true
 o.titlestring = [[ %{fnamemodify(getcwd(), ':t')} %h%m%r%w]]
+if os.getenv("theme") == "light" then
+  o.background = "light"
+end
 
 -- Icon for diagnostics
 vim.diagnostic.config({
@@ -88,15 +90,9 @@ for _, diag in ipairs({ "Error", "Warn", "Info", "Hint" }) do
   })
 end
 -- Show line diagnostics automatically in hover window
-vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-  group = vim.api.nvim_create_augroup("float_diagnostic_cursor", { clear = true }),
-  callback = function()
-    vim.diagnostic.open_float(nil, { focus = false, scope = "cursor" })
-  end,
-})
-
--- Color Scheme
-go.everforest_background = "soft"
-go.everforest_better_performance = 1
-go.everforest_cursor = "orange"
-go.everforest_dim_inactive_windows = 1
+-- vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+--   group = vim.api.nvim_create_augroup("float_diagnostic_cursor", { clear = true }),
+--   callback = function()
+--     vim.diagnostic.open_float(nil, { focus = false, scope = "cursor" })
+--   end,
+-- })

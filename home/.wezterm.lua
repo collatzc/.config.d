@@ -86,7 +86,7 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, _config, hover, max_wi
 	end
 
 	local title = tab.active_pane.title
-	local titleIcon = " " .. wezterm.nerdfonts.cod_terminal_powershell .. " "
+	local titleIcon = " " .. wezterm.nerdfonts.cod_terminal .. " "
 	if wezterm.truncate_right(title, 1) == "" then
 		titleIcon = " "
 	end
@@ -95,8 +95,8 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, _config, hover, max_wi
 	end
 
 	return {
-		{ Attribute = { Italic = false } },
-		{ Attribute = { Intensity = hover and "Bold" or "Normal" } },
+		{ Attribute = { Italic = tab.is_active and true or false } },
+		{ Attribute = { Intensity = tab.is_active and "Bold" or "Normal" } },
 		{ Background = { Color = leading_bg } },
 		{ Foreground = { Color = leading_fg } },
 		{ Text = SOLID_RIGHT_ARROW },
@@ -183,6 +183,11 @@ config.keys = {
 		key = "x",
 		mods = "LEADER",
 		action = wezterm.action.CloseCurrentPane({ confirm = true }),
+	},
+	{
+		key = "Tab",
+		mods = "CTRL",
+		action = wezterm.action.ActivateLastTab,
 	},
 }
 

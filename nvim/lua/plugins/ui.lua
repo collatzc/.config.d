@@ -12,9 +12,6 @@ table.insert(keys, { "<leader>bs", "<Cmd>BufferLineSortByExtension<CR>", desc = 
 table.insert(keys, { "<space><", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer prev" })
 table.insert(keys, { "<space>>", "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer next" })
 
-table.insert(keys, { "<Tab>", "<cmd>BufferLineCycleNext<cr>", desc = "Next Tab" })
-table.insert(keys, { "<S-Tab>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Tab" })
-
 return {
   {
     "akinsho/bufferline.nvim",
@@ -43,11 +40,52 @@ return {
   },
   {
     "neanias/everforest-nvim",
+    config = function()
+      require("everforest").setup({
+        background = "soft",
+        transparent_background_level = 2,
+        italics = true,
+        ui_contrast = "low",
+        dim_inactive_windows = true,
+        float_style = "dim",
+      })
+    end,
   },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "everforest",
+      colorscheme = "tokyonight",
+    },
+  },
+  {
+    "folke/tokyonight.nvim",
+    opts = {
+      transparent = true,
+      styles = {
+        functions = { blend = 33 },
+        variables = { bold = true, italic = true },
+        sidebars = "transparent",
+        floats = "transparent",
+      },
+      dim_inactive = true,
+      on_highlights = function(hl, c)
+        hl.LineNr = {
+          fg = c.fg_dark,
+        }
+        hl.LineNrAbove = hl.LineNr
+        hl.LineNrBelow = hl.LineNr
+      end,
+    },
+  },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    opts = {
+      flavour = "macchiato",
+      transparent_background = true,
+      styles = {
+        variables = { "bold", "italic" },
+      },
     },
   },
   {
@@ -157,7 +195,7 @@ return {
         },
         sections = {
           { section = "header" },
-          { icon = " ", title = "Sessions", padding = 1 },
+          { icon = "󱄄 ", title = "Sessions", padding = 1 },
           { section = "projects", padding = 1 },
           { section = "keys", gap = 1 },
           { section = "startup" },
