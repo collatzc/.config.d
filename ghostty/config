@@ -3,7 +3,17 @@ font-family = "Maple Mono NF CN"
 window-title-font-family = "Maple Mono NF CN"
 
 term = xterm-256color
+macos-titlebar-style = hidden
 
-macos-titlebar-style = tabs
-
+window-theme = auto
 window-save-state = always
+window-new-tab-position = current
+
+theme = dark:tokyonight,light:tokyonight-day
+background-opacity = 0.9
+background-blur-radius = 13
+
+cursor-color = #47FF9C
+# cursor-opacity = 0.6
+cursor-style-blink = true
+

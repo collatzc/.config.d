@@ -1,10 +1,12 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
-local my_colorscheme_dark = wezterm.color.get_builtin_schemes()["Everforest Dark (Gogh)"]
+local my_colorscheme_dark = wezterm.color.get_builtin_schemes()["Tokyo Night Storm"]
 my_colorscheme_dark.cursor_bg = "#47FF9C"
 my_colorscheme_dark.cursor_border = "#47FF9C"
-local my_colorscheme_light = wezterm.color.get_builtin_schemes()["Everforest Light Medium (Gogh)"]
+local my_colorscheme_light = wezterm.color.get_builtin_schemes()["Tokyo Night Day"]
+my_colorscheme_light.cursor_bg = "#47FF9C"
+my_colorscheme_light.cursor_border = "#47FF9C"
 
 config.color_schemes = {
 	["my_colorscheme_dark"] = my_colorscheme_dark,
@@ -22,7 +24,6 @@ local NORMAL_TAB_FG = config.color_schemes[config.color_scheme].ansi[8]
 
 -- Catppuccin Macchiato
 config.colors = {
-	cursor_fg = "#011423",
 	tab_bar = {
 		background = TAB_BAR_BG,
 	},
@@ -152,8 +153,25 @@ config.window_padding = {
 
 config.inactive_pane_hsb = {
 	saturation = 0.5,
-	brightness = 0.3,
+	brightness = 0.5,
 }
+
+local function scheme_for_appearance(appearance)
+	if appearance:find("Dark") then
+		return "my_colorscheme_dark"
+	else
+		return "my_colorscheme_light"
+	end
+end
+
+wezterm.on("window-config-reloaded", function(window, pane)
+	local overrides = window:get_config_overrides() or {}
+	local scheme = scheme_for_appearance(window:get_appearance())
+	if overrides.color_scheme ~= scheme then
+		overrides.color_scheme = scheme
+		window:set_config_overrides(overrides)
+	end
+end)
 
 wezterm.on("toggle-color-scheme", function(window, pane)
 	local overrides = window:get_config_overrides() or {}
