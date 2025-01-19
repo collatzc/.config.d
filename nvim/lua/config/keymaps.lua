@@ -28,7 +28,7 @@ map("n", "<leader>L", "<Nop>")
 map("n", "<leader>fT", "<Nop>")
 
 -- Save without formatting
-map("n", "<A-s>", "<cmd>noautocmd w<CR>", { desc = "Save Without Formatting" })
+map("n", "<M-s>", "<cmd>noautocmd w<CR>", { desc = "Save Without Formatting" })
 -- Save
 map("i", "<D-s>", "<Esc><cmd>w<CR>", { desc = "Save With Formatting" })
 map("n", "<D-s>", "<cmd>w<CR>", { desc = "Save With Formatting" })
@@ -92,7 +92,7 @@ map("n", "<s-q>", "<cmd>bd<cr>", { desc = "Unload buffer" })
 
 -- Toggle status line
 map("n", "<leader>uS", function()
-  if o.laststatus:get() == 0 then
+  if o.laststatus == 0 then
     o.laststatus = 3
   else
     o.laststatus = 0
@@ -101,7 +101,7 @@ end, { desc = "Toggle Statusline" })
 
 -- Toggle tabline
 map("n", "<leader>u<tab>", function()
-  if o.showtabline:get() == 0 then
+  if o.showtabline == 0 then
     o.showtabline = 2
   else
     o.showtabline = 0
@@ -192,16 +192,14 @@ map("n", "<leader>@", "zug", { desc = "Remove Word from Dictionary" })
 
 -- Terminal Stuff
 if not LazyVim.has("floaterm.nvim") or not LazyVim.has("toggleterm.nvim") then
-  map("n", "<leader>ft", function()
-    Snacks.terminal(nil, { cwd = LazyVim.root() })
-  end, { desc = "Terminal (Root Dir)" })
-  map("n", "<leader>fT", function()
-    Snacks.terminal(nil, { size = { width = 0.8, height = 0.4 }, cwd = vim.fn.getcwd() })
-  end, { desc = "Terminal (cwd)" })
-
   map("n", [[<c-\>]], function()
-    Snacks.terminal(nil, { size = { width = 0.8, height = 0.35 }, win = { position = "bottom" }, cwd = LazyVim.root() })
+    Snacks.terminal(nil, { size = { width = 1 }, cwd = LazyVim.root() })
   end, { desc = "Terminal (Root Dir)" })
+
+  map("n", [[<c-s-\>]], function()
+    Snacks.terminal("fish", { cwd = LazyVim.root() })
+  end, { desc = "Terminal (Root Dir)" })
+
   map("t", [[<c-\>]], "<cmd>close<cr>", { desc = "Hide Terminal" })
 end
 

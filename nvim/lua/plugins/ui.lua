@@ -247,7 +247,7 @@ return {
         },
         sections = {
           { section = "header" },
-          { icon = "󱄄 ", title = "Sessions", padding = 1 },
+          { icon = " ", title = "Sessions", padding = 1 },
           { section = "projects", padding = 1 },
           { section = "keys", gap = 1 },
           { section = "startup" },
@@ -261,9 +261,23 @@ return {
       },
       terminal = {
         win = {
-          position = "bottom",
+          style = "terminal",
         },
       },
     },
+  },
+  {
+    "levouh/tint.nvim",
+    config = function()
+      require("tint").setup({
+        -- tint = vim.o.background == "light" and 45 or -45, -- Darken colors, use a positive value to brighten
+        -- tint = 45, -- Darken colors, use a positive value to brighten
+        transforms = {
+          require("tint.transforms").tint_with_threshold(vim.o.background == "light" and 50 or -100, "#D1D1D1", 150),
+        },
+        tint_background_colors = false, -- Tint background portions of highlight groups
+        highlight_ignore_patterns = { "WinSeparator", "Status.*", "lualine.*" }, -- Highlight group patterns to ignore, see `string.find`
+      })
+    end,
   },
 }

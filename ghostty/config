@@ -3,7 +3,8 @@ font-family = "Maple Mono NF CN"
 window-title-font-family = "Maple Mono NF CN"
 
 term = xterm-256color
-macos-titlebar-style = hidden
+macos-titlebar-style = transparent
+macos-option-as-alt = true
 
 window-theme = auto
 window-save-state = always
@@ -14,6 +15,7 @@ background-opacity = 0.9
 background-blur-radius = 13
 
 cursor-color = #47FF9C
+adjust-cursor-thickness = 200%
 # cursor-opacity = 0.6
 cursor-style-blink = true
 
