@@ -301,3 +301,4 @@ LS_COLORS='*.7z=38;5;40:*.WARC=38;5;40:*.a=38;5;40:*.arj=38;5;40:*.br=38;5;40:*.
 export LS_COLORS
 
 alias vim=nvim
+alias lg=lazygit

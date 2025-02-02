@@ -54,7 +54,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "tokyonight",
+      colorscheme = "everforest",
     },
   },
   {
@@ -267,17 +267,35 @@ return {
     },
   },
   {
-    "levouh/tint.nvim",
-    config = function()
-      require("tint").setup({
-        -- tint = vim.o.background == "light" and 45 or -45, -- Darken colors, use a positive value to brighten
-        -- tint = 45, -- Darken colors, use a positive value to brighten
-        transforms = {
-          require("tint.transforms").tint_with_threshold(vim.o.background == "light" and 50 or -100, "#D1D1D1", 150),
-        },
-        tint_background_colors = false, -- Tint background portions of highlight groups
-        highlight_ignore_patterns = { "WinSeparator", "Status.*", "lualine.*" }, -- Highlight group patterns to ignore, see `string.find`
-      })
-    end,
+    "tadaa/vimade",
+    event = "VeryLazy",
+    opts = {
+      recipe = { "paradox", { animate = true } },
+      ncmode = "windows",
+      invert = {
+        start = 0,
+        to = 0.8,
+      },
+      -- tint = {
+      --   fg = {
+      --     intensity = 0.3,
+      --   },
+      -- },
+    },
   },
+  -- {
+  --   "levouh/tint.nvim",
+  --   config = function()
+  --     local tint = vim.o.background == "light" and 100 or -90
+  --     require("tint").setup({
+  --       -- tint = vim.o.background == "light" and 45 or -45, -- Darken colors, use a positive value to brighten
+  --       -- tint = 45, -- Darken colors, use a positive value to brighten
+  --       transforms = {
+  --         require("tint.transforms").tint_with_threshold(tint, "#D1D1D1", 150),
+  --       },
+  --       tint_background_colors = false, -- Tint background portions of highlight groups
+  --       highlight_ignore_patterns = { "WinSeparator", "Status.*", "lualine.*" }, -- Highlight group patterns to ignore, see `string.find`
+  --     })
+  --   end,
+  -- },
 }

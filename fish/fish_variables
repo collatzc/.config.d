@@ -1,9 +1,10 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR __fish_initialized:3400
+SETUVAR _fisher_catppuccin_2F_fish_files:\x7e/\x2econfig/fish/themes/Catppuccin\x20Frappe\x2etheme\x1e\x7e/\x2econfig/fish/themes/Catppuccin\x20Latte\x2etheme\x1e\x7e/\x2econfig/fish/themes/Catppuccin\x20Macchiato\x2etheme\x1e\x7e/\x2econfig/fish/themes/Catppuccin\x20Mocha\x2etheme
 SETUVAR _fisher_edouard_2D_lopez_2F_ayu_2D_theme_2E_fish_files:\x7e/\x2econfig/fish/conf\x2ed/ayu\x2ddark\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/ayu\x2dlight\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/ayu\x2dmirage\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/ayu\x2efish
 SETUVAR _fisher_jorgebucaran_2F_nvm_2E_fish_files:\x7e/\x2econfig/fish/functions/_nvm_index_update\x2efish\x1e\x7e/\x2econfig/fish/functions/_nvm_list\x2efish\x1e\x7e/\x2econfig/fish/functions/_nvm_version_activate\x2efish\x1e\x7e/\x2econfig/fish/functions/_nvm_version_deactivate\x2efish\x1e\x7e/\x2econfig/fish/functions/nvm\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/nvm\x2efish\x1e\x7e/\x2econfig/fish/completions/nvm\x2efish
-SETUVAR _fisher_plugins:jorgebucaran/nvm\x2efish\x1eedouard\x2dlopez/ayu\x2dtheme\x2efish
+SETUVAR _fisher_plugins:jorgebucaran/nvm\x2efish\x1eedouard\x2dlopez/ayu\x2dtheme\x2efish\x1ecatppuccin/fish
 SETUVAR _fisher_upgraded_to_4_4:\x1d
 SETUVAR ayu_variant:mirage
 SETUVAR fish_color_autosuggestion:brblack
@@ -15,14 +16,15 @@ SETUVAR fish_color_cwd_root:red
 SETUVAR fish_color_end:brmagenta
 SETUVAR fish_color_error:brred
 SETUVAR fish_color_escape:brcyan
+SETUVAR fish_color_gray:9ca0b0
 SETUVAR fish_color_history_current:\x2d\x2dbold
 SETUVAR fish_color_host:normal
-SETUVAR fish_color_host_remote:D4BFFF
-SETUVAR fish_color_keyword:\x1d
+SETUVAR fish_color_host_remote:40a02b
+SETUVAR fish_color_keyword:d20f39
 SETUVAR fish_color_match:\x2d\x2dbackground\x3dbrblue
 SETUVAR fish_color_normal:normal
 SETUVAR fish_color_operator:cyan
-SETUVAR fish_color_option:\x1d
+SETUVAR fish_color_option:40a02b
 SETUVAR fish_color_param:brblue
 SETUVAR fish_color_quote:yellow
 SETUVAR fish_color_redirection:bryellow
@@ -42,7 +44,7 @@ SETUVAR fish_pager_color_secondary_background:\x1d
 SETUVAR fish_pager_color_secondary_completion:\x1d
 SETUVAR fish_pager_color_secondary_description:\x1d
 SETUVAR fish_pager_color_secondary_prefix:\x1d
-SETUVAR fish_pager_color_selected_background:\x2d\x2dbackground\x3d434c5e
+SETUVAR fish_pager_color_selected_background:\x1d
 SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
