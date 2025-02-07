@@ -9,20 +9,6 @@ local searching_brave = function()
 end
 map("n", "<leader>?", searching_brave, { noremap = true, silent = true, desc = "Search Current Word on Brave Search" })
 
--- Lazy options
-map("n", "<leader>l", "<Nop>")
-map("n", "<leader>ll", "<cmd>Lazy<cr>", { desc = "Lazy" })
--- stylua: ignore start
--- map("n", "<leader>ld", function() vim.fn.system({ "xdg-open", "https://lazyvim.org" }) end, { desc = "LazyVim Docs" })
--- map("n", "<leader>lr", function() vim.fn.system({ "xdg-open", "https://github.com/LazyVim/LazyVim" }) end, { desc = "LazyVim Repo" })
-map("n", "<leader>lx", "<cmd>LazyExtras<cr>", { desc = "Extras" })
-map("n", "<leader>lc", function() LazyVim.news.changelog() end, { desc = "LazyVim Changelog" })
-
-map("n", "<leader>lu", function() lazy.update() end, { desc = "Lazy Update" })
-map("n", "<leader>lC", function() lazy.check() end, { desc = "Lazy Check" })
-map("n", "<leader>ls", function() lazy.sync() end, { desc = "Lazy Sync" })
--- stylua: ignore end
-
 -- Disable LazyVim bindings
 map("n", "<leader>L", "<Nop>")
 map("n", "<leader>fT", "<Nop>")
@@ -193,7 +179,7 @@ map("n", "<leader>@", "zug", { desc = "Remove Word from Dictionary" })
 -- Terminal Stuff
 if not LazyVim.has("floaterm.nvim") or not LazyVim.has("toggleterm.nvim") then
   map("n", [[<c-\>]], function()
-    Snacks.terminal(nil, { size = { width = 1 }, cwd = LazyVim.root() })
+    Snacks.terminal("fish", { size = { width = 1 }, cwd = LazyVim.root() })
   end, { desc = "Terminal (Root Dir)" })
 
   map("n", [[<c-s-\>]], function()

@@ -1,13 +1,13 @@
 lastupdatecheck: 0
 recentrepos:
+    - /Users/cc/.config.d
     - /Users/cc/Proj/nodejs/carriergate
     - /Users/cc/go/src/github.com/collatzc/erp
     - /Users/cc/go/src/github.com/collatzc/tra
     - /Users/cc/_c
     - /Users/cc/Proj/webapp/erp.webapp
-    - /Users/cc/.config.d
 startuppopupversion: 5
-lastversion: 0.44.1
+lastversion: 0.45.2
 customcommandshistory: []
 hidecommandlog: false
 ignorewhitespaceindiffview: false
