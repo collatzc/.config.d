@@ -1,7 +1,12 @@
+set fish_greeting ""
+
+set -gx TERM xterm-256color
+
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
+command -qv nvim && alias vim nvim
 
 set -g theme_display_git_default_branch yes
 
