@@ -31,8 +31,8 @@ patch:
       - extended_charset
   key_binder:
     bindings:
-      - { when: paging, accept: comma, send: Page_Up }
-      - { when: has_menu, accept: period, send: Page_Down }
+      # - { when: paging, accept: comma, send: Page_Up }
+      # - { when: has_menu, accept: period, send: Page_Down }
       - { when: composing, accept: Control+n, send: Page_Down }
       - { when: paging, accept: Control+p, send: Page_Up }
       - { when: composing, accept: Control+k, send: Escape }
