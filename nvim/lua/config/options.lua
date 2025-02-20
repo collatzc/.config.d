@@ -31,9 +31,6 @@ go.root_spec = {
   "cwd",
 }
 
--- go.floaterm_height = 0.3
--- go.floaterm_position = "bottom"
-
 -- Disable annoying cmd line stuff
 o.showcmd = false
 o.laststatus = 3
@@ -96,3 +93,19 @@ end
 --     vim.diagnostic.open_float(nil, { focus = false, scope = "cursor" })
 --   end,
 -- })
+
+-- WSL: Clipboard
+if vim.fn.has('wsl') == 1 then
+    vim.g.clipboard = {
+        name = 'WslClipboard',
+        copy = {
+            ['+'] = 'clip.exe',
+            ['*'] = 'clip.exe',
+        },
+        paste = {
+            ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+            ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+        },
+        cache_enabled = 0,
+    }
+end
