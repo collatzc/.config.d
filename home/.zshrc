@@ -52,6 +52,16 @@ plugins=(git)
 # User configuration
 RPROMPT="%D{%Y-%m-%d %H:%M:%S}"
 
+# [darwin/*] zsh-autosuggestions
+if [ -d "/opt/homebrew/share/zsh-autosuggestions" ]; then
+  source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
+
+# [darwin/*] zsh-syntax-highlighting
+if [ -d "/opt/homebrew/share/zsh-syntax-highlighting" ]; then
+  source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+
 # [darwin/*] kitty
 if [ "$TERM" = "xterm-kitty" ]; then
   export KITTY_CONFIG_DIRECTORY="/Users/{$USER}/.config/kitty"
