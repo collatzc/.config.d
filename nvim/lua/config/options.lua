@@ -36,9 +36,13 @@ o.showcmd = false
 o.laststatus = 3
 o.cmdheight = 0
 
--- Enable spell checking
-o.spell = true
-o.spelllang:append("en")
+if go.vscode then
+  --#region
+else
+  -- Enable spell checking
+  o.spell = true
+  o.spelllang:append("en")
+end
 
 -- Backspacing and indentation when wrapping
 o.backspace = { "start", "eol", "indent" }
@@ -95,17 +99,17 @@ end
 -- })
 
 -- WSL: Clipboard
-if vim.fn.has('wsl') == 1 then
-    vim.g.clipboard = {
-        name = 'WslClipboard',
-        copy = {
-            ['+'] = 'clip.exe',
-            ['*'] = 'clip.exe',
-        },
-        paste = {
-            ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-            ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-        },
-        cache_enabled = 0,
-    }
+if vim.fn.has("wsl") == 1 then
+  vim.g.clipboard = {
+    name = "WslClipboard",
+    copy = {
+      ["+"] = "clip.exe",
+      ["*"] = "clip.exe",
+    },
+    paste = {
+      ["+"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+      ["*"] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+    },
+    cache_enabled = 0,
+  }
 end
