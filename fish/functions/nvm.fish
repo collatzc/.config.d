@@ -232,3 +232,5 @@ function _nvm_node_info
         console.log(process.execPath)
     " | string replace -- ~ \~
 end
+
+command nvm use 18

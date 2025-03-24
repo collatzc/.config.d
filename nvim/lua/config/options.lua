@@ -37,7 +37,7 @@ o.laststatus = 3
 o.cmdheight = 0
 
 if go.vscode then
-  --#region
+  o.spell = false
 else
   -- Enable spell checking
   o.spell = true

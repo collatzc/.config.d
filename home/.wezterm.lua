@@ -34,7 +34,7 @@ config.harfbuzz_features = { "zero" }
 config.font_size = 12
 
 config.cursor_thickness = "200%"
-config.default_cursor_style = "BlinkingBar"
+config.default_cursor_style = "BlinkingBlock"
 config.cursor_blink_rate = 300
 
 config.enable_tab_bar = true
