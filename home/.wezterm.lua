@@ -31,7 +31,7 @@ config.colors = {
 
 config.font = wezterm.font("Maple Mono NF CN")
 config.harfbuzz_features = { "zero" }
-config.font_size = 12
+config.font_size = 13
 
 config.cursor_thickness = "200%"
 config.default_cursor_style = "BlinkingBlock"
@@ -142,8 +142,8 @@ config.enable_csi_u_key_encoding = false
 
 config.window_decorations = "RESIZE"
 config.native_macos_fullscreen_mode = true
-config.window_background_opacity = 0.85
-config.macos_window_background_blur = 10
+config.window_background_opacity = 0.60
+config.macos_window_background_blur = 28
 config.window_padding = {
 	left = 0,
 	right = 0,
@@ -217,5 +217,4 @@ config.mouse_bindings = {
 	},
 }
 
--- and finally, return the configuration to wezterm
 return config
