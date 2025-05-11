@@ -23,7 +23,7 @@ ZSH_THEME="avit"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="false"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
@@ -48,9 +48,10 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git colorize)
+ZSH_COLORIZE_TOOL=chroma
 # User configuration
-RPROMPT="%D{%Y-%m-%d %H:%M:%S}"
+RPROMPT="%F{yellow}%D{%Y-%m-%d %H:%M:%S}%f"
 
 # [darwin/*] zsh-autosuggestions
 if [ -d "/opt/homebrew/share/zsh-autosuggestions" ]; then
@@ -312,3 +313,4 @@ case ":$PATH:" in
 esac
 # pnpm end
 
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
