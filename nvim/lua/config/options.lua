@@ -37,7 +37,10 @@ o.laststatus = 3
 o.cmdheight = 0
 
 if go.vscode then
+  local vscode = require("vscode")
   o.spell = false
+  vim.notify = vscode.notify
+  o.cmdheight = 1
 else
   -- Enable spell checking
   o.spell = true
