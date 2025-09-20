@@ -140,9 +140,11 @@ config.tab_bar_style = {
 config.enable_kitty_keyboard = true
 config.enable_csi_u_key_encoding = false
 
+config.default_prog = {"wsl"}
 config.window_decorations = "RESIZE"
 config.native_macos_fullscreen_mode = true
 config.window_background_opacity = 0.80
+config.win32_system_backdrop = "Acrylic"
 config.macos_window_background_blur = 28
 config.window_padding = {
 	left = 0,
