@@ -1,2 +1,2 @@
-_ pacman -S alacritty yay telegram-desktop
+_ pacman -S alacritty yay telegram-desktop obsidian
 yay -S postman-bin visual-studio-code-bin 

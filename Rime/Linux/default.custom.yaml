@@ -2,6 +2,7 @@
 # rm ~/.config/fcitx/rime/build/default.yaml && fcitx-remote -r
 
 patch:
+  __include: rime_ice_suggestion:/
   menu:
     page_size: 3
     alternative_select_keys: " ;'"
