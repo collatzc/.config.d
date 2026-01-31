@@ -1,9 +1,10 @@
+font-size = 15
 font-family = "Maple Mono NF CN"
 window-title-font-family = "Maple Mono NF CN"
 
 term = xterm-256color
-# macos-titlebar-style = transparent
-macos-titlebar-style = hidden
+macos-titlebar-style = transparent
+# macos-titlebar-style = hidden
 macos-option-as-alt = true
 mouse-hide-while-typing = true
 
@@ -13,9 +14,9 @@ window-new-tab-position = current
 window-decoration = true
 window-padding-balance = true
 
-theme = dark:tokyonight,light:tokyonight-day
-background-opacity = 0.6
-background-blur-radius = 28
+theme = dark:Catppuccin Frappe,light:Catppuccin Latte
+background-opacity = 0.8
+background-blur-radius = 48
 
 shell-integration-features = no-cursor
 copy-on-select = clipboard

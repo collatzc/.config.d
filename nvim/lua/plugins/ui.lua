@@ -74,8 +74,9 @@ return {
         }
         hl.LineNrAbove = hl.LineNr
         hl.LineNrBelow = hl.LineNr
-        hl.LspInlayHint = {
-          fg = vim.o.background == "light" and c.comment or c.fg_gutter,
+        hl.LspInlayHint = {}
+        hl.Comment = {
+          fg = vim.o.background == "light" and c.comment or c.fg_dark,
         }
       end,
     },
@@ -122,7 +123,7 @@ return {
     name = "catppuccin",
     opts = {
       flavour = "macchiato",
-      transparent_background = true,
+      transparent_background = false,
       styles = {
         variables = { "bold", "italic" },
       },
@@ -260,9 +261,39 @@ return {
         style = "fancy",
       },
       terminal = {
-        win = {
-          style = "terminal",
-        },
+        -- win = {
+        --   style = "terminal",
+        -- },
+      },
+    },
+    keys = {
+      {
+        "<leader>lg",
+        function()
+          require("snacks").lazygit()
+        end,
+        desc = "LazyGit",
+      },
+      {
+        "<leader>gl",
+        function()
+          require("snacks").lazygit.log()
+        end,
+        desc = "LazyGit Log",
+      },
+      {
+        "<leader>gbb",
+        function()
+          require("snacks").picker.git_branches({ layout = "select" })
+        end,
+        desc = "Git Branches",
+      },
+      {
+        "<leader>es",
+        function()
+          require("snacks").explorer()
+        end,
+        desc = "Snacks Explorer",
       },
     },
   },

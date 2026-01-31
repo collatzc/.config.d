@@ -1,7 +1,7 @@
 local map = vim.keymap.set
 local o = vim.opt
 
-local lazy = require("lazy")
+-- local lazy = require("lazy")
 
 -- Search current word
 local searching_brave = function()
@@ -11,6 +11,7 @@ map("n", "<leader>?", searching_brave, { noremap = true, silent = true, desc = "
 
 -- Disable LazyVim bindings
 map("n", "<leader>L", "<Nop>")
+map("n", "<leader>l", "<Nop>")
 map("n", "<leader>fT", "<Nop>")
 
 -- Save without formatting
@@ -193,7 +194,7 @@ end
 map("n", "dm", function()
   local cur_line = vim.fn.line(".")
   -- Delete buffer local mark
-  for _, mark in ipairs(vim.fn.getmarklist("%")) do
+  for _, mark in ipairs(vim.fn.getmarklist()) do
     if mark.pos[2] == cur_line and mark.mark:match("[a-zA-Z]") then
       vim.api.nvim_buf_del_mark(0, string.sub(mark.mark, 2, #mark.mark))
       return
@@ -222,3 +223,6 @@ map("n", "<leader>ghb", Snacks.git.blame_line, { desc = "Blame Line" })
 -- Windows Split
 map("n", "<leader>_", "<C-W>s", { desc = "Split Window Below", remap = true })
 map("n", "<leader>\\", "<C-W>v", { desc = "Split Window Right", remap = true })
+
+-- Replace word under cursor globally
+map("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Replace Word Globally" })

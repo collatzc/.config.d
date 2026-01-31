@@ -36,15 +36,13 @@ o.showcmd = false
 o.laststatus = 3
 o.cmdheight = 0
 
+o.spell = false
+
 if go.vscode then
   local vscode = require("vscode")
-  o.spell = false
   vim.notify = vscode.notify
   o.cmdheight = 1
 else
-  -- Enable spell checking
-  o.spell = true
-  o.spelllang:append("en")
 end
 
 -- Backspacing and indentation when wrapping
