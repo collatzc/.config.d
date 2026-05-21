@@ -1,3 +1,6 @@
+-- 设置 PHP_CS_FIXER_IGNORE_ENV 环境变量
+vim.env.PHP_CS_FIXER_IGNORE_ENV = "1"
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"

@@ -74,7 +74,9 @@ return {
         }
         hl.LineNrAbove = hl.LineNr
         hl.LineNrBelow = hl.LineNr
-        hl.LspInlayHint = {}
+        hl.LspInlayHint = {
+          fg = vim.o.background == "light" and c.comment or c.comment,
+        }
         hl.Comment = {
           fg = vim.o.background == "light" and c.comment or c.fg_dark,
         }
@@ -287,13 +289,6 @@ return {
           require("snacks").picker.git_branches({ layout = "select" })
         end,
         desc = "Git Branches",
-      },
-      {
-        "<leader>es",
-        function()
-          require("snacks").explorer()
-        end,
-        desc = "Snacks Explorer",
       },
     },
   },
