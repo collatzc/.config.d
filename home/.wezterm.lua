@@ -140,7 +140,9 @@ config.tab_bar_style = {
 config.enable_kitty_keyboard = true
 config.enable_csi_u_key_encoding = false
 
-config.window_decorations = "RESIZE"
+config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
+config.integrated_title_button_style = "MacOsNative"
+
 config.native_macos_fullscreen_mode = true
 config.window_background_opacity = 0.80
 config.macos_window_background_blur = 28

@@ -3,7 +3,7 @@ return {
   cmd = "FzfLua",
   keys = {
     {
-      "<leader><space><space>",
+      "<leader>O",
       function()
         require("fzf-lua").lsp_document_symbols()
       end,
