@@ -28,3 +28,5 @@ adjust-cursor-thickness = 200%
 cursor-style-blink = true
 
 auto-update = check
+# 强制让终端在按下 ctrl + / 时，发送标准的 Ctrl+/ 现代按键码
+keybind = ctrl+/=text:\x1b[47;5u

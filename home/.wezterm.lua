@@ -152,6 +152,15 @@ config.window_padding = {
 	top = 0,
 	bottom = 0,
 }
+config.window_frame = {
+	-- 字体设置
+	font = wezterm.font({ family = "SF Pro Text", weight = "Bold" }),
+	font_size = 12.0,
+
+	-- 这里的背景色最好与你的主题保持一致，或者略深一点
+	active_titlebar_bg = "#1a1b26",
+	inactive_titlebar_bg = "#1a1b26",
+}
 
 config.inactive_pane_hsb = {
 	saturation = 0.5,
