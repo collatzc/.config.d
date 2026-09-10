@@ -77,6 +77,10 @@ map("n", "<leader>ba", "<cmd>blast<cr>", { desc = "Last Buffer" })
 map("n", "<leader>b<tab>", "<cmd>tabnew %<cr>", { desc = "Current Buffer in New Tab" })
 map("n", "<s-q>", "<cmd>bd<cr>", { desc = "Unload buffer" })
 
+-- Buffer navigation with Tab
+map("n", "<Tab>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
+map("n", "<S-Tab>", "<cmd>bprev<cr>", { desc = "Previous Buffer" })
+
 -- Toggle status line
 map("n", "<leader>uS", function()
   if o.laststatus == 0 then

@@ -1,165 +1,93 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
-local my_colorscheme_dark = wezterm.color.get_builtin_schemes()["Tokyo Night Storm"]
-my_colorscheme_dark.cursor_bg = "#47FF9C"
-my_colorscheme_dark.cursor_border = "#47FF9C"
-local my_colorscheme_light = wezterm.color.get_builtin_schemes()["Tokyo Night Day"]
-my_colorscheme_light.cursor_bg = "#47FF9C"
-my_colorscheme_light.cursor_border = "#47FF9C"
-
+-- Tokyo Night 明暗两套,光标统一为荧光绿
+local schemes = {
+	dark = wezterm.color.get_builtin_schemes()["Tokyo Night Storm"],
+	light = wezterm.color.get_builtin_schemes()["Tokyo Night Day"],
+}
+for _, scheme in pairs(schemes) do
+	scheme.cursor_bg = "#47FF9C"
+	scheme.cursor_border = "#47FF9C"
+end
 config.color_schemes = {
-	["my_colorscheme_dark"] = my_colorscheme_dark,
-	["my_colorscheme_light"] = my_colorscheme_light,
+	my_colorscheme_dark = schemes.dark,
+	my_colorscheme_light = schemes.light,
 }
 config.color_scheme = "my_colorscheme_dark"
 
-local TAB_BAR_BG = config.color_schemes[config.color_scheme].ansi[1]
-local ACTIVE_TAB_BG = config.color_schemes[config.color_scheme].brights[5]
-local ACTIVE_TAB_FG = config.color_schemes[config.color_scheme].background
-local HOVER_TAB_BG = config.color_schemes[config.color_scheme].ansi[7]
-local HOVER_TAB_FG = config.color_schemes[config.color_scheme].background
-local NORMAL_TAB_BG = config.color_schemes[config.color_scheme].ansi[1]
-local NORMAL_TAB_FG = config.color_schemes[config.color_scheme].ansi[8]
+-- 标题栏/标签页配色直接取自当前主题,明暗切换时窗口 chrome 一起跟着变
+local function window_frame(scheme)
+	return {
+		font = wezterm.font({ family = "SF Pro Text", weight = "Regular" }),
+		font_size = 13.0,
 
--- Catppuccin Macchiato
-config.colors = {
-	tab_bar = {
-		background = TAB_BAR_BG,
-	},
-}
+		active_titlebar_bg = scheme.ansi[1],
+		inactive_titlebar_bg = scheme.ansi[1],
+	}
+end
+
+local function tab_colors(scheme)
+	return {
+		background = scheme.ansi[1],
+		active_tab = {
+			bg_color = scheme.brights[5],
+			fg_color = scheme.background,
+		},
+		inactive_tab = {
+			bg_color = scheme.ansi[1],
+			fg_color = scheme.ansi[8],
+		},
+		inactive_tab_hover = {
+			bg_color = scheme.ansi[7],
+			fg_color = scheme.background,
+		},
+		new_tab = {
+			bg_color = scheme.ansi[1],
+			fg_color = scheme.ansi[8],
+		},
+		new_tab_hover = {
+			bg_color = scheme.ansi[7],
+			fg_color = scheme.background,
+			italic = false,
+		},
+	}
+end
+
+config.window_frame = window_frame(schemes.dark)
+config.colors = { tab_bar = tab_colors(schemes.dark) }
 
 config.font = wezterm.font("Maple Mono NF CN")
 config.harfbuzz_features = { "zero" }
 config.font_size = 15
 
+config.front_end = "WebGpu"
+
 config.cursor_thickness = "200%"
 config.default_cursor_style = "BlinkingBlock"
 config.cursor_blink_rate = 300
 
+-- 原生圆角标签栏,替代自绘 powerline 标签
 config.enable_tab_bar = true
 config.tab_bar_at_bottom = false
 config.hide_tab_bar_if_only_one_tab = true
-config.use_fancy_tab_bar = false
-config.tab_max_width = 100
-
--- The filled in variant of the > symbol
-local SOLID_RIGHT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
-
-wezterm.on("format-tab-title", function(tab, tabs, panes, _config, hover, max_width)
-	local background = NORMAL_TAB_BG
-	local foreground = NORMAL_TAB_FG
-
-	local is_first = tab.tab_id == tabs[1].tab_id
-	local is_last = tab.tab_id == tabs[#tabs].tab_id
-
-	if tab.is_active then
-		background = ACTIVE_TAB_BG
-		foreground = ACTIVE_TAB_FG
-	elseif hover then
-		background = HOVER_TAB_BG
-		foreground = HOVER_TAB_FG
-	end
-
-	local leading_fg = NORMAL_TAB_FG
-	local leading_bg = background
-
-	local trailing_fg = background
-	local trailing_bg = NORMAL_TAB_BG
-
-	if is_first then
-		if tab.is_active then
-			leading_fg = ACTIVE_TAB_BG
-		else
-			leading_fg = background
-		end
-	else
-		leading_fg = NORMAL_TAB_BG
-	end
-
-	if is_last then
-		if tab.is_active then
-			trailing_fg = ACTIVE_TAB_BG
-		end
-		trailing_bg = TAB_BAR_BG
-	else
-		trailing_bg = NORMAL_TAB_BG
-	end
-
-	local title = tab.active_pane.title
-	local titleIcon = " " .. wezterm.nerdfonts.cod_terminal .. " "
-	if wezterm.truncate_right(title, 1) == "" then
-		titleIcon = " "
-	end
-	if string.find(title, "@", 1, true) then
-		titleIcon = " " .. wezterm.nerdfonts.cod_remote_explorer .. " "
-	end
-
-	return {
-		{ Attribute = { Italic = tab.is_active and true or false } },
-		{ Attribute = { Intensity = tab.is_active and "Bold" or "Normal" } },
-		{ Background = { Color = leading_bg } },
-		{ Foreground = { Color = leading_fg } },
-		{ Text = SOLID_RIGHT_ARROW },
-		{ Background = { Color = background } },
-		{ Foreground = { Color = foreground } },
-		{ Text = titleIcon .. title .. " " },
-		{ Background = { Color = trailing_bg } },
-		{ Foreground = { Color = trailing_fg } },
-		{ Text = SOLID_RIGHT_ARROW },
-	}
-end)
-
-config.tab_bar_style = {
-	new_tab = wezterm.format({
-		{ Background = { Color = HOVER_TAB_BG } },
-		{ Foreground = { Color = TAB_BAR_BG } },
-		{ Text = SOLID_RIGHT_ARROW },
-		{ Background = { Color = HOVER_TAB_BG } },
-		{ Foreground = { Color = HOVER_TAB_FG } },
-		{ Text = " " .. wezterm.nerdfonts.cod_empty_window .. "  " },
-		{ Background = { Color = TAB_BAR_BG } },
-		{ Foreground = { Color = HOVER_TAB_BG } },
-		{ Text = SOLID_RIGHT_ARROW },
-	}),
-	new_tab_hover = wezterm.format({
-		{ Attribute = { Italic = false } },
-		{ Attribute = { Intensity = "Bold" } },
-		{ Background = { Color = NORMAL_TAB_BG } },
-		{ Foreground = { Color = TAB_BAR_BG } },
-		{ Text = SOLID_RIGHT_ARROW },
-		{ Background = { Color = NORMAL_TAB_BG } },
-		{ Foreground = { Color = NORMAL_TAB_FG } },
-		{ Text = " " .. wezterm.nerdfonts.cod_empty_window .. "  " },
-		{ Background = { Color = TAB_BAR_BG } },
-		{ Foreground = { Color = NORMAL_TAB_BG } },
-		{ Text = SOLID_RIGHT_ARROW },
-	}),
-}
-
-config.enable_kitty_keyboard = true
-config.enable_csi_u_key_encoding = false
+config.use_fancy_tab_bar = true
+config.tab_max_width = 32
 
 config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 config.integrated_title_button_style = "MacOsNative"
-
 config.native_macos_fullscreen_mode = true
+
+-- 毛玻璃:半透明 + 背景模糊
 config.window_background_opacity = 0.80
 config.macos_window_background_blur = 28
-config.window_padding = {
-	left = 0,
-	right = 0,
-	top = 0,
-	bottom = 0,
-}
-config.window_frame = {
-	-- 字体设置
-	font = wezterm.font({ family = "SF Pro Text", weight = "Bold" }),
-	font_size = 12.0,
 
-	-- 这里的背景色最好与你的主题保持一致，或者略深一点
-	active_titlebar_bg = "#1a1b26",
-	inactive_titlebar_bg = "#1a1b26",
+-- 内容四周留白,不顶着窗口边缘
+config.window_padding = {
+	left = "10px",
+	right = "10px",
+	top = "4px",
+	bottom = "6px",
 }
 
 config.inactive_pane_hsb = {
@@ -175,24 +103,42 @@ local function scheme_for_appearance(appearance)
 	end
 end
 
-wezterm.on("window-config-reloaded", function(window, pane)
+local function scheme_key(name)
+	if name:find("dark") then
+		return "dark"
+	end
+	return "light"
+end
+
+-- 配色和窗口 chrome 一起下发,避免出现"浅色内容 + 深色标题栏"
+local function apply_scheme(window, scheme_name)
 	local overrides = window:get_config_overrides() or {}
-	local scheme = scheme_for_appearance(window:get_appearance())
-	if overrides.color_scheme ~= scheme then
-		overrides.color_scheme = scheme
-		window:set_config_overrides(overrides)
+	if overrides.color_scheme == scheme_name and overrides.colors then
+		return
+	end
+	local scheme = schemes[scheme_key(scheme_name)]
+	overrides.color_scheme = scheme_name
+	overrides.window_frame = window_frame(scheme)
+	overrides.colors = { tab_bar = tab_colors(scheme) }
+	window:set_config_overrides(overrides)
+end
+
+wezterm.on("window-config-reloaded", function(window, _pane)
+	apply_scheme(window, scheme_for_appearance(window:get_appearance()))
+end)
+
+wezterm.on("toggle-color-scheme", function(window, _pane)
+	local overrides = window:get_config_overrides() or {}
+	local current = overrides.color_scheme or config.color_scheme
+	if scheme_key(current) == "dark" then
+		apply_scheme(window, "my_colorscheme_light")
+	else
+		apply_scheme(window, "my_colorscheme_dark")
 	end
 end)
 
-wezterm.on("toggle-color-scheme", function(window, pane)
-	local overrides = window:get_config_overrides() or {}
-	if overrides.color_scheme == "my_colorscheme_dark" then
-		overrides.color_scheme = "my_colorscheme_light"
-	else
-		overrides.color_scheme = "my_colorscheme_dark"
-	end
-	window:set_config_overrides(overrides)
-end)
+config.enable_kitty_keyboard = true
+config.enable_csi_u_key_encoding = false
 
 config.leader = { key = "p", mods = "SUPER", timeout_milliseconds = 1000 }
 config.keys = {
