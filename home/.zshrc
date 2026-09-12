@@ -73,7 +73,7 @@ fi
 
 # [darwin/*] kitty
 if [ "$TERM" = "xterm-kitty" ]; then
-  export KITTY_CONFIG_DIRECTORY="/Users/{$USER}/.config/kitty"
+  export KITTY_CONFIG_DIRECTORY="$HOME/.config/kitty"
   alias ssh="kitty +kitten ssh"
 fi
 
@@ -112,16 +112,6 @@ if [ -d "/usr/share/vim/vim82" ]; then
 	export VIMRUNTIME="/usr/share/vim/vim82"
 fi
 
-# [darwin/*] if using nodejs@10
-# if [ -d "/usr/local/opt/node@10" ]; then
-#   export PATH=/usr/local/opt/node@10/bin:$PATH
-# fi
-
-# [darwin/*] if using nodejs@16
-if [ -d "/opt/homebrew/opt/node@16" ]; then
-  export PATH=/opt/homebrew/opt/node@16/bin:$PATH
-fi
-
 # [*/*] GOPATH
 if [ -d "$HOME/go" ]; then
 	export GOPATH=$HOME/go
@@ -131,12 +121,12 @@ if [ -d "$HOME/go" ]; then
 fi
 
 # [*/*] Rust cargo
-if [ -d "$HOME/.cargo/env" ]; then
+if [ -f "$HOME/.cargo/env" ]; then
 	source $HOME/.cargo/env
 fi
 
 # [*/*] Android Studio @linux
-if [ -d "~/Android/Sdk" ]; then
+if [ -d "$HOME/Android/Sdk" ]; then
 	export ANDROID_HOME=~/Android/Sdk
 	export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 fi
@@ -162,11 +152,6 @@ fi
 if [ -d "/opt/cuda-10.0/bin" ]; then
 	export PATH=/opt/cuda-10.0/bin:$PATH
 	export LD_LIBRARY_PATH=/opt/cuda-10.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-fi
-
-# .local/bin
-if [ -d ~/.local/bin ]; then
-	export PATH=~/.local/bin:$PATH
 fi
 
 # node.js
@@ -197,6 +182,14 @@ fi
 
 if [ -d "$ZSH" ]; then
 	source $ZSH/oh-my-zsh.sh
+fi
+
+# [*/] 窗口标题:本地只显示目录(不含 @),SSH 保留 user@host 以便区分远程。
+# 覆盖 oh-my-zsh termsupport 的模板;标签页标题(%~ 短格式)本就只有路径。
+if [[ -n "$SSH_CONNECTION" ]]; then
+	ZSH_THEME_TERM_TITLE_IDLE="%n@%m:%~"
+else
+	ZSH_THEME_TERM_TITLE_IDLE="%~"
 fi
 
 export LANG=en_US.UTF-8

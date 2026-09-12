@@ -1,0 +1,25 @@
+# This is Git's per-user configuration file.
+[user]
+	name = cc
+	email = cc@Cs-MacBook-Pro.local
+[core]
+	autocrlf = input
+	# delta 美化 diff;远程机器没装 delta 时自动回退 less -R
+	pager = delta 2>/dev/null || less -R
+
+[interactive]
+	# git add -p 走 delta 上色;远程没装时原样透传
+	diffFilter = delta --color-only 2>/dev/null || cat
+
+[delta]
+	navigate = true       # n / N 在各文件 diff 块之间跳转
+	side-by-side = true   # 左右对照;想换回单列改成 false
+	line-numbers = true
+	hyperlinks = true     # 文件头路径可点击(终端支持时)
+
+[merge]
+	conflictstyle = zdiff3  # 冲突块带共同祖先,delta 能更好渲染
+
+[diff]
+	algorithm = histogram  # 对代码移动/重排的对齐更聪明
+	colorMoved = default   # 整块移动的代码标暗色

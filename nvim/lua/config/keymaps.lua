@@ -4,10 +4,9 @@ local o = vim.opt
 -- local lazy = require("lazy")
 
 -- Search current word
-local searching_brave = function()
-  vim.fn.system({ "xdg-open", "https://search.brave.com/search?q=" .. vim.fn.expand("<cword>") })
-end
-map("n", "<leader>?", searching_brave, { noremap = true, silent = true, desc = "Search Current Word on Brave Search" })
+map("n", "<leader>?", function()
+  vim.ui.open("https://search.brave.com/search?q=" .. vim.fn.expand("<cword>"))
+end, { noremap = true, silent = true, desc = "Search Current Word on Brave Search" })
 
 -- Disable LazyVim bindings
 map("n", "<leader>L", "<Nop>")
@@ -22,9 +21,9 @@ map("n", "<D-s>", "<cmd>w<CR>", { desc = "Save With Formatting" })
 
 -- Cursor navigation on insert mode
 map("i", "<M-h>", "<left>", { desc = "Move Cursor Left" })
-map("i", "<M-l>", "<right>", { desc = "Move Cursor Left" })
-map("i", "<M-j>", "<down>", { desc = "Move Cursor Left" })
-map("i", "<M-k>", "<up>", { desc = "Move Cursor Left" })
+map("i", "<M-l>", "<right>", { desc = "Move Cursor Right" })
+map("i", "<M-j>", "<down>", { desc = "Move Cursor Down" })
+map("i", "<M-k>", "<up>", { desc = "Move Cursor Up" })
 
 -- End of the word backwards
 map("n", "E", "ge")
@@ -77,9 +76,8 @@ map("n", "<leader>ba", "<cmd>blast<cr>", { desc = "Last Buffer" })
 map("n", "<leader>b<tab>", "<cmd>tabnew %<cr>", { desc = "Current Buffer in New Tab" })
 map("n", "<s-q>", "<cmd>bd<cr>", { desc = "Unload buffer" })
 
--- Buffer navigation with Tab
-map("n", "<Tab>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
-map("n", "<S-Tab>", "<cmd>bprev<cr>", { desc = "Previous Buffer" })
+-- Toggle between current and previously edited buffer
+map("n", "<BS>", "<cmd>b#<cr>", { desc = "Switch to Last Buffer" })
 
 -- Toggle status line
 map("n", "<leader>uS", function()
@@ -182,7 +180,7 @@ map("n", "<leader>!", "zg", { desc = "Add Word to Dictionary" })
 map("n", "<leader>@", "zug", { desc = "Remove Word from Dictionary" })
 
 -- Terminal Stuff
-if not LazyVim.has("floaterm.nvim") or not LazyVim.has("toggleterm.nvim") then
+if not LazyVim.has("floaterm.nvim") and not LazyVim.has("toggleterm.nvim") then
   map("n", [[<c-\>]], function()
     Snacks.terminal("fish", { size = { width = 1 }, cwd = LazyVim.root() })
   end, { desc = "Terminal (Root Dir)" })
@@ -229,4 +227,4 @@ map("n", "<leader>_", "<C-W>s", { desc = "Split Window Below", remap = true })
 map("n", "<leader>\\", "<C-W>v", { desc = "Split Window Right", remap = true })
 
 -- Replace word under cursor globally
-map("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Replace Word Globally" })
+map("n", "<leader>R", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Replace Word Globally" })

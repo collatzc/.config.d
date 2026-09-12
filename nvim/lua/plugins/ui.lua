@@ -40,6 +40,7 @@ return {
   },
   {
     "neanias/everforest-nvim",
+    lazy = true,
     config = function()
       require("everforest").setup({
         background = "soft",
@@ -123,6 +124,7 @@ return {
   {
     "catppuccin/nvim",
     name = "catppuccin",
+    lazy = true,
     opts = {
       flavour = "macchiato",
       transparent_background = false,
@@ -185,7 +187,7 @@ return {
       end
 
       local linter = function()
-        local linters = require("lint").linters_by_ft[vim.bo.filetype]
+        local linters = require("lint").linters_by_ft[vim.bo.filetype] or {}
         -- local linters = require("lint").get_running()
         if #linters == 0 then
           return ""

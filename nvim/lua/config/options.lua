@@ -27,7 +27,7 @@ go.editorconfig = true
 -- Root dir detection
 go.root_spec = {
   "lsp",
-  { ".git", "lua", ".obsidian", "package.json", "Makefile", "go.mod", "cargo.toml", "pyproject.toml", "src" },
+  { ".git", "lua", ".obsidian", "package.json", "Makefile", "go.mod", "Cargo.toml", "pyproject.toml", "src" },
   "cwd",
 }
 
@@ -42,7 +42,6 @@ if go.vscode then
   local vscode = require("vscode")
   vim.notify = vscode.notify
   o.cmdheight = 1
-else
 end
 
 -- Backspacing and indentation when wrapping
@@ -52,9 +51,7 @@ o.breakindent = true
 o.wrap = true
 
 -- Smoothscroll
-if vim.fn.has("nvim-0.10") == 1 then
-  o.smoothscroll = true
-end
+o.smoothscroll = true
 
 o.conceallevel = 2
 
@@ -67,30 +64,26 @@ o.title = true
 o.titlelen = 0
 o.list = true
 o.titlestring = [[ %{fnamemodify(getcwd(), ':t')} %h%m%r%w]]
-if os.getenv("theme") == "light" then
-  o.background = "light"
-end
+-- 深浅色由 auto-dark-mode.nvim 跟随系统切换，无需手动设 background
 
--- Icon for diagnostics
+-- Icon for diagnostics (highlight line number instead of having icons in sign column)
 vim.diagnostic.config({
   virtual_text = {
-    prefix = " ",
+    prefix = " ",
   },
   severity_sort = true,
   underline = true,
   update_in_insert = false,
+  signs = {
+    text = { [1] = " ", [2] = " ", [3] = " ", [4] = " " },
+    numhl = {
+      [1] = "DiagnosticSignError",
+      [2] = "DiagnosticSignWarn",
+      [3] = "DiagnosticSignInfo",
+      [4] = "DiagnosticSignHint",
+    },
+  },
 })
-
--- Highlight line number instead of having icons in sign column
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-for _, diag in ipairs({ "Error", "Warn", "Info", "Hint" }) do
-  vim.fn.sign_define("DiagnosticSign" .. diag, {
-    text = signs[diag],
-    texthl = "DiagnosticSign" .. diag,
-    linehl = "",
-    numhl = "DiagnosticSign" .. diag,
-  })
-end
 -- Show line diagnostics automatically in hover window
 -- vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
 --   group = vim.api.nvim_create_augroup("float_diagnostic_cursor", { clear = true }),
