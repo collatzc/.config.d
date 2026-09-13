@@ -74,6 +74,11 @@ config.enable_tab_bar = true
 config.tab_bar_at_bottom = false
 config.use_fancy_tab_bar = true
 config.tab_max_width = 32
+-- 隐藏标签上的关闭按钮。该选项目前仅 nightly 版支持(20240203 稳定版没有),
+-- 用 pcall 包裹:当前版本静默跳过,换 nightly 后自动生效
+pcall(function()
+	config.show_close_tab_button_in_tabs = false
+end)
 
 config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 config.integrated_title_button_style = "MacOsNative"
