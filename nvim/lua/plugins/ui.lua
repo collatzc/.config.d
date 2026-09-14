@@ -304,6 +304,18 @@ return {
         start = 0,
         to = 0.8,
       },
+      -- 状态栏高亮不参与淡化：vimade 会把非焦点窗口里 lualine_* 的颜色做去饱和/变暗，
+      -- 状态栏因此出现色差（默认 blocklist 只保护 StatusLine/Pmenu，不含 lualine 派生组）
+      blocklist = {
+        statusline = {
+          highlights = {
+            "StatusLine",
+            "StatusLineNC",
+            "WinSeparator",
+            "/^lualine/",
+          },
+        },
+      },
       -- tint = {
       --   fg = {
       --     intensity = 0.3,
