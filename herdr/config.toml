@@ -1,0 +1,90 @@
+# herdr 配置 — macOS 风格
+# 完整选项参考:`herdr --default-config` 或 https://herdr.dev/docs/config-reference
+
+onboarding = false
+
+# ── 主题:跟随系统深浅色 ────────────────────────────────────────────
+# one-dark / one-light 是最中性的内置主题,叠加 Apple 系统色板后
+# 与 macOS 原生窗口观感一致:中性灰层次 + 系统蓝点缀。
+[theme]
+name = "one-dark"
+auto_switch = true
+dark_name = "one-dark"
+light_name = "one-light"
+
+[theme.custom.dark]
+accent = "#0a84ff"         # systemBlue
+panel_bg = "#1e1e1e"       # 窗口背景
+sidebar_bg = "#252527"     # 侧栏,略亮于内容区
+active_row_bg = "#333336"  # 选中行
+selection_bg = "#17426d"   # 文本选区,systemBlue ≈35% 透明
+surface0 = "#2c2c2e"       # systemGray6
+surface1 = "#3a3a3c"       # systemGray5
+overlay0 = "#636366"
+overlay1 = "#8e8e93"       # systemGray
+text = "#f5f5f7"           # Apple off-white
+subtext0 = "#98989d"
+green = "#30d158"          # systemGreen
+yellow = "#ffd60a"         # systemYellow
+red = "#ff453a"            # systemRed
+blue = "#0a84ff"
+teal = "#64d2ff"
+peach = "#ff9f0a"          # systemOrange
+mauve = "#bf5af2"          # systemPurple
+
+[theme.custom.light]
+accent = "#007aff"         # systemBlue
+panel_bg = "#f5f5f7"       # Apple 浅灰背景
+sidebar_bg = "#ebebee"
+active_row_bg = "#e5e5ea"
+selection_bg = "#acd0f8"   # 文本选区,systemBlue ≈30% 透明
+surface0 = "#e5e5ea"
+surface1 = "#d1d1d6"
+overlay0 = "#aeaeb2"
+overlay1 = "#8e8e93"
+text = "#1d1d1f"           # Apple near-black
+subtext0 = "#6e6e73"
+green = "#34c759"
+yellow = "#ffcc00"
+red = "#ff3b30"
+blue = "#007aff"
+teal = "#32ade6"
+peach = "#ff9500"
+mauve = "#af52de"
+
+# ── 界面:少即是多 ──────────────────────────────────────────────────
+[ui]
+# 强调色统一为系统蓝(边框、高亮、导航)
+accent = "#0a84ff"
+
+# 只有一个标签时隐藏标签栏,像 Safari 一样自动收起界面元素
+hide_tab_bar_when_single_tab = true
+
+# 窗口标题只显示 workspace 名,不带主机名前缀
+window_title = "{workspace}"
+
+# 标签栏右侧状态区(仅标签栏可见时显示)。菜单栏式时钟示例:
+# tab_bar_right = [{ type = "datetime", format = "%H:%M" }]
+
+# 侧栏行距放宽一档,列表更有呼吸感
+[ui.sidebar.agents]
+row_gap = 1
+
+[ui.sidebar.spaces]
+row_gap = 1
+
+# ── 通知:走 macOS 系统通知中心 ─────────────────────────────────────
+[ui.toast]
+delivery = "system"
+
+[experimental]
+pane_history = false
+
+# prefix 模式期间临时切换到 ASCII 键盘布局,
+# 中文输入法(拼音)激活时 ctrl+b 等 prefix 键不再被吞掉
+switch_ascii_input_source_in_prefix = true
+
+# IME 候选框跟随 agent 窗格的光标位置(仅对列出的 agent 生效)。
+# 代价:这些窗格中会多显示一个光标。输入中文提示词时定位更准:
+# reveal_hidden_cursor_for_cjk_ime = true
+# cjk_ime_agents = ["claude", "codex"]

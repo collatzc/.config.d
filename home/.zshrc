@@ -5,6 +5,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# ARM Homebrew:登录 shell 的 path_helper 只按 /etc/paths 重建 PATH(不含 /opt/homebrew/bin)。
+# 不加这行,新终端里 command -v lazygit 会失败,lg() 不会注册(/usr/local/bin 里只有悬空链接)
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -222,11 +226,16 @@ alias ll='lla -l'
 alias lt='lla -t'
 
 alias vim=nvim
-alias lg=lazygit
 
-if command -v lazygit 2>&1 >/dev/null
-then
-  alias lg='lazygit'
+# lazygit:按终端当前明暗自动选主题(wezterm 切了明暗后,重新 lg 即可生效)
+if command -v lazygit >/dev/null 2>&1; then
+  lg() {
+    local dir="$HOME/Library/Application Support/lazygit"
+    local theme
+    theme=$(python3 "$dir/detect_theme.py" 2>/dev/null)
+    [[ $theme != light ]] && theme=dark
+    LG_CONFIG_FILE="$dir/config.yml,$dir/theme-$theme.yml" command lazygit "$@"
+  }
 fi
 
 # alias zshconfig="vim ~/.zshrc"

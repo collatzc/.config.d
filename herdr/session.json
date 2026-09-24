@@ -1,0 +1,62 @@
+{
+  "version": 3,
+  "workspaces": [
+    {
+      "id": "w3",
+      "custom_name": null,
+      "identity_cwd": "/Users/cc/Proj/webapp/erp.webapp",
+      "public_pane_numbers": {
+        "2": 2,
+        "1": 1
+      },
+      "next_public_pane_number": 3,
+      "public_tab_numbers": [
+        1,
+        2
+      ],
+      "next_public_tab_number": 3,
+      "tabs": [
+        {
+          "custom_name": null,
+          "layout": {
+            "Pane": 1
+          },
+          "panes": {
+            "1": {
+              "cwd": "/Users/cc/Proj/webapp/erp.webapp",
+              "agent_session": {
+                "source": "herdr:pi",
+                "agent": "pi",
+                "kind": "path",
+                "value": "/Users/cc/.pi/agent/sessions/--Users-cc-Proj-webapp-erp.webapp--/2026-09-20T09-12-23-816Z_01a0be16-8c07-7648-9046-3825ff42a80a.jsonl"
+              }
+            }
+          },
+          "zoomed": false,
+          "focused": 1,
+          "root_pane": 1
+        },
+        {
+          "custom_name": "liFeG",
+          "layout": {
+            "Pane": 2
+          },
+          "panes": {
+            "2": {
+              "cwd": "/Users/cc"
+            }
+          },
+          "zoomed": false,
+          "focused": 2,
+          "root_pane": 2
+        }
+      ],
+      "active_tab": 0
+    }
+  ],
+  "active": 0,
+  "selected": 0,
+  "sidebar_width": null,
+  "sidebar_section_split": null,
+  "collapsed_space_keys": []
+}

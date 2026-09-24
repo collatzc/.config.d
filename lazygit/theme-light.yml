@@ -1,0 +1,38 @@
+# Tokyo Night 亮色主题(Day),配 delta --light
+gui:
+  theme:
+    # 焦点色用 Day 蓝加粗;输入文字近黑加粗,亮背景下保持高对比
+    activeBorderColor:
+      - "#2e7de9"
+      - bold
+    searchingActiveBorderColor:
+      - "#b15c00"
+      - bold
+    inactiveBorderColor:
+      - "#848cb5"
+    optionsTextColor:
+      - "#2e7de9"
+    defaultFgColor:
+      - "#1a1b26"
+      - bold
+    selectedLineBgColor:
+      - "#c4c8da"
+    inactiveViewSelectedLineBgColor:
+      - "#ccd0de"
+
+git:
+  # 差异渲染器与暗色主题同构,色值换成 Day:Day 调色板 = Storm 经 HSLuv 亮度反转
+  # (day bg #e1e2e7,行底色 = 反转后的 green2/red1 以 25% 混入 bg,词级强调 40%)
+  # command 同样必须用 YAML 单引号包裹,理由见 theme-dark.yml
+  diffRenderers:
+    - name: delta
+      command: 'delta --light --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}" --true-color=always --syntax-theme=ansi --minus-style="syntax #dababe" --minus-emph-style="bold #c64343 #d6a2a5" --plus-style="syntax #b7ced5" --plus-emph-style="bold #38919f #9dc2ca" --line-numbers-zero-style="#848cb5" --file-style="bold #2e7de9 #c4c8da" --file-decoration-style=none --hunk-header-style="line-number #848cb5" --hunk-header-decoration-style=none'
+      colorArg: always
+    - name: side-by-side
+      command: 'delta --light --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}" --true-color=always --syntax-theme=ansi --minus-style="syntax #dababe" --minus-emph-style="bold #c64343 #d6a2a5" --plus-style="syntax #b7ced5" --plus-emph-style="bold #38919f #9dc2ca" --line-numbers-zero-style="#848cb5" --file-style="bold #2e7de9 #c4c8da" --file-decoration-style=none --hunk-header-style="line-number #848cb5" --hunk-header-decoration-style=none --side-by-side'
+      colorArg: always
+    - name: color-words
+      type: rawGit
+      args: [--color-words]
+    - name: default
+      type: rawGit

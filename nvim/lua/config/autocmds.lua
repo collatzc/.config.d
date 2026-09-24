@@ -13,6 +13,12 @@
 local lualine_refresh_grp = vim.api.nvim_create_augroup("lualine_refresh_on_theme_change", { clear = true })
 local function refresh_lualine()
   vim.schedule(function()
+    -- trouble 状态栏组件(lualine_c 里的函数名)会把文本段高亮固化在
+    -- trouble.config.highlights._fixed 缓存里(背景取首次渲染时的 lualine_c_normal),
+    -- 之后换主题不再重算,背景就停留在旧主题上;先清缓存让它按新主题重建
+    pcall(function()
+      require("trouble.config.highlights")._fixed = {}
+    end)
     local ok, lualine = pcall(require, "lualine")
     if ok then
       lualine.refresh({ place = { "statusline" }, scope = "all" })

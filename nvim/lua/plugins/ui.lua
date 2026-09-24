@@ -300,12 +300,31 @@ return {
     opts = {
       recipe = { "paradox", { animate = true } },
       ncmode = "windows",
+      -- 透明主题下 Normal 背景是 none,vimade 淡化非活动窗口时目标色会回落成
+      -- 纯黑(dark)/纯白(light),dark 模式下整个面板因此"发黑"。
+      -- basebg 指定终端真实背景色(见 vimade README 的 transparent terminal 一节),
+      -- 这里跟随当前配色方案取值:tokyonight dark=moon #222436 / light=day #e1e2e7
+      basebg = function()
+        local bg
+        if (vim.g.colors_name or ""):find("^tokyonight") then
+          local ok, colors = pcall(function()
+            local style = vim.o.background == "light" and "day" or "moon"
+            return require("tokyonight.colors").setup({ style = style })
+          end)
+          if ok then
+            bg = colors.bg
+          end
+        end
+        return bg or (vim.o.background == "dark" and "#222436" or "#e1e2e7")
+      end,
       invert = {
         start = 0,
         to = 0.8,
       },
       -- 状态栏高亮不参与淡化：vimade 会把非焦点窗口里 lualine_* 的颜色做去饱和/变暗，
       -- 状态栏因此出现色差（默认 blocklist 只保护 StatusLine/Pmenu，不含 lualine 派生组）
+      -- trouble 状态栏组件（lualine_c 里的函数名）派生的组叫 TroubleStatusline*，
+      -- 不匹配 /^lualine/，漏掉的话非焦点窗口里只有这一段被淡化
       blocklist = {
         statusline = {
           highlights = {
@@ -313,6 +332,7 @@ return {
             "StatusLineNC",
             "WinSeparator",
             "/^lualine/",
+            "/^TroubleStatusline/",
           },
         },
       },

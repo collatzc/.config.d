@@ -1,0 +1,45 @@
+# Tokyo Night 暗色主题(Storm),配 delta --dark
+gui:
+  theme:
+    # 焦点色:聚焦面板边框 + 输入框文字(lazygit 里 SelFgColor = ActiveBorderColor)
+    # 荧光绿与终端光标一致
+    activeBorderColor:
+      - "#47ff9c"
+      - bold
+    searchingActiveBorderColor:
+      - "#e0af68"
+      - bold
+    inactiveBorderColor:
+      - "#565f89"
+    optionsTextColor:
+      - "#7aa2f7"
+    defaultFgColor:
+      # 纯白加粗:commit 输入框文字(及其他默认前景文字)在半透明终端背景下保持高对比
+      - "#ffffff"
+      - bold
+    selectedLineBgColor:
+      - "#2f3549"
+    inactiveViewSelectedLineBgColor:
+      - "#343a55"
+
+git:
+  # 差异渲染器,面板里按 | 键循环切换:delta → 左右分屏 → 逐词 diff → git 原生
+  # delta 配色全部取自 Tokyo Night 官方色板(folke/tokyonight.nvim),替代其自带的高饱和红绿:
+  #   增/删行底色 = green2 #41a6b5 / red1 #db4b4b 以 25% 混入 bg #24283b
+  #   行内改动词(词级强调)= 同色再以 40% 混入 bg 作底,前景用亮的原色加粗
+  #   文件头 = bg_highlight #292e42 色条 + 主题蓝加粗(GitHub 风格,多文件 diff 好扫视)
+  #   hunk 头只留一行行号,且用 comment 灰让它退居背景
+  # --syntax-theme=ansi:语法高亮取终端 ANSI 调色板,自动跟随 Tokyo Night 明暗
+  # 注意:command 用 YAML 单引号包裹,否则纯文本标量里 "空格+#" 会被 YAML 当注释截断
+  diffRenderers:
+    - name: delta
+      command: 'delta --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}" --true-color=always --syntax-theme=ansi --minus-style="syntax #52313f" --minus-emph-style="bold #db4b4b #6d3641" --plus-style="syntax #2b485a" --plus-emph-style="bold #41a6b5 #305a6c" --line-numbers-zero-style="#565f89" --file-style="bold #7aa2f7 #292e42" --file-decoration-style=none --hunk-header-style="line-number #565f89" --hunk-header-decoration-style=none'
+      colorArg: always
+    - name: side-by-side
+      command: 'delta --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}" --true-color=always --syntax-theme=ansi --minus-style="syntax #52313f" --minus-emph-style="bold #db4b4b #6d3641" --plus-style="syntax #2b485a" --plus-emph-style="bold #41a6b5 #305a6c" --line-numbers-zero-style="#565f89" --file-style="bold #7aa2f7 #292e42" --file-decoration-style=none --hunk-header-style="line-number #565f89" --hunk-header-decoration-style=none --side-by-side'
+      colorArg: always
+    - name: color-words
+      type: rawGit
+      args: [--color-words]
+    - name: default
+      type: rawGit

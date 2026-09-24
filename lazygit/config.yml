@@ -1,31 +1,21 @@
-# lazygit 配置 —— 深色,配 Tokyo Night
+# lazygit 基础配置 —— 主题不在这里:
+# zsh 的 lg 函数会查询终端明暗,按需加载 theme-dark.yml / theme-light.yml(LG_CONFIG_FILE 合并,主题覆盖基础)
 gui:
   # 左侧栏宽度占比(0~1,默认 0.3333),收窄给右侧 diff 更多空间。
   # 临时放大:焦点切到右侧 diff 后按 + (半屏→全屏,全屏时左侧栏完全隐藏),_ 反向
   sidePanelWidth: 0.25
-  theme:
-    activeBorderColor:
-      - "#7aa2f7"
-      - bold
-    searchingActiveBorderColor:
-      - "#e0af68"
-      - bold
-    inactiveBorderColor:
-      - "#565f89"
-    optionsTextColor:
-      - "#7aa2f7"
-    defaultFgColor:
-      - "#c0caf5"
-    selectedLineBgColor:
-      - "#2f3549"
-    inactiveViewSelectedLineBgColor:
-      - "#343a55"
 
 git:
-  # 差异渲染器,面板里按 | 键循环切换:delta → 逐词 diff → git 原生
+  # diff 上下文行数(git -U,默认 3)。多两行便于看清改动所在的代码位置
+  diffContextSize: 5
+  # 兜底渲染器:直接输 `lazygit`(或从 nvim 里启动)时只读这份默认配置,没有 theme 文件,
+  # 所以这里放一套暗色版,保证 | 键永远能切换;lg() 会用 theme-dark/light.yml 覆盖成正确明暗
   diffRenderers:
     - name: delta
-      command: delta --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
+      command: 'delta --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}" --true-color=always --syntax-theme=ansi --minus-style="syntax #52313f" --minus-emph-style="bold #db4b4b #6d3641" --plus-style="syntax #2b485a" --plus-emph-style="bold #41a6b5 #305a6c" --line-numbers-zero-style="#565f89" --file-style="bold #7aa2f7 #292e42" --file-decoration-style=none --hunk-header-style="line-number #565f89" --hunk-header-decoration-style=none'
+      colorArg: always
+    - name: side-by-side
+      command: 'delta --dark --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}" --true-color=always --syntax-theme=ansi --minus-style="syntax #52313f" --minus-emph-style="bold #db4b4b #6d3641" --plus-style="syntax #2b485a" --plus-emph-style="bold #41a6b5 #305a6c" --line-numbers-zero-style="#565f89" --file-style="bold #7aa2f7 #292e42" --file-decoration-style=none --hunk-header-style="line-number #565f89" --hunk-header-decoration-style=none --side-by-side'
       colorArg: always
     - name: color-words
       type: rawGit
