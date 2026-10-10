@@ -7,7 +7,9 @@ fi
 
 # ARM Homebrew:登录 shell 的 path_helper 只按 /etc/paths 重建 PATH(不含 /opt/homebrew/bin)。
 # 不加这行,新终端里 command -v lazygit 会失败,lg() 不会注册(/usr/local/bin 里只有悬空链接)
-eval "$(/opt/homebrew/bin/brew shellenv)"
+if [ -d "/opt/homebrew/bin" ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh

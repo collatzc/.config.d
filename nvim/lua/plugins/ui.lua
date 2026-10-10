@@ -317,6 +317,11 @@ return {
         end
         return bg or (vim.o.background == "dark" and "#222436" or "#e1e2e7")
       end,
+      -- 淡化强度:dark 维持默认 0.4(向暗背景淡出很自然);
+      -- light 下 0.4 会把文字洗得太浅,降到 0.3 让非活动窗格文字明显一点
+      fadelevel = function()
+        return vim.o.background == "light" and 0.3 or 0.4
+      end,
       invert = {
         start = 0,
         to = 0.8,

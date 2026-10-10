@@ -22,3 +22,13 @@ git:
       args: [--color-words]
     - name: default
       type: rawGit
+
+customCommands:
+  # X(大写):把选中文件移出 git 索引、保留工作区文件(即 git rm --cached),
+  # 用于取消误跟踪的文件;之后通常会想把它加进 .gitignore
+  # quote 管道由 lazygit 做转义,文件名含空格/引号等也不会破坏命令
+  - key: 'X'
+    context: 'files'
+    description: '从 git 索引移除(保留工作区文件)'
+    command: 'git rm --cached {{.SelectedFile.Name | quote}}'
+    loadingText: 'Removing file from git cache...'
