@@ -232,7 +232,21 @@ alias vim=nvim
 # lazygit:按终端当前明暗自动选主题(wezterm 切了明暗后,重新 lg 即可生效)
 if command -v lazygit >/dev/null 2>&1; then
   lg() {
-    local dir="$HOME/Library/Application Support/lazygit"
+    # 配置目录随平台取第一个存在的:Linux 默认 ~/.config/lazygit(XDG),
+    # macOS 在 ~/Library/Application Support/lazygit(软链自 ~/.config.d/lazygit),
+    # 两者都没部署时直接用 dotfiles 源目录;再不行就裸跑 lazygit 用内置默认
+    local dir
+    for dir in \
+      "${XDG_CONFIG_HOME:-$HOME/.config}/lazygit" \
+      "$HOME/Library/Application Support/lazygit" \
+      "$HOME/.config.d/lazygit"
+    do
+      [[ -f "$dir/config.yml" ]] && break
+    done
+    if [[ ! -f "$dir/config.yml" ]]; then
+      command lazygit "$@"
+      return
+    fi
     local theme
     theme=$(python3 "$dir/detect_theme.py" 2>/dev/null)
     [[ $theme != light ]] && theme=dark
